@@ -1,0 +1,82 @@
+For this work, our goal is to test several metrics based on the ranking of feature importance of a trained model. Normalized Discounted Cumulative Gain (NDCG) \cite{wangTheoreticalAnalysisNDCG} which is the sum of the true scores ranked in the order induced by the predicted scores, after applying a logarithmic discount. Then divide by the best possible score to obtain a score between 0 and 1. It is calculated by
+\[
+\text{{NDGC}} = \frac{{\text{{DCG}}(P)}}{{\text{{IDCG}}(P)}}
+\]
+where $\text{{DCG}}(P)$ is the Discounted Cumulative Gain and $\text{{IDCG}}(P)$ is the Ideal Discounted Cumulative Gain. 
+
+Cohen's kappa coefficient \cite{doi:10.1177/001316446002000104}  is a statistic that is commonly used to assess the level of agreement between two or more raters or evaluators who are providing categorical ratings or rankings of a set of items. So, we want to use to assess if it could be of use to check how similar the ranking of the features is, using the numbers as categorical.
+\[
+\kappa = \frac{{P_o - P_e}}{{1 - P_e}}
+\]
+
+where \(P_o\) is the observed agreement between the two raters and \(P_e\) is the expected agreement between the two raters by chance.
+
+We also intend to use the $R^2$ to check if the explainability changes across datasets.
+\[
+R^2 = 1 - \frac{{\sum_{i=1}^n (y_i - \hat{y}_i)^2}}{{\sum_{i=1}^n (y_i - \bar{y})^2}}
+\]
+
+where \(y_i\) are the observed values of the dependent variable, \(\hat{y}_i\) are the predicted values of the dependent variable, \(\bar{y}\) is the mean of the observed values of the dependent variable and \(n\) is the number of data points.
+
+Then we intend to use ranking metrics, namely Kendall tau, weighted Kendall tau and RBO.
+Kendall tau is a measure of correlation that measures the similarity between two rankings. It is commonly used in statistics and data analysis to evaluate the agreement or disagreement between two sets of rankings.
+
+The Kendall tau coefficient \cite{kendallTreatmentTiesRanking1945} is defined as the difference between the number of concordant and discordant pairs of observations, divided by the total number of pairs. A concordant pair is a pair of observations that have the same ranking order in both sets, while a discordant pair is a pair of observations that have opposite ranking orders. The Kendall tau coefficient ranges from -1 to 1, where -1 represents perfect negative correlation, 0 represents no correlation, and 1 represents perfect positive correlation. 
+\[
+\tau = \frac{{\text{{number of concordant pairs}} - \text{{number of discordant pairs}}}}{{\text{{total number of pairs}}}}
+\]
+Weighted Kendall tau  \cite{vignaWeightedCorrelationIndex2015} is an extension of Kendall tau that takes into account the importance or weight of each observation in the rankings. In some cases, some observations may be more important than others, and their positions in the ranking may have a greater impact on the overall correlation. Weighted Kendall tau assigns a weight to each observation, and the correlation is calculated based on the weighted concordant and discordant pairs.
+\[
+\tau_w = \frac{{\sum_{i<j} w_{ij} \cdot sgn(x_i - x_j)}}{{\sum_{i<j} w_{ij}}}
+\]
+where $w_{ij}$ is the weight associated with the pair $(x_i, x_j)$ and $sgn(\cdot)$ is the sign function.
+Rank-biased overlap (RBO) \cite{webberSimilarityMeasureIndefinite2010} is a measure of similarity between two ranked lists or rankings. It takes into account the order of items in the two lists, and it can be used to evaluate the quality of search results, recommendations, or any other kind of ranked list it has been shown to be more robust and accurate than other similarities measures such as Kendall tau or Spearman's rank correlation coefficient. 
+\[
+\text{{RBO}} = (1 - \rho) \cdot \sum_{d=1}^{\infty} \left( \frac{{g_d}}{{d}} \right) \cdot \rho^d
+\]
+where $\rho$ is the weight, $g_d$ is the gain at depth $d$, and $\sum_{d=1}^{\infty}$ indicates the summation over all depths.
+
+
+Finally, we intend to use text-distance metrics. The theory behind this experiment is to treat the ordered columns in a ranking manner and apply text-distance metrics to check the distance between the two. Levenshtein distance \cite{navarroGuidedTourApproximate2001} is the minimum number of single-character insertions, deletions, or substitutions required to transform one string into another.
+
+Damerau-Levenshtein distance \cite{navarroGuidedTourApproximate2001} is similar to Levenshtein distance but also includes the transposition of two adjacent characters as an allowable operation.
+
+The hamming distance \cite{6772729} is a measure of the difference between two strings of equal length, defined as the number of positions at which the corresponding symbols are different.
+
+Jaro-Winkler distance \cite{navarroGuidedTourApproximate2001} is a string similarity measure that takes into account the number of matching characters, the number of transpositions, and the length of common prefixes, with a higher weight given to the common prefix.
+
+
+
+
+\begin{algorithm}[hbtp]
+\SetAlgoLined
+
+\For {i in number of columns to test}{
+\For {rep in  10 repetitions}{ 
+permutate values in i columns
+
+\For {dataset in dataset pair}{
+
+\For {target in dataset columns}{
+
+Train-Test Split (95:5)
+ model fit to train
+     get feature importance per column
+     Create an ordered rank of features 
+ }}}}
+
+
+ \caption{Testing similarity scores in tabular datasets}
+ \label{alg:simil_1}
+
+\end{algorithm}
+
+
+
+The algorithms chosen were decision trees, random forests, support vector machines,  K-nearest neighbours, and linear regression/logistic regression as implemented in the scikit-learn package \cite{scikit-learn}. The text distance metrics were implemented by the text-distance package \cite{orsiniumTextdistanceComputeDistance}. Kendall tau, weighted Kendall tau were used as implemented by scipy \cite{virtanenSciPyFundamentalAlgorithms2020a} and RBO, as implemented in \cite{chenRankbiasedOverlapRBO2023}.
+
+
+
+
+
+

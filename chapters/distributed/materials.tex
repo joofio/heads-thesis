@@ -1,0 +1,24 @@
+Clinical data was gathered from nine different Portuguese hospitals regarding obstetric information, pertaining to admissions from 2019 to 2020. This originated nine different files representing different sets of patients but with the same features associated to them. The software for collecting data was the same in every institution (although different versions existed across hospitals) - ObsCare. The data columns are the same in every hospital's database. Each hospital was considered a silo and summary statistics of the different silos are reported in the tables \ref{tab:distributed_materials_1} and \ref{tab:distributed_materials_2}. The data dictionary is in appendix \ref{appendix:data_dict}.
+%TC:ignore
+
+{\small
+\begin{table}[!ht]
+
+\caption[Silos overview.]{\label{tab:distributed_materials_1}Silos overview. categorical columns have a snippet of the most used category and a percentage. Continuous variables have a mean and standard deviation. Abbreviation meaning in the appendix. The last row is the number of patients. * columns were used as target.}
+
+\centering
+\input{chapters/distributed/table1}
+\end{table}
+}
+\newpage
+
+{\small
+\begin{table}[!ht]
+
+\caption[Silos overview part 2.]{\label{tab:distributed_materials_2}Silos overview part 2. categorical columns have a snippet of the most used category and a percentage. Continuous variables have a mean and standard deviation. Abbreviation meaning in the appendix. The last row is the number of patients. * columns were used as target.}
+\centering
+\input{chapters/distributed/table2}
+
+\end{table}
+}
+%TC:endignore

@@ -1,0 +1,129 @@
+\begin{savequote}[75mm]
+The most exciting phrase to hear in science, the one that heralds new discoveries, is not 'Eureka!' but 'That's funny...'
+\qauthor{Isaac Asimov}
+\end{savequote}
+
+\chapter{State of the art} \label{chap:sota}
+
+\section{Extracting Knowledge of data}\label{sec:kdd}
+\ac{kdd} plays a pivotal role in the healthcare industry. The complexity and vastness of healthcare data, encompassing electronic health records, genomic data, medical imaging data, and various other types of data, call for the adoption of intelligent systems that can mine this data for useful insights. The \ac{kdd} process, comprising data cleaning, integration, selection, transformation, data mining, pattern evaluation, and knowledge presentation, can effectively help discover patterns and relationships in healthcare data, which are often not apparent to traditional analysis methods. This process facilitates the prediction of disease outbreaks, the identification of high-risk patient groups, the optimization of treatment plans, and the enhancement of healthcare service delivery.
+
+Several frameworks have been proposed to implement the \ac{kdd} process in the healthcare sector. One such prominent framework is CRISP-DM (Cross-Industry Standard Process for Data Mining), which comprises business understanding, data understanding, data preparation, modelling, evaluation, and deployment. Another significant framework is KDDF (Knowledge Discovery and Data Mining Framework), which is designed explicitly for healthcare applications. It focuses on the acquisition and integration of data from diverse healthcare sources, data preprocessing, data mining, data interpretation, and knowledge utilization. Furthermore, Domain-Driven Data Mining (D3M) and Sample, Explore, Modify, Model, and Assess (SEMMA) are also important frameworks in healthcare, helping align data mining processes with specific healthcare domains and facilitating more accurate and valuable knowledge discovery.
+
+In the context of \ac{kdd} in healthcare, various classes of algorithms can be utilized, each best suited for different kinds of tasks.
+
+Classification Algorithms: These are used to predict categorical class labels. Examples include Decision Trees, Naive Bayes, \ac{svm}, \ac{knn}, and various types of Neural Networks. These are used in disease diagnosis, patient risk prediction, and readmission prediction.
+
+Clustering Algorithms: These are unsupervised methods used to group similar data points together. K-Means, Hierarchical Clustering, DBSCAN, and Self-Organizing Maps (SOM) are common clustering algorithms used in patient segmentation and anomaly detection.
+
+Regression Algorithms: These are used to predict continuous output variables. Examples include Linear Regression, Logistic Regression, and Regression Trees. These algorithms find application in predicting disease progression and healthcare costs.
+
+Association Rule Mining Algorithms: These discover associations or patterns among a set of items in large databases. Apriori and FP-Growth are commonly used algorithms in this class, helping in discovering co-occurring health conditions or drug interactions.
+
+Sequential Pattern Mining Algorithms: These help discover or predict specific sequence of events, which is particularly useful in medical trajectory analysis.
+
+Most recently, more sophisticated architectures and algorithms appeared with neural networks, generative \ac{ai}, reinforcement learning, 
+
+%-tipos de algortimos paraa
+
+%\subsection{KDD Framework}
+%- 5.1 Process Steps
+%- 5.2 Tools and Techniques
+%- 5.3 Challenges and Mitigation Strategies
+%\subsection{CRISP-DM}
+
+%- 2.2 Role of KDD in Healthcare
+%- 2.3 Previous Studies on KDD in Healthcare
+%- 2.4 Gaps in the Existing Literature
+
+
+
+\section{Evidence Based Medicine}
+\ac{ebm} is a relatively recent concept in healthcare, which entails integrating the best available research evidence with clinical experience and patient values to make decisions about patient care. The term "evidence-based medicine" was first coined by a team at McMaster University in Canada in the 1980s, but the concept has historical antecedents dating back to at least the 19th century. This was a time when clinical decision-making was mostly based on untested observations and physicians' experience, leading to variability in treatment strategies. The birth of \ac{ebm} marked a pivotal moment in medical history, aiming to standardize patient care and improve outcomes.
+
+The advent of \ac{ebm} was closely tied to the development of clinical epidemiology, the study of disease patterns, causes, and effects in populations. This field, which emerged in the 20th century, focused on statistical and methodological tools to rigorously evaluate treatments. The early proponents of \ac{ebm} aimed to counter anecdotal and unsystematic approaches to clinical decision-making by insisting on rigorous scientific evidence as a basis for decisions. This transitioned medicine from a largely experience-based discipline to scientific, data-driven practice.
+
+The main concept of \ac{ebm} is the hierarchy of evidence, which classifies different types of research studies based on their methodological quality and applicability to patients. At the top of this hierarchy are \acp{rct} and systematic reviews of \acp{rct}, which are considered to provide the most robust evidence. Observational studies, case series, and expert opinions are further down the hierarchy due to their inherent limitations. \ac{ebm} advocates for the application of the highest level of evidence available in clinical decision-making.
+
+However, \ac{ebm} is not just about applying research findings mechanically to patient care. It integrates these findings with the clinician's expertise and the patient's individual circumstances, values, and preferences. This is known as the triad of \ac{ebm}: best available evidence, clinical expertise, and patient values. The concept recognizes that while evidence can guide decisions, it cannot replace the clinical judgment required in individual cases or the need to consider the patient's personal circumstances and preferences. Thus, \ac{ebm} aims to enhance, not replace, the clinician's traditional skills and roles, adding a new dimension to patient care.
+
+
+\subsection{Health Data Science}
+%sacket 
+%- graph of evidence based medicine
+
+%- inconvenient truth ai
+%Three controversies in health data science
+Health Data Science is an interdisciplinary field that applies rigorous methods to transform healthcare data into actionable knowledge for improving health outcomes. It involves the collection, interpretation, and application of vast amounts of biological, clinical, population, and health system data to improve patient care and public health. The advent of electronic health records, genomics, mobile health technologies, and other forms of big data have fueled the growth of this discipline.
+
+In practice, Health Data Science involves the use of statistical and machine learning methods to analyze healthcare data. This data can be patient records, genomic data, demographic data, and more. It includes elements from various disciplines like biostatistics, epidemiology, informatics, and health economics. The ultimate goal is to provide a data-driven foundation for health decision-making for clinicians, health administrators, policymakers, and researchers.
+
+An integral part of Health Data Science is predictive modelling and hypothesis testing. Predictive modelling involves the creation and use of statistical models or machine learning algorithms to predict future outcomes based on historical data. Hypothesis testing, on the other hand, is used to test the validity of a claim or theory about a population based on sample data. These are crucial for health data science as they allow us to make educated guesses about health trends and outcomes.
+
+Importantly, Health Data Science has significant ethical and privacy considerations. Health data is often sensitive and personal, so maintaining privacy and confidentiality is crucial. This requires secure data handling and storage practices, as well as careful consideration of ethical implications when designing studies and algorithms. Health Data Scientists must also be wary of algorithmic bias and must ensure their models do not perpetuate or amplify health disparities. The ultimate goal of Health Data Science is to improve patient outcomes and health equity using the best available data and methods.
+
+
+The potential of using systematically created data in healthcare, which reaches the PB, has certainly a lot of potential. However, we have seen in the past as well, that the hype of \ac{ai} and \ac{ml} usually is not supported by truth. There are currently six main aspects that hinder the potential of health data science \cite{panchInconvenientTruthAI2019,peekThreeControversiesHealth2018}:
+\begin{myitemize}
+    \item interoperability
+    \item semantic
+    \item secondary usage
+    \item data quality
+    \item privacy and ethical
+    \item observational data
+\end{myitemize}
+
+
+
+
+\subsection{Explainable Artificial Intelligence}
+\ac{ai} has experienced unprecedented advancements in the last decade, leading to its integration in various domains, including medicine. It has been instrumental in transforming clinical decision-making, drug discovery, patient monitoring, and predicting disease trajectories. Despite these advancements, the "black box" nature of complex \ac{ai} models poses interpretability challenges, limiting their widespread adoption in healthcare, a field where transparency, reliability, and understanding of decision-making processes are vital. This lack of interpretability, also known as opacity, can lead to misdiagnoses, inappropriate treatment plans, and, most importantly, breaches in trust among clinicians, patients, and \ac{ai} systems.
+
+As such, the concept of \ac{xai}, which aims to create a suite of techniques that produce more explainable models while maintaining a high level of predictive accuracy, has gained significant attention in medical \ac{ai} research. \ac{xai} seeks to bridge the gap between \ac{ai} opacity and human interpretability, and in doing so, it can enhance the transparency, reliability, and acceptance of \ac{ai} applications in the healthcare setting.
+
+So, for this to happen, we need a new framework for applying such mechanisms. A new step that could be attached to the ones seen before in section \ref{sec:kdd} will enable human comprehension of the model's output.
+
+Even though several grouping and taxonomies of \ac{xai} are available mentioned in \cite{adadiPeekingBlackBoxSurvey2018,linardatosExplainableAIReview2020,barredoarrietaExplainableArtificialIntelligence2020,linardatosExplainableAIReview2020,kamath2021explainable}, a simplified approach based on \cite{kamath2021explainable} will be used in order to contextualize this concept.
+
+We can divide it into two main categories. Firstly the explanation type, which is divided into global and local. Local and global explanations are methods used to interpret machine learning models, especially those that are considered "black box" models, such as deep learning networks. These methods help us understand why and how a model makes certain decisions, which can be crucial in many settings for ethical, legal, and practical reasons.
+
+Local Explanations: These involve understanding the prediction of a \ac{ml} model for a specific individual instance. They help to answer questions like: "Why did the model predict that this particular patient has cancer?" or "Why was this specific transaction flagged as fraudulent?". 
+
+Global Explanations: These focus on understanding the model behaviour across all instances, or more broadly on a dataset-wide level. They help to answer questions like: "What features are generally important for prediction in the model?" or "What is the overall logic of the model?". 
+
+Secondly, we have the method type, where we have 3 main subcategories related to the stage of the data science process it is applied, pre, during and post-model training.
+
+Pre-Model \ac{xai}: These methods involve improving the transparency and interpretability of models before they are even trained. This includes thoughtful feature engineering, \ac{eda}, and applying domain knowledge to create meaningful variables. The goal is to design a model that will be more interpretable from the onset.
+
+Intrinsic \ac{xai}: This involves using machine learning models that are intrinsically explainable. These models are designed in such a way that their decision-making process is understandable by default. Examples include linear and logistic regression, decision trees, Naïve Bayes, \ac{bn} and rule-based models. While these models may sometimes lack the predictive power of more complex models, they provide clear interpretability: you can directly examine the impact of the variables and understand how the model makes its predictions.
+
+Post-Hoc XAI: Post-hoc methods are applied after a model has been trained, to try to explain its decisions. This includes techniques like feature importance analysis, partial dependence plots, \ac{lime}, \ac{shap} and counterfactuals. For instance, \ac{lime} can be used to create local explanations for individual predictions made by any model, and \ac{shap} values can be used to interpret the impact of features on the model's output both locally and globally. Counterfactuals try to explain a model by example, providing possible changes that would alter the outcome provided by the model.
+
+It is to be noted that a methodology can be classified into two categories. For example, \ac{lime} is a local explanation model in a \textit{post-hoc} manner.
+
+Finally, we can assess how these three types of model are in fact an explanation of the model, we could argue, like stated in \cite{rudinStopExplainingBlack2019} that only an intrinsically transparent model can really be the basis of \ac{xai} and applying \textit{post-hoc} methods is only a potentially wrong proxy for an explanation.
+
+
+\subsection{Causality}
+
+In order to merge the \ac{ebm} and \ac{xai}, we can follow on to the realm of \ac{cml}.
+
+%- causality vs observation
+
+
+\section{Legal and ethical considerations}
+
+%GDPR, health european data space, questoes eticas
+
+
+As data science and Knowledge Discovery in Databases (KDD) become increasingly prevalent in the healthcare sector, the legal and ethical considerations related to these practices also become critically important. Ensuring the proper use of healthcare data is key to preserving public trust and ensuring the long-term viability of data-driven health initiatives.
+
+One of the primary legal considerations is data privacy. Laws such as the Health Insurance Portability and Accountability Act (HIPAA) in the U.S., and the General Data Protection Regulation (GDPR) in the EU, set stringent rules on how healthcare data should be stored, shared, and processed. They require data scientists and healthcare providers to take steps to anonymize data and limit the scope of data usage. Breaching these regulations can lead to severe penalties, including fines and imprisonment.
+
+On the ethical front, considerations include ensuring data fairness and avoiding bias. Given the diversity of patients in terms of age, race, sex, socioeconomic status, etc., algorithms should be designed and validated to ensure that they don't unintentionally perpetuate or amplify societal biases. For instance, a predictive model for disease risk should not unfairly disadvantage certain demographic groups. Furthermore, the informed consent of patients is another significant ethical consideration. Patients should be fully informed about how their data will be used, and they should have the right to opt out if they wish.
+
+Transparency is another crucial aspect that straddles both legal and ethical dimensions. It involves explaining how decisions or predictions are made by complex algorithms, particularly when they have significant implications for patient care. For instance, if an AI model is used to prioritize patients for treatment, it should be transparent about how the model makes its decisions. The explainability of machine learning models can help achieve this transparency, which aids in maintaining accountability and trust.
+
+Lastly, there's the matter of data security. With the rise of cyber-attacks, ensuring the robustness of the system against such breaches is both a legal requirement and an ethical obligation. Security breaches could lead to sensitive patient data being stolen, with severe implications for the individuals involved and for the trust in the healthcare system as a whole.
+
+In conclusion, while data science and KDD offer immense potential to improve healthcare, it is crucial that these technologies are implemented in a way that respects legal regulations and ethical principles. This will help to ensure the sustainability and public acceptance of these technologies in the long run.

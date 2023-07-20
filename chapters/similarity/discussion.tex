@@ -1,0 +1,5 @@
+With the results found, we feel that are better alternatives to cross-validation. At least  Kendall tau, Weighted Kendall tau, and RBO seem like alternatives to cross-validation.
+Firstly, they seem to be directly connected to a difference in the dataset, secondly, they are a 0-1 metric and thirdly, variance across different iterations is also lower.
+From these, the metrics based on ranking metrics seem to work best, where Kendall tau, weighted Kendall tau and RBO have better performance than the rest. As for the variance with the number of repetitions, we also see that the ranking-based metrics have good stability, while the cross-validation and text-based metric have higher variability with a low number of repetitions (even if low) \ref{fig:facet_plot}. 
+Text metrics also have a suitable performance, even though they have a drastic drop with only one column mutated (figure \ref{fig:lineplot}).
+

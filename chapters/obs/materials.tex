@@ -1,0 +1,83 @@
+The data was gathered from 9 different Portuguese hospitals regarding obstetric information: data from the mother, several data points about the fetus and delivery mode. The data is from 2019 to 2020. The software for collecting data was the same in every institution and the columns are the same, even though the version of each software differed across hospitals. Across the different hospitals, data rows ranged from 2364 to 18177. The selected variables have the following distributions are shown in table \ref{tab:obs_material_1}. The sum of all rows is 73351 rows. 
+\begin{table}[htbp]
+  \centering
+  \caption{Distribution of feature used for prediction}
+  \label{tab:obs_material_1}
+   \renewcommand{\arraystretch}{1.02} % Adjust the vertical spacing
+  \setlength{\tabcolsep}{12pt} % Adjust the horizontal spacing
+    \begin{tabular}{m{15em}cc}
+    \toprule
+        Variable & M (SD) & Mode [\%] \\ 
+        \hline
+        Mother Age & 31.0 (5.6) & ~ \\ 
+        Weight pre-pregnancy & 65.8 (13.9) & ~ \\ 
+        Weight on admission & 78.6 (14.2) & ~ \\ 
+        BMI & 25.0 (5.4) & ~ \\ 
+        Previous eutocic delivery & 0.4 (0.7) & ~ \\ 
+        Previous vacuum-assisted delivery & 0.1 (0.3) & ~ \\ 
+        Previous forceps & 0.0 (0.1) & ~ \\ 
+        Previous C-section & 0.1 (0.4) & ~ \\ 
+        Fetal presentation on admission & ~ & cephalic [26.323 \%] \\ 
+        Bishop score & 5.5 (3.0) & ~ \\ 
+        Gestational age on admission & 38.9 (1.9) & ~ \\ 
+        Premature rupture of the membrane & ~ & No [87.991 \%] \\ 
+        Chronic hypertension & ~ & No [97.676 \%] \\ 
+        Gestational hypertension & ~ & No [97.749 \%] \\ 
+        Preeclampsia & ~ & No [98.299 \%] \\ 
+        Gestational diabetes & ~ & No [89.811 \%] \\ 
+        Gestational diabetes treated with diet & ~ & No [94.285 \%] \\ 
+        Gestational diabetes treated with insulin & ~ & No [98.083 \%] \\ 
+        Gestational diabetes treated with oral antidiabetic drugs & ~ & No [97.797 \%] \\ 
+        Maternal Diabetes & ~ & No [99.509 \%] \\ 
+        Type 1 Diabetes & ~ & No [99.816 \%] \\ 
+        Type 2 Diabetes & ~ & No [99.843 \%] \\ 
+        Presentation at birth & ~ & Vertex presentation [94.000 \%] \\ 
+        Delivery & ~ & Spontaneous [53.864 \%] \\ 
+        Gestational age on birth & 39.0 (1.8) & ~ \\ 
+        Smoking during pregnancy & ~ & No [88.442 \%] \\ 
+        Alcohol consumption during pregnancy & ~ & No [98.65 \%] \\ 
+        Consumed drugs during pregnancy & ~ & No [99.825 \%] \\ 
+        Nr of pregnancies (with current) & 1.9 (1.1) & ~ \\ 
+        Pregnancy type & ~ & Spontaneous [85.417 \%] \\ 
+        Surveillance & ~ & yes [97.699 \%] \\ 
+        Hospital surveillance & ~ & yes [67.807 \%] \\ 
+        Pelvis Adequacy & ~ & Adequate [17.512 \%] \\ 
+        Consistency of the cervix & 1.6 (0.6) & ~ \\ 
+        Fetal station & 0.8 (0.8) & ~ \\ 
+        Dilation of the cervix & 1.3 (0.8) & ~ \\ 
+        Effacement of the cervix & 1.2 (1.2) & ~ \\ 
+        Position of the cervix & 0.6 (0.7) & ~ \\ 
+        Haematologic disease & ~ & No [95.674 \%] \\ 
+        Respiratory disease & ~ & No [95.605 \%] \\ 
+        Cerebral disease & ~ & No [98.793 \%] \\ 
+        Cardiac disease & ~ & No [92.967 \%] \\ 
+        Neuroaxis techniques & ~ & 1 [69.5 \%] \\ 
+        Number of children  & 0.6 (0.8)  & ~\\ 
+        \bottomrule
+    \end{tabular}
+
+
+\end{table}
+The outcome variable had the following distribution as stated in table \ref{tab:delivery_methods}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Distribution of Delivery Methods}
+  \label{tab:delivery_methods}
+  \renewcommand{\arraystretch}{1.5} % Adjust the vertical spacing
+  \setlength{\tabcolsep}{12pt} % Adjust the horizontal spacing
+  \begin{tabular}{lc}
+    \hline
+    \textbf{Type of delivery} & \textbf{Frequency (\%)} \\
+\hline
+    C-Section & 19 803 \, (27\%) \\
+
+    Vaginal & 38 189 \, (52\%) \\
+
+    Instrumental delivery & 15 359 \, (21\%) \\
+    \hline
+  \end{tabular}
+\end{table}
+%Vaginal      0.520634
+%Cesariana    0.269976
+%auxiliado    0.209390

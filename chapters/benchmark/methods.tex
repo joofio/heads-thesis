@@ -1,0 +1,40 @@
+We used Python 3.9 for implementing the mock example of such an example. The clustering was done with scikit-learn library \cite{scikit-learn}. The algorithm proposed is shown in algorithm \ref{alg:bench1}.
+
+%TC:ignore
+\begin{algorithm}[hbtp]
+\caption{Benchmarking with clustering}
+\label{alg:bench1}
+
+\SetAlgoLined
+
+
+
+\For {variable in silo}{ 
+initialize centroids\;
+%\begin{itemize}
+%    \item real cluster obfuscated with noise
+%    \item true centroids
+%    \item add noise to data and then create centroids
+%\end{itemize}
+}
+%\SetKwRepeat{Do}{do}{while}
+\While{No convergence}{
+\begin{itemize}
+    \item Send centroids to other silos
+\item Receive other silo's information and add own centroids
+\item Calculate new centroids
+\item calculate score
+\end{itemize}
+}
+
+
+
+\end{algorithm}
+%TC:endignore
+
+The method for assessing convergence is based on clustering metrics: the \ac{ri}. This metric computes a similarity measure between two clusters by considering all pairs of samples and counting pairs that are assigned in the same or different clusters in the predicted and true clusters \cite{hubertComparingPartitions1985}. The raw RI score is: $RI = (number\; of\; agreeing\; pairs) / (number\; of\; pairs)$.
+Furthermore, convergence must be obtained through several iterations to make sure it's stable, so a buffer period is also important. For the results section, we set the threshold as 0.9 and repetitions at 20.
+
+In this paper, we propose to show how such an implementation could be done while addressing issues with data formats, types and preprocessing. So, we want to check if the encoding of categorical data affects the model and which method is better for encoding such variables. Additionally, we will try to understand if it is possible to create mechanisms for mixed data if categorical and continuous data must be used and evaluated separately and if so, through which mechanisms.
+We will test (1) continuous variables alone, and (2) encoded categorical variables as ordinal. We will also test (3) K-modes  and (4) K-means with the proportion of each category for categorical data.
+K-means was used as implemented in scikit-learn \cite{scikit-learn} and K-modes, as implemented by J. de Vos \cite{devos2015}.

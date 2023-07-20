@@ -1,0 +1,54 @@
+Data was prepossessed with the removal of features with high missing rates ($>$ 90\% in all silos). All missing value representations were standardized. The imputation process was done using the mean value (for continuous variables) or a new category (NULLIMP) for categorical variables. All categories were encoded as numbers using a previous mapping created based on all possible categories in all silos. Even though an ordinal relationship is created among features, we believe that since we are applying this methodology to all datasets, which will be the source for all tests (local, distributed and centralised), that fact may be ignored.
+When training classification models, all of the target variable classes must be known at that moment and should be present in each split of the cross-validation. So, when assessing the training dataset, low-frequency target classes (n $<$ 25) were up-sampled with \ac{smote} \cite{smote} and missing target classes were addressed with dummy rows creation by the imputation of the mean for continuous variables and mode for categorical variables (per silo). These preprocessing mechanisms were applied in each run and for each target.
+The distributed model was an ensemble of models from each silo on a weighted soft-voting basis, defining weights and thresholds based on the training set scores. 
+All procedures were coded in Python 3.9.7 with the usage of the scikit-learn library \cite{scikit-learn} and mlxtend library \cite{mlxtend}.
+This study received Institutional Review Board approval from all hospitals included in this study with the following references: CHUSJ; 08/2021, CHBV; 12-03-2021, ULSM; 39/CES/JAS, HSOG; 85/2020, CHTS; 43/2020, CHVNGE; 192/2020,
+CHEDV; CA-371/2020-0t\_MP/CC, ULSAM; 11/2021.
+
+
+\subsubsubsection{Model Performance Evaluation}
+
+Local models were built with each silo's data. The distributed model was built as an ensemble of all the local models with weighted averaging. The centralised model was trained with a training dataset from all the silos combined. 
+All models were built for a certain outcome variable with cross-validation and then compared, over 10 stochastic runs, with evaluation being performed on a test set held out from each silo. The metrics used for classification models were Weighted \ac{auroc} computed as One-versus-Rest, Weighted \ac{auprc}. The metrics for regression models were \ac{rmse} and \ac{mae}. The algorithm is shown in the algorithm \ref{alg:distributed_1}. This rendered over 1000 different combinations.
+
+
+\subsubsubsection{Model Training}
+To avoid pitfalls of inductive bias from a certain learning strategy, we learned six different models (i) Decision Trees, (ii) Bayesian methods, (iii) a logistic regression model with Stochastic Gradient Descent, (iv) \ac{knn}, (v) AdaBoost and (vi) Multi-layer Perceptron. The decision was to create diversity in the models used, in order to assess if the training methodology could have an impact on distributed model creation.
+Nineteen features were used as target outcomes. These features were selected by filtering by the percentage of null (below 50\%). For categorical outcomes, thirteen were selected. For continuous variables, six were selected. Details can be seen in tables \ref{tab:distributed_materials_1} and \ref{tab:distributed_materials_2}.
+%TC:ignore
+
+
+\begin{algorithm}[hbtp]
+\caption{Creation and evaluation of the 3 different models}
+\label{alg:distributed_1}
+Pre-process all silos (null standardization, imputation, encoding)\;
+
+
+\For {target in target list}{ 
+Create a centralised model with all the data with a 2x10 \ac{cv} 
+
+Create distributed (ensemble of all models) model with: 
+
+\For {silo in imputed silos}{
+\begin{itemize}
+\item Train-Test Split (80:20)
+\item   check for low frequency or nonexistent labels in train set 
+\item train local model with hyper-parameter tuning with 2x10 CV
+  \item define weights based on  scores in the train set
+  \end{itemize}}
+
+        \For{n in 10 repetitions}{
+
+\For {silo in imputed silos}{
+\begin{itemize}
+  \item Train-Test Split (80:20)
+  \item train local model with hyper-parameter tuning with 2x10 CV\
+  \item predict local on the test set
+  \item predict distributed on the test set
+  \item predict centralised on the test set
+    \end{itemize}
+ }}}
+ \end{algorithm}
+%TC:endignore
+
+After all the data was collected, we used the standard independent 2-sample T-test to check if the differences were significant with a $\alpha$ of 0.05. We did the comparison between the distributed model and sequentially the centralised and correspondent local model across all algorithms.
