@@ -1,0 +1,79 @@
+%some macro definitions
+
+% format
+\newcommand{\class}[1]{{\normalfont\slshape #1\/}}
+
+% entities
+\newcommand{\Up}{Universidade do Porto}
+
+\newcommand{\svg}{\class{SVG}}
+\newcommand{\scada}{\class{SCADA}}
+\newcommand{\scadadms}{\class{SCADA/DMS}}
+
+\newenvironment{myitemize}{
+    \begin{itemize}[nolistsep]
+}{
+    \end{itemize}
+}
+\definecolor{SchoolColor}{rgb}{0.6471, 0.1098, 0.1882} % Crimson
+\definecolor{chaptergrey}{rgb}{0.6471, 0.1098, 0.1882} % for chapter numbers
+\definecolor{chaptergrey}{HTML}{8087b5}
+
+\definecolor{mygrey}{RGB}{250, 250, 250}
+
+
+\hypersetup{
+ colorlinks,
+ citecolor=chaptergrey,
+ linkcolor=chaptergrey,
+ urlcolor=Blue}
+
+
+% some definitions
+\def\degreeyear#1{\gdef\@degreeyear{#1}}
+\def\degreemonth#1{\gdef\@degreemonth{#1}}
+\def\degree#1{\gdef\@degree{#1}}
+\def\advisor#1{\gdef\@advisor{#1}}
+\def\department#1{\gdef\@department{#1}}
+\def\field#1{\gdef\@field{#1}}
+\def\university#1{\gdef\@university{#1}}
+\def\universitycity#1{\gdef\@universitycity{#1}}
+\def\universitystate#1{\gdef\@universitystate{#1}}
+\def\programname#1{\gdef\@programname{#1}}
+\def\pdOneName#1{\gdef\@pdOneName{#1}}
+\def\pdOneSchool#1{\gdef\@pdOneSchool{#1}}
+\def\pdOneYear#1{\gdef\@pdOneYear{#1}}
+\def\pdTwoName#1{\gdef\@pdTwoName{#1}}
+\def\pdTwoSchool#1{\gdef\@pdTwoSchool{#1}}
+\def\pdTwoYear#1{\gdef\@pdTwoYear{#1}}
+
+
+\newcommand{\copyrightpage}{
+	\newpage
+	\thispagestyle{empty}
+	\vspace*{\fill}
+	\scshape \noindent \small \copyright \small \degreeyear \hspace{3pt}-- \theauthor \\
+	\noindent all rights reserved.
+	\vspace*{\fill}
+	\newpage
+	\rm
+}
+
+% Define new section
+\titleclass{\subsubsubsection}{straight}[\subsubsection]
+
+\newcounter{subsubsubsection}
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+  {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Update the list of contents to include the new level
+\makeatletter
+\def\toclevel@subsubsubsection{5}
+\def\l@subsubsubsection{\@dottedtocline{5}{8.0em}{5.1em}}
+\makeatother
+
+\setcounter{secnumdepth}{5} % How deep to number within sections
+\setcounter{tocdepth}{5} % How deep to show in table of contents
