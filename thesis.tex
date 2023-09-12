@@ -16,6 +16,9 @@
 \documentclass[11pt,a4paper,twoside,openright]{report}
 \usepackage[utf8]{inputenc}
 %\usepackage[latin1]{inputenc}
+%\usepackage[acronym]{glossaries}
+\usepackage[nonumberlist]{glossaries}
+
 
 %%%%%%% English version 
 
@@ -35,10 +38,11 @@
 %\usepackage[mimed,portugues,juri]{upteses}   % juri version
 %\usepackage[mimed,portugues,final]{upteses}  % final version
 
+%\usepackage{pdfpages}
 
 %% Uncomment the next lines if side by side graphics used
 %\usepackage[lofdepth,lotdepth]{subfig}
-\usepackage{datagidx}
+%\usepackage{datagidx}
 \usepackage{longtable}
 \usepackage{xltabular}
 \usepackage[inline]{enumitem}
@@ -117,14 +121,14 @@
 
 %%----------------------------------------
 \input{pieces/acro}
+\input{pieces/terms}
+\input{mymacros}
 
 %%========================================
 %% Start of document
 %%========================================
 \begin{document}
-\include{mymacros}
-\input{personalize}
-
+%\input{personalize}
 \onehalfspacing
 %%----------------------------------------
 %% Information about the work
@@ -193,6 +197,8 @@
   \pdfbookmark[0]{List of Tables}{tables}
   \listoftables
   \include{pieces/abbrevs}  % the list of abbreviations used
+  \cleardoublepage
+    \include{pieces/glossary}  % glossary
 
 \end{Prolog}
 
@@ -223,11 +229,13 @@
 %% Bibliography
 %% Comment the next command if BibTeX file not used
 %% bibliography is in ``myrefs.bib''
-\PrintBib{references,full-thesis}
 
+\PrintBib{references, full-thesis}
+%\bibliographystyle{plainnat}
+%\bibliography{references,full-thesis}
 %% Index
 %% Uncomment next command if index is required
 %% don't forget to run ``makeindex thesis'' command
-%\PrintIndex
+%% \PrintIndex
 
 \end{document}

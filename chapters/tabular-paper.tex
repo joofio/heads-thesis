@@ -1,5 +1,5 @@
 
-\subsubsection{Introduction}
+\subsection{Introduction}
 Synthetic data can be defined as data that has no connection with a real-world phenomenon or event. It was not originated from a process in the real world, but rather a synthetic one. The idea is that synthetic data can have similar properties with real data, without needing to have an independent process for its generation.
 Synthetic data has been used over the years for several usages, but in healthcare is still not very used. However, this scenario seems to be changing. It can be used for several use cases namely \cite{synthetic-data-usage}; i) Software testing, ii) educational purposes, iii) \ac{ml}, iv) regulatory, v) retention, vi) secondary and vii) enhanced privacy.
 
@@ -11,17 +11,17 @@ Finally, an aspect that is underlying to all these applications is the promise t
 So in this paper, we developed a data pipeline for data analysis in order to create a report for providing several metrics for data utility and privacy.
 
 
-\subsubsection{Methods}
+\subsection{Methods}
 
-The pipeline relies on python and latex for creating the document. It relies also on several packages that implemented methods for evaluating data, namely scipy \cite{scipy}, sdmetrics \cite{sdv} and scikit-learn \cite{scikit-learn} and mlxtend \cite{mlxtend}. Its basis is related to uploading 2 datasets, and a report in pdf is produced. Being that is based on programmatic code, it can be easily converted into API.
+The pipeline relies on python and latex for creating the document. It relies also on several packages that implemented methods for evaluating data, namely scipy \cite{scipy}, sdmetrics \cite{sdv} and scikit-learn \cite{scikit-learn} and mlxtend \cite{mlxtend}. Its basis is related to uploading 2 datasets, and a report in pdf is produced. Being that is based on programmatic code, it can be easily converted into \ac{api}.
 The report has a section for dataset description, columns removed due to high-null and brief variable overview. Then a null comparison is done by column and dataset. Following this is the utility subsection. Firstly by visual methodologies: heat maps for the correlation, bar plots for categorical, density plots for continuous and a pair plot for an overview. As for the quantitative utility evaluation, we divided it column-wise, pair-wise and table-wise. The first comprehends the \textit{Kolmogorov–Smirnov} test for continuous and $\chi^2$ test for categorical variables.  Distance metrics were also applied to categorical columns. First, they are transformed into distributions and then distance metrics are applied. The results is a descriptive overview of the distance metrics, having minimum value, average, max value and standard deviation. The distance metrics selected were \textit{Jensen-Shannon Divergence}, \textit{Wasserstein distance}, \textit{Kullback–Leibler divergence} and entropy.
 As for pair-wise metrics, we used a discrete and continuous \textit{Kullblack-Leibler divergence}. In this, two pairs of continuous columns are compared using \textit{Kullback–Leibler divergence}. For this, they are put into bins for further application. The same is applied to categorical columns without binning.
-As for table-wise metrics, first, we used likelihood metrics. We fitted several Gaussian Mixture models or Bayesian network models to the real data and then calculate the likelihood of the synthetic data belonging to the same distribution. The metrics are likelihood for Gaussian mixture and Bayesian models and log-likelihood for the Bayesian model as well.
+As for table-wise metrics, first, we used likelihood metrics. We fitted several Gaussian Mixture models or \ac{bn} models to the real data and then calculate the likelihood of the synthetic data belonging to the same distribution. The metrics are likelihood for Gaussian mixture and Bayesian models and log-likelihood for the Bayesian model as well.
 
-\begin{center}
 \begin{table}[htpb]
     \caption{Metrics Assessed}
     \label{tab:variables}
+    \centering
 \begin{tabular}{@{}lll@{}}   \toprule
 Metric                       & Method       & Context         \\\midrule
 Bar Plot                     & visual       & utility         \\ 
@@ -51,7 +51,6 @@ Euclidean distance           & quantitative & privacy/utility \\ \bottomrule
 
 \end{tabular}
 \end{table}
-\end{center}
 
 
 Then we used machine-learning models (linear regression and decision trees) to assess how similar models behave on both datasets. First, we tested on the same dataset in order to compare evaluation metrics. Then we cross-tested, meaning that the training set was drawn from one dataset and the test set was drawn from the second dataset. Finally, data privacy constraints duplicate evaluation, duplicate existence by removal of a single column and a record linkage approach. With the record linkage, we define a record linkage blocking ("age" in the example) and then try to match rows from the synthetic dataset to the real, with varying known attributes. Then matrix, euclidean and cosine distance was also calculated. Even though it is used for privacy evaluation, by definition, we could also use it for utility assessment. For proper assessment, the continuous and categorical variables should be indicated at the start of the code. The metrics are listed in the table \ref{tab:variables}.
@@ -94,8 +93,8 @@ Then we used machine-learning models (linear regression and decision trees) to a
 
 
 
-\subsubsection{Results}
-A trial example of comparing data is available for data in the UCI repository, namely the heart disease dataset \cite{misc_heart_disease_45}. The synthetic data was created by using the synthpop package \cite{synthpop}. The variables evaluated are listed in table below. The code can be seen in https://github.com/joofio/dataset-comparasion-report. As an example. The image for visual analysis for categorical (figure \ref{fig:catgorical}) and continuous variables (figure \ref{fig:continuous}).
+\subsection{Results}
+A trial example of comparing data is available for data in the \ac{uci} repository, namely the heart disease dataset \cite{misc_heart_disease_45}. The synthetic data was created by using the synthpop package \cite{synthpop}. The variables evaluated are listed in table below. The code can be seen in https://github.com/joofio/dataset-comparasion-report. As an example. The image for visual analysis for categorical (figure \ref{fig:catgorical}) and continuous variables (figure \ref{fig:continuous}).
 
 
 \begin{figure}[H]
@@ -114,7 +113,7 @@ A trial example of comparing data is available for data in the UCI repository, n
 
 
 
-\subsubsection{Discussion \& Conclusion}
+\subsection{Discussion \& Conclusion}
 
 The data possible to create to evaluate similarities between two datasets is important not only for synthetic vs real datasets. For example in distributed learning, where different silos exist, with similar or even equal features, a method for evaluating the similarities can be useful for understanding how the populations are similar between them, trying to shed light on the most similar among them, or different in order to understand the differences in the silos or data acquisition inside them.
 Furthermore, the differences can be assessed on a more granular level. The column-wise similarities can be different from the inter-columns similarities and this in itself, can be a metric of interest regarding the quality of the synthetic data and its generator.

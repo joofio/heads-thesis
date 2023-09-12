@@ -6,9 +6,26 @@ The most exciting phrase to hear in science, the one that heralds new discoverie
 \chapter{State of the art} \label{chap:sota}
 
 \section{Extracting Knowledge of data}\label{sec:kdd}
-\ac{kdd} plays a pivotal role in the healthcare industry. The complexity and vastness of healthcare data, encompassing electronic health records, genomic data, medical imaging data, and various other types of data, call for the adoption of intelligent systems that can mine this data for useful insights. The \ac{kdd} process, comprising data cleaning, integration, selection, transformation, data mining, pattern evaluation, and knowledge presentation, can effectively help discover patterns and relationships in healthcare data, which are often not apparent to traditional analysis methods. This process facilitates the prediction of disease outbreaks, the identification of high-risk patient groups, the optimization of treatment plans, and the enhancement of healthcare service delivery.
+%%%TODO: explorar mais artigos recolhidos e ver zotero o que ja tenho, e criar mais ligacoes entre as frases e conceitos
 
-Several frameworks have been proposed to implement the \ac{kdd} process in the healthcare sector. One such prominent framework is CRISP-DM (Cross-Industry Standard Process for Data Mining), which comprises business understanding, data understanding, data preparation, modelling, evaluation, and deployment. Another significant framework is KDDF (Knowledge Discovery and Data Mining Framework), which is designed explicitly for healthcare applications. It focuses on the acquisition and integration of data from diverse healthcare sources, data preprocessing, data mining, data interpretation, and knowledge utilization. Furthermore, Domain-Driven Data Mining (D3M) and Sample, Explore, Modify, Model, and Assess (SEMMA) are also important frameworks in healthcare, helping align data mining processes with specific healthcare domains and facilitating more accurate and valuable knowledge discovery.
+%fayyad explorar mais e melhor intro
+\cite{Fayyad_Piatetsky-Shapiro_Smyth_1996}
+\ac{kdd} plays a pivotal role in the healthcare industry. The complexity and vastness of healthcare data, encompassing electronic health records, genomic data, medical imaging data, and various other types of data, call for the adoption of intelligent systems that can mine this data for useful insights. The \ac{kdd} process, comprising data cleaning, integration, selection, transformation, data mining, pattern evaluation, and knowledge presentation, can effectively help discover patterns and relationships in healthcare data, which are often not apparent to traditional analysis methods. This process facilitates the prediction of disease outbreaks, the identification of high-risk patient groups, the optimization of treatment plans, and the enhancement of healthcare service delivery. The generic process for \ac{kdd} is shown in figure \ref{fig:kdd-generic}.
+
+\begin{figure}
+\centering
+%\includegraphics[width=\textwidth]{image.png}
+\includegraphics[scale=0.55]{figures/imagens-tese.jpg}
+
+\caption{\ac{kdd} Process, adapted from \cite{Fayyad_Piatetsky-Shapiro_Smyth_1996}} \label{fig:kdd-generic}
+\end{figure}
+
+Several frameworks have been proposed to implement the \ac{kdd} process. One such prominent framework is \ac{crispdm}, which comprises business understanding, data understanding, data preparation, modelling, evaluation, and deployment. \ac{crispdm} was conceived in 1996 and became a \ac{eu} project under the ESPRIT funding initiative in 1997 \cite{Chapman2000CRISPDM1S}. %extend 
+%Another significant framework is \ac{kddf}, which is designed explicitly for healthcare applications. It focuses on the acquisition and integration of data from diverse healthcare sources, data preprocessing, data mining, data interpretation, and knowledge utilization. %%FAKE
+%semma é proprietário
+
+Furthermore, \ac{d3m} 
+\cite{huangDataMiningIntegrated2009} and \ac{semma} \cite{rohanizadehProposedDataMining2009} are also important frameworks for applying \ac{kdd} in healthcare, helping align data mining processes with specific healthcare domains and facilitating more accurate and valuable knowledge discovery.
 
 In the context of \ac{kdd} in healthcare, various classes of algorithms can be utilized, each best suited for different kinds of tasks.
 
@@ -22,23 +39,14 @@ Association Rule Mining Algorithms: These discover associations or patterns amon
 
 Sequential Pattern Mining Algorithms: These help discover or predict specific sequence of events, which is particularly useful in medical trajectory analysis.
 
-Most recently, more sophisticated architectures and algorithms appeared with neural networks, generative \ac{ai}, reinforcement learning, 
+Most recently, more sophisticated architectures and algorithms appeared with neural networks, generative \ac{ai}, reinforcement learning....
 
 %-tipos de algortimos paraa
 
-%\subsection{KDD Framework}
-%- 5.1 Process Steps
-%- 5.2 Tools and Techniques
-%- 5.3 Challenges and Mitigation Strategies
-%\subsection{CRISP-DM}
-
-%- 2.2 Role of KDD in Healthcare
-%- 2.3 Previous Studies on KDD in Healthcare
-%- 2.4 Gaps in the Existing Literature
 
 
 
-\section{Evidence Based Medicine}
+\subsection{Evidence Based Medicine}
 \ac{ebm} is a relatively recent concept in healthcare, which entails integrating the best available research evidence with clinical experience and patient values to make decisions about patient care. The term "evidence-based medicine" was first coined by a team at McMaster University in Canada in the 1980s, but the concept has historical antecedents dating back to at least the 19th century. This was a time when clinical decision-making was mostly based on untested observations and physicians' experience, leading to variability in treatment strategies. The birth of \ac{ebm} marked a pivotal moment in medical history, aiming to standardize patient care and improve outcomes.
 
 The advent of \ac{ebm} was closely tied to the development of clinical epidemiology, the study of disease patterns, causes, and effects in populations. This field, which emerged in the 20th century, focused on statistical and methodological tools to rigorously evaluate treatments. The early proponents of \ac{ebm} aimed to counter anecdotal and unsystematic approaches to clinical decision-making by insisting on rigorous scientific evidence as a basis for decisions. This transitioned medicine from a largely experience-based discipline to scientific, data-driven practice.
@@ -73,6 +81,48 @@ The potential of using systematically created data in healthcare, which reaches 
     \item observational data
 \end{myitemize}
 
+\textbf{Interoperability} is defined by .... sos and soo
+there are so and so definition
+%aulas
+
+
+
+has been a key factor in gathering data. With tens or hundreds of different systems in every health institution, the possibility of exchanging data between \acp{ehr} gets a vital role. The usage of interoperable standards is of extreme importance in order to tackle the need of getting data with a predefined structure.
+
+
+\textbf{Semantic} adds a additional layer of the \\
+%mts ehrs
+%mts 
+\textbf{Secondary usage} is related with the fact that we are aiming to use data for a purpose for whihch the data was not created for. The main goal for the healthcare data is to provide care. It is not meant for analysis and gain insights.\\
+
+\textbf{Data Quality} stems  from the secondary usage. Since it is a very complicated concepts...\\
+
+
+\textbf{privacy and ethical} adds a additional layer of the \\
+
+%%%LLM
+%Health data science and evidence-based medicine are closely intertwined fields that leverage the power of data analysis and research to improve patient outcomes and inform clinical decision-making. Health data science involves the collection, management, and analysis of vast amounts of health-related data, including electronic health records, medical imaging, genomics, and wearable devices. By applying advanced statistical and machine learning techniques to these datasets, health data scientists can uncover patterns, trends, and insights that can enhance our understanding of diseases, treatment effectiveness, and population health.
+
+%Evidence-based medicine, on the other hand, is an approach to clinical practice that integrates the best available research evidence, clinical expertise, and patient values and preferences. It aims to guide healthcare professionals in making informed decisions about patient care by using rigorous scientific evidence. Health data science plays a crucial role in evidence-based medicine by providing the necessary data and analytical tools to generate high-quality evidence. Through the analysis of large-scale health datasets, researchers can identify associations, evaluate treatment effectiveness, and uncover potential risk factors, all of which contribute to the evidence base that informs clinical practice guidelines and treatment recommendations.
+
+The integration of health data science and evidence-based medicine has the potential to revolutionize healthcare delivery and improve patient outcomes. By leveraging the power of data analysis and advanced algorithms, health data scientists can identify novel biomarkers, develop predictive models, and personalize treatment plans based on individual patient characteristics. This not only enhances clinical decision-making but also enables precision medicine, where treatments can be tailored to the specific needs of each patient. Additionally, the use of health data science in evidence-based medicine allows for the continuous monitoring of treatment effectiveness and safety, facilitating the identification of best practices and the refinement of clinical guidelines over time.
+
+In conclusion, health data science and evidence-based medicine are interconnected fields that rely on each other to drive advancements in healthcare. Health data science provides the necessary tools and techniques to analyze large and complex datasets, enabling the generation of high-quality evidence that informs evidence-based medicine. The integration of these disciplines holds immense potential to transform healthcare by enabling personalized medicine, improving patient outcomes, and enhancing clinical decision-making.
+
+
+
+\subsection{Artificial Intelligence}
+The idea behind the issue is that \ac{ai} is fundamental to leveraging the potential of the data. \ac{ai} has already been under public focus for a few years now, but its concept is still elusive. 
+Mainly because the definition has been changing rapidly as well. If in the 90s, the computer program that played chess could be considered \ac{ai} at the time, nowadays is a very simple and common concept to develop. This is connected with the concept that \ac{ai} is tightly connected with the subjective nature of humans. If we feel that \ac{ai} is something related to what a human can do, it can be widely diverse from person to person.
+....
+however, there are some definitions that could be interesting to explore in order to get the concept for the purpose of this thesis cleared up.
+
+From \cite{DBLP:books/aw/RN2020}
+
+According to the European Commission \cite{DefinitionAIMain2019} and \cite{EthicsGuidelinesTrustworthy2019}
+
+%%what is ai - livro ai verde + european comission
+%what is ai - european comission
 
 
 
@@ -93,16 +143,59 @@ Global Explanations: These focus on understanding the model behaviour across all
 
 Secondly, we have the method type, where we have 3 main subcategories related to the stage of the data science process it is applied, pre, during and post-model training.
 
-Pre-Model \ac{xai}: These methods involve improving the transparency and interpretability of models before they are even trained. This includes thoughtful feature engineering, \ac{eda}, and applying domain knowledge to create meaningful variables. The goal is to design a model that will be more interpretable from the onset.
+\textbf{Pre-Model \ac{xai}:} These methods involve improving the transparency and interpretability of models before they are even trained. This includes thoughtful feature engineering, \ac{eda}, and applying domain knowledge to create meaningful variables. The goal is to design a model that will be more interpretable from the onset.
 
-Intrinsic \ac{xai}: This involves using machine learning models that are intrinsically explainable. These models are designed in such a way that their decision-making process is understandable by default. Examples include linear and logistic regression, decision trees, Naïve Bayes, \ac{bn} and rule-based models. While these models may sometimes lack the predictive power of more complex models, they provide clear interpretability: you can directly examine the impact of the variables and understand how the model makes its predictions.
+\textbf{Intrinsic \ac{xai}:} This involves using machine learning models that are intrinsically explainable. These models are designed in such a way that their decision-making process is understandable by default. Examples include linear and logistic regression, cox regressions, decision trees, Naïve Bayes, \ac{bn} and rule-based models. While these models may sometimes lack the predictive power of more complex models, they provide clear interpretability: you can directly examine the impact of the variables and understand how the model makes its predictions.
+\\
+\textbf{Linear Regression}
+Linear regression is a linear approach to modeling the relationship between a dependent variable and one or more independent variables. It assumes that the relationship between these variables is linear and can be represented by a straight line. The goal is to fit the best possible line that describes this relationship by minimizing the sum of the squared differences (errors) between the observed values and the values predicted by the line. Linear regression is widely used in various fields for prediction, modeling, and determining the strength and character of the relationship between variables. It forms the basis of many more complex statistical modeling techniques.
+\\
+\textbf{Logistic Regression}
+Logistic regression is used to model the probability of a binary outcome that depends on one or more independent variables. Unlike linear regression, which predicts a continuous outcome, logistic regression predicts the probability of a categorical outcome (e.g., success/failure, yes/no, 1/0). The logistic function is applied to the linear combination of independent variables to ensure that the estimated probabilities are between 0 and 1. It's often used in fields like medicine, economics, and social sciences to predict the likelihood of an event occurring based on various factors.
+\\
+\textbf{Cox Regression}
+Cox regression, or the Cox proportional-hazards model, is a statistical technique used for investigating the effect of several variables on the time a specified event takes to happen. In medical research, this often refers to survival times. The model allows for the estimation of hazard ratios, which describe how the hazard changes with a one-unit change in the predictor variable. The Cox model makes an assumption that the hazard ratios are constant over time, known as the proportional hazards assumption. This model is vital for understanding how different factors influence survival or failure time and is commonly applied in epidemiological and medical research.
 
-Post-Hoc XAI: Post-hoc methods are applied after a model has been trained, to try to explain its decisions. This includes techniques like feature importance analysis, partial dependence plots, \ac{lime}, \ac{shap} and counterfactuals. For instance, \ac{lime} can be used to create local explanations for individual predictions made by any model, and \ac{shap} values can be used to interpret the impact of features on the model's output both locally and globally. Counterfactuals try to explain a model by example, providing possible changes that would alter the outcome provided by the model.
+\textbf{Bayesian Networks}
+A \ac{bn}, also known as a belief network or \ac{dag} model, is a probabilistic graphical model that represents a set of random variables and their conditional dependencies via a \ac{dag}. 
+
+Given a set of variables \(X = \{X_1, X_2, ..., X_n\}\), the joint probability distribution is given by:
+
+\[
+P(X_1, X_2, ..., X_n) = \prod_{i=1}^{n} P(X_i | Parents(X_i))
+\]
+
+where \(Parents(X_i)\) is the set of parent variables of \(X_i\) in the network.
+
+This formula represents the factorization of the joint distribution over \(X\), based on the graphical structure of the Bayesian network.
+
+Now, in the Bayesian network, each node is conditional independent of its non-descendants given its parents. If we denote \(ND(X_i)\) as the set of non-descendants of \(X_i\) and \(Pa(X_i)\) as the parents of \(X_i\), the conditional independence is described as:
+
+\[
+X_i \perp ND(X_i) | Pa(X_i)
+\]
+
+This means that \(X_i\) is conditionally independent of its non-descendants given its parents. 
+
+A common task for Bayesian networks is inference, which means computing the posterior probability of a set of query variables \(Q\), given some observed variables \(E\). That is, we want to compute \(P(Q|E)\). According to the Bayes rule, we have:
+
+\[
+P(Q|E) = \frac{P(Q,E)}{P(E)} = \frac{P(Q,E)}{\sum_{q \in Q} P(Q=q,E)}
+\]
+
+where the denominator is a normalization constant ensuring the result is a valid probability distribution. Note that performing this inference is NP-hard, which is why various approximation algorithms have been developed.
+
+\textbf{Tree based methods}
+Tree-based machine learning methods are a subset of algorithms that use a tree-like graph structure for making decisions or predictions. The most basic type is the Decision Tree, where the tree is used to go from observations about an item to conclusions about the item's target value (classification or regression). Each node in the tree represents a feature in the dataset, each branch represents a decision rule, and each leaf node represents the output value. More advanced tree-based methods include Random Forests, which build multiple Decision Trees and average their predictions for better accuracy and generalization, and Gradient Boosted Trees, which build trees sequentially, each one correcting the errors from the previous one.
+
+The major advantage of tree-based methods is their ease of interpretation and understanding, especially for Decision Trees. However, a single tree is often prone to overfitting, where it performs well on the training data but poorly on unseen data. This is why ensemble methods like Random Forest and Gradient Boosting are popular; they aim to increase robustness and predictive power by combining multiple trees. These methods are widely used in various domains including but not limited to finance, healthcare, and natural language processing for tasks like classification, regression, and even unsupervised learning tasks like clustering.
+
+\textbf{Post-Hoc \ac{xai}:} Post-hoc methods are applied after a model has been trained, to try to explain its decisions. This includes techniques like feature importance analysis, partial dependence plots, \ac{lime}, \ac{shap} and counterfactuals. For instance, \ac{lime} can be used to create local explanations for individual predictions made by any model, and \ac{shap} values can be used to interpret the impact of features on the model's output both locally and globally. Counterfactuals try to explain a model by example, providing possible changes that would alter the outcome provided by the model.
 
 It is to be noted that a methodology can be classified into two categories. For example, \ac{lime} is a local explanation model in a \textit{post-hoc} manner.
 
 Finally, we can assess how these three types of model are in fact an explanation of the model, we could argue, like stated in \cite{rudinStopExplainingBlack2019} that only an intrinsically transparent model can really be the basis of \ac{xai} and applying \textit{post-hoc} methods is only a potentially wrong proxy for an explanation.
-
+%explicar mais disto e fechar.
 
 \subsection{Causality}
 
@@ -110,20 +203,100 @@ In order to merge the \ac{ebm} and \ac{xai}, we can follow on to the realm of \a
 
 %- causality vs observation
 
+\ac{cml} is a branch of machine learning that focuses on understanding and quantifying causal relationships from data. Instead of just finding patterns or correlations in data, \ac{cml} aims to uncover the cause-and-effect relationships that explain these patterns.
+This is specially important since current or traditional \ac{ml} and \ac{ai} methodologies rely heavily in association and not causation. So, \ac{cml} can support traditional algorithms to solve its limitations \cite{pearlTheoreticalImpedimentsMachine2018}.
+There are currently two main frameworks for trying to unveil causality in data: the \ac{scm}  and the \ac{pof} \cite{shiLearningCausalEffects2022b}.
+
+\ac{scm} relies on \acp{dag} and structual equations.
+Causal Graphs are based on \acp{dag}: These are graphical models used to represent causal relationships between different variables. The nodes in the graph represent variables, and the edges (arrows) between nodes represent causal relationships. For instance, an edge from Node A to Node B signifies that A has a causal effect on B. We should not confuse causal graphs with \ac{bn}. Even though both rely on \acp{dag}, Causal Graphs represent causal relationships, and \ac{bn} represent conditional dependencies.
+%% SCM???
+strucurual equations....
+
+
+The \ac{pof} model centers on the concept of potential outcomes which can be understood as all of the possible outcomes for a patient.  Each unit (e.g., a patient or a sample) has a set of potential outcomes, each corresponding to one of the possible treatments the unit could receive. The causal effect is defined as the difference between these potential outcomes. This framework allows for the formal definition and estimation of causal effects. In this approach, we consider the potential outcomes for each unit (for example, a patient in a healthcare context) under each possible treatment or intervention. Each unit has a set of potential outcomes corresponding to each possible intervention. However, we can only observe one of these outcomes for each unit, corresponding to the intervention that was actually received. The other outcomes, which would have occurred had different interventions been implemented, remain latent. These are known as counterfactual outcomes.
+
+The difference between potential outcomes under different treatments represents the causal effect of the treatments. For instance, in a healthcare scenario, if we are studying the effect of a drug, we might consider two potential outcomes for each patient: the outcome if the patient is given the drug, and the outcome if the patient is not given the drug. The difference between these outcomes represents the causal effect of the drug on the patient. However, as we can only observe one of these outcomes for each patient (the one corresponding to the treatment they actually received), a key challenge in causal inference is estimating the unobserved potential outcomes. Various statistical methods, including randomized experiments, matching methods, and instrumental variable methods, can be used to estimate these unobserved potential outcomes.
+
+
+Counterfactuals: This is a concept rooted in the idea of "what-if" scenarios. A counterfactual outcome for a given individual is the outcome that would have occurred had the individual been exposed to a different treatment or condition.
+%%
+
+Counterfactuals play a pivotal role in the field of causal machine learning, offering a sophisticated approach to understanding cause-and-effect relationships. In essence, a counterfactual is a conceptual device used to contemplate what would have happened under a different set of circumstances than what actually occurred. This hypothetical scenario is created by altering some aspect of the actual situation, providing a means of comparison to evaluate the effect of a particular variable or intervention.
+
+For instance, in the context of healthcare, consider a scenario where a patient was given a particular drug and recovered. The counterfactual question here would be: "What would have happened to the patient if they hadn't been given the drug?" Answering this question allows us to estimate the causal effect of the drug on the patient's recovery. While the true counterfactual outcome is unobservable (since we cannot rewind time and alter the decision), various statistical techniques, machine learning algorithms, and experimental designs are employed in causal inference to estimate this effect as accurately as possible. The ability to make such counterfactual inferences is crucial in numerous fields, including medicine, economics, social sciences, and policy-making, where understanding causal relationships is paramount.
+
+
+%Confounding Variables: These are variables that both affect the treatment assignment and the outcome. Confounding variables can create spurious associations that can be mistaken for causal relationships, so they must be carefully controlled for in causal analyses.
+%%%
+%Confounding variables, also known as confounders, represent a major challenge in the study of causal relationships. A confounding variable is a variable that influences both the dependent variable and independent variable, causing a spurious association. This can lead to false conclusions about the relationship between the independent and dependent variables, obscuring the true causal effect.
+
+%For instance, imagine a study investigating the relationship between physical exercise (independent variable) and health outcomes (dependent variable). Age could act as a confounding variable in this scenario. Older individuals might exercise less than younger ones, and they also tend to have more health problems. Without proper adjustment, the study might falsely attribute the poorer health outcomes solely to a lack of exercise, while in reality, age is influencing both exercise habits and health outcomes.
+
+%Confounding variables can be addressed in a number of ways. In the design stage of a study, randomized controlled trials (RCTs) are used to ensure that confounding variables are evenly distributed across treatment and control groups, thereby reducing their impact. In observational studies where random assignment is not possible, statistical techniques such as regression adjustment, stratification, matching, and propensity score methods can be employed to control for confounding. Importantly, the success of these methods depends on the ability to measure all relevant confounders, a challenge known as unobserved confounding, which is a persistent issue in causal inference.
+
+
+
+Instrumental Variables: These are variables that are related to the treatment but not the outcome, except through their effect on the treatment. They can be used to control for unmeasured confounding variables.
+%%%%
+
+Instrumental variables (IVs) are a powerful tool used in causal inference to help address the problem of confounding variables, especially in situations where randomization is not feasible. An instrumental variable is a variable that is correlated with the independent variable (the treatment) but does not directly affect the dependent variable (the outcome), except through its effect on the treatment. In other words, it is a variable that induces changes in the explanatory variable but is otherwise unrelated to the outcome of interest.
+
+The idea behind using an instrumental variable is to isolate the portion of the variation in the treatment that is independent of the confounders, and therefore provides a "natural" form of randomization. The causal effect of the treatment on the outcome can then be estimated based on this variation.
+
+For example, in a study assessing the impact of education on income, it's challenging to identify causal effects because numerous unobserved factors (like ability or motivation) could affect both education and income, thus confounding the relationship. If we find an instrumental variable – say, distance to the nearest college (which affects the likelihood of getting higher education but doesn't directly affect income) – we can use this to isolate the part of the variation in education that is unrelated to the unobserved confounders, and thereby get a more accurate estimate of the causal effect of education on income.
+
+It's crucial, however, to remember that the use of instrumental variables relies on certain assumptions, such as the relevance and exogeneity of the IV. The relevance assumption requires that the IV is correlated with the treatment, and the exogeneity assumption requires that the IV affects the outcome only through the treatment and is not related to the unobserved confounders. Violations of these assumptions can lead to biased and inconsistent estimates of causal effects.
+
+
+
+Propensity Score: This is the probability of a unit (e.g., a patient) being assigned to a particular treatment given a set of observed characteristics. Propensity scores are used to balance the characteristics of treatment and control groups, mimicking the conditions of a randomized experiment.
+%%%%
+
+The propensity score is a statistical concept widely used in causal inference, particularly in the field of observational studies where random assignment of treatment is not possible. The propensity score for an individual is the probability of receiving the treatment given the observed characteristics of that individual. In other words, it's the likelihood that a particular individual would be assigned to the treatment group based on their observed features.
+
+The key idea behind propensity scores is to create a balance between the treatment and control groups based on these observed characteristics, thus mimicking the conditions of a randomized controlled trial. This balance helps to eliminate bias caused by confounding variables, allowing for a more accurate estimate of the treatment effect. Once propensity scores are calculated, they can be used in several ways including matching, stratification, inverse probability of treatment weighting (IPTW), and as covariates in regression adjustment.
+
+For example, consider a study investigating the effect of a training program on job outcomes. Individuals might self-select into the training program based on characteristics like motivation or prior education, which are also related to job outcomes, creating confounding. The propensity score, calculated based on these observed characteristics, can be used to match each participant in the training program with a similar non-participant or to weight the observations, such that the distribution of observed characteristics is similar between the groups. This helps to isolate the effect of the training program on job outcomes.
+
+However, it's important to note that propensity scores only account for observed confounders. If there are unobserved confounders that influence both treatment assignment and the outcome, propensity score methods may still produce biased estimates of the causal effect.
+
+
+
+%These concepts and others are used in methods like matching, instrumental variable analysis, difference in differences, regression discontinuity, and others to estimate causal effects. The goal of all these techniques is to create a situation as close to a randomized control trial as possible, as this type of experiment is considered the "gold standard" for estimating causal effects.
+
+
+
+\subsection{All of this brought together}
+
+So....
+
+
 
 \section{Legal and ethical considerations}
 
 %GDPR, health european data space, questoes eticas
 
 
-As data science and Knowledge Discovery in Databases (KDD) become increasingly prevalent in the healthcare sector, the legal and ethical considerations related to these practices also become critically important. Ensuring the proper use of healthcare data is key to preserving public trust and ensuring the long-term viability of data-driven health initiatives.
+As data science and \ac{kdd} become increasingly prevalent in the healthcare sector, the legal and ethical considerations related to these practices also become critically important. Ensuring the proper use of healthcare data is key to preserving public trust and ensuring the long-term viability of data-driven health initiatives.
 
-One of the primary legal considerations is data privacy. Laws such as the Health Insurance Portability and Accountability Act (HIPAA) in the U.S., and the General Data Protection Regulation (GDPR) in the EU, set stringent rules on how healthcare data should be stored, shared, and processed. They require data scientists and healthcare providers to take steps to anonymize data and limit the scope of data usage. Breaching these regulations can lead to severe penalties, including fines and imprisonment.
+One of the primary legal considerations is data privacy. Laws such as the \ac{hipaa} in the \ac{us}, and the \ac{gdpr} in the \ac{eu}, set stringent rules on how healthcare data should be stored, shared, and processed. They require data scientists and healthcare providers to take steps to anonymize data and limit the scope of data usage. Breaching these regulations can lead to severe penalties, including fines and imprisonment.
 
-On the ethical front, considerations include ensuring data fairness and avoiding bias. Given the diversity of patients in terms of age, race, sex, socioeconomic status, etc., algorithms should be designed and validated to ensure that they don't unintentionally perpetuate or amplify societal biases. For instance, a predictive model for disease risk should not unfairly disadvantage certain demographic groups. Furthermore, the informed consent of patients is another significant ethical consideration. Patients should be fully informed about how their data will be used, and they should have the right to opt out if they wish.
+On the ethical front, considerations include ensuring data fairness and avoiding bias. Given the diversity of patients in terms of age, race, sex, socioeconomic status, etc., algorithms should be designed and validated to ensure that they don't unintentionally perpetuate or amplify societal biases. For instance, a predictive model for disease risk should not unfairly disadvantage certain demographic groups. Furthermore, the informed consent of patients is another significant ethical consideration. Patients should be fully informed about how their data will be used, and they should have the right to opt-out if they wish.
 
 Transparency is another crucial aspect that straddles both legal and ethical dimensions. It involves explaining how decisions or predictions are made by complex algorithms, particularly when they have significant implications for patient care. For instance, if an AI model is used to prioritize patients for treatment, it should be transparent about how the model makes its decisions. The explainability of machine learning models can help achieve this transparency, which aids in maintaining accountability and trust.
 
 Lastly, there's the matter of data security. With the rise of cyber-attacks, ensuring the robustness of the system against such breaches is both a legal requirement and an ethical obligation. Security breaches could lead to sensitive patient data being stolen, with severe implications for the individuals involved and for the trust in the healthcare system as a whole.
 
-In conclusion, while data science and KDD offer immense potential to improve healthcare, it is crucial that these technologies are implemented in a way that respects legal regulations and ethical principles. This will help to ensure the sustainability and public acceptance of these technologies in the long run.
+%In conclusion, while data science and KDD offer immense potential to improve healthcare, it is crucial that these technologies are implemented in a way that respects legal regulations and ethical principles. This will help to ensure the sustainability and public acceptance of these technologies in the long run.
+
+In a parallel layer to this one, we have ethical issues. If we use data to derive knowledge and create  \acp{cdss} that orient and support clinical practice, they can be biased by the type of data that originated said knowledge.
+This could lead to biased and discriminatory systems....
+
+%%%chat
+The importance of ethics in \ac{ai} cannot be overstated, primarily because the decisions that these systems make can have profound implications on individuals and society. These decisions may affect anything from employment opportunities to legal outcomes, and increasingly, health outcomes. As AI models grow in complexity and application, they possess an enormous power that needs to be harnessed responsibly. This necessitates rigorous ethical considerations to ensure fair, unbiased, and transparent operations. Ethical lapses can result in discrimination, loss of privacy, and unjust outcomes, among other issues, which erode public trust in these technologies.
+
+Equally important in the realm of AI is the understanding of why a model works the way it does. This concept, known as "explainability" or "interpretability", is central to AI ethics. It concerns the transparency of AI algorithms and the ability to understand and interpret their inner workings and decisions. Without this understanding, we run the risk of blind reliance on AI's 'black box' that may lead to erroneous or biased outcomes. It is critical to scrutinize AI models' reasoning processes, ensuring they align with human values and principles and are not based on inappropriate or discriminatory features.
+
+In the context of healthcare, these considerations take on an even greater significance. AI applications in healthcare, such as diagnostic tools or treatment recommendation systems, directly impact human lives. They may influence critical decisions such as who gets treatment, what kind of treatment is administered, and when it should be given. These systems must not only be accurate but also transparent, fair, and accountable. They should be designed and implemented in a way that respects patient rights, including privacy, autonomy, and informed consent.
+
+Therefore, in healthcare, the need for ethical AI and model explainability is not just a matter of good practice, it's a matter of life and death. Bias or errors in AI could lead to misdiagnoses or inappropriate treatment recommendations, with potentially fatal consequences. Similarly, if AI-based systems make decisions that healthcare professionals or patients can't understand, it may lead to mistrust and potential harm. It's crucial for the advancement of AI in healthcare to ensure ethical considerations and explainability are at the core of AI model design, development, and deployment. This will build trust in AI systems and ultimately lead to better health outcomes.

@@ -1,129 +1,129 @@
-\begin{savequote}[75mm]
+\begin{savequote}[85mm]
 Nothing great in the world was accomplished 
 without passion.
 \qauthor{Friedrich Hegel}
 \end{savequote}
 
 \chapter{Case Studies}\label{chap:usecase}
-
-\section{Data prep} \label{sec:dataprep}
-\subsection{Data quality}\label{subsec:dq}
-This section is based on the paper entitled "so and so"
-%\input{chapters/data-quality-paper}
-\subsubsection{Introduction}
-\input{chapters/data-quality/intro}
-\subsubsection{Background and Related Work}
-\input{chapters/data-quality/relatedwork}
-\subsubsection{Materials}
-\input{chapters/data-quality/materials}
-\subsubsection{Methods}
-\input{chapters/data-quality/methods}
-\subsubsection{Results}
-\input{chapters/data-quality/results}
-\subsubsection{Discussion}
-\input{chapters/data-quality/discussion}
-\subsubsection{Conclusion}
-\input{chapters/data-quality/conclusion}
+This chapter will comprise the work done during this PhD. The works developed and corresponding papers were a search for improving data usage in several steps of the \ac{kdd} process. We can see some work dedicated to leveraging data acquisition or alternatives to it, like the works depicted in section \ref{subsec:distributed}, \ref{subsec:benchmark}, \ref{subsec:similarity}, \ref{subsec:tabular} and \ref{subsec:gans}. Other will focus more on how to use the data in order to make a difference in clinical practice like the section \ref{subsec:ipop}, \ref{subsec:obs} and \ref{subsec:dq}.
 
 
-\subsection{Review of gans}\label{subsec:gans}
-This section is based on the paper entitled "so and so"
+
+\section{Can GANs help create realistic datasets?}\label{subsec:gans}
+This section is based on the paper entitled "GANs for Tabular Healthcare Data Generation: A Review on Utility and Privacy". It focus on a review of the \ac{gan} framework for creating synthetic data for healthcare. Tries to compile the metrics used for comparing and assessing synthetic data in terms of utility - or how similar they are to the original data and privacy - how proctetive of the patient's data it is. 
 
 \input{chapters/gans-paper}
 
-\subsection{Similarity}\label{subsec:similarity}
-This section is based on the paper entitled "so and so"
-
-\subsubsection{Introduction}
-\input{chapters/similarity/intro}
-\subsubsection{Rationale and Related Work}
-\input{chapters/similarity/relatedwork}
-\subsubsection{Materials \& Methods}
-\subsubsubsection{Method Overview}
-\input{chapters/similarity/methods}
-\subsubsubsection{Data used}
-\input{chapters/similarity/materials}
-\subsubsection{Results}
-\input{chapters/similarity/results}
-\subsubsection{Discussion}
-\input{chapters/similarity/discussion}
-\subsubsection{Conclusion}
-\input{chapters/similarity/conclusion}
-
-
-
-\subsection{tabular}\label{subsec:tabular}
-This section is based on the paper entitled "so and so"
+\section{Pulling the current metrics of assessing datasets}\label{subsec:tabular}
+This section is based on the paper entitled "Dataset Comparison Tool: Utility and Privacy". This work followed the work on section \ref{subsec:gans}, where we compiled ways of assessing the utility of synthetic data. We understood that the mechanisms were far from consensual and a tool could be of use to merge all of this into a single file and report about data. Our purpose was to facilitate health data owners and legal responsible to understand how similar and protective a dataset was regarding the original one.
 
 \input{chapters/tabular-paper}
 
 
 
-
-\section{Data Usage} \label{sec:datausage}
-
-
-
-\subsection{Distributed}\label{subsec:distributed}
+\section{Can we use machine learning feature to compare datasets?}\label{subsec:similarity}
 This section is based on the paper entitled "so and so"
 
-\subsubsection{Introduction}
+\subsection{Introduction}
+\input{chapters/similarity/intro}
+\subsection{Rationale and Related Work}
+\input{chapters/similarity/relatedwork}
+\subsection{Materials \& Methods}
+\subsubsection{Method Overview}
+\input{chapters/similarity/methods}
+\subsubsection{Data used}
+\input{chapters/similarity/materials}
+\subsection{Results}
+\input{chapters/similarity/results}
+\subsection{Discussion}
+\input{chapters/similarity/discussion}
+\subsection{Conclusion}
+\input{chapters/similarity/conclusion}
+
+
+\section{Data quality}\label{subsec:dq}
+This section is based on the paper entitled "so and so"
+%\input{chapters/data-quality-paper}
+\subsection{Introduction}
+\input{chapters/data-quality/intro}
+\subsection{Background and Related Work}
+\input{chapters/data-quality/relatedwork}
+\subsection{Materials}
+\input{chapters/data-quality/materials}
+\subsection{Methods}
+\input{chapters/data-quality/methods}
+\subsection{Results}
+\input{chapters/data-quality/results}
+\subsection{Discussion}
+\input{chapters/data-quality/discussion}
+\subsection{Conclusion}
+\input{chapters/data-quality/conclusion}
+
+
+
+
+\section{Distributed}\label{subsec:distributed}
+This section is based on the paper entitled "so and so"
+
+\subsection{Introduction}
 \input{chapters/distributed/intro}
-\subsubsection{Theoretical background and Related Work}
+\subsection{Theoretical background and Related Work}
 \input{chapters/distributed/relatedwork}
-\subsubsection{Materials}
+\subsection{Materials}
 \input{chapters/distributed/materials}
-\subsubsection{Methods}
+\subsection{Methods}
 \input{chapters/distributed/methods}
-\subsubsection{Results}
+\subsection{Results}
 \input{chapters/distributed/results}
-\subsubsection{Discussion}
+\subsection{Discussion}
 \input{chapters/distributed/discussion}
-\subsubsection{Conclusion}
+\subsection{Conclusion}
 \input{chapters/distributed/conclusion}
 
 
-\subsection{Benchmark}\label{subsec:benchmark}
+\section{Benchmark}\label{subsec:benchmark}
 This section is based on the paper entitled "so and so"
 
-\subsubsection{Introduction}
+\subsection{Introduction}
 \input{chapters/benchmark/intro}
-\subsubsection{Rationale and Related Work}
+\subsection{Rationale and Related Work}
 \input{chapters/benchmark/relatedwork}
-\subsubsection{Materials \& Methods}
-\subsubsubsection{Method Overview}
+\subsection{Materials \& Methods}
+\subsubsection{Method Overview}
 \input{chapters/benchmark/methods}
-\subsubsubsection{Data used}
+\subsubsection{Data used}
 \input{chapters/benchmark/materials}
-\subsubsection{Results}
+\subsection{Results}
 \input{chapters/benchmark/results}
-\subsubsection{Discussion}
+\subsection{Discussion}
 \input{chapters/benchmark/discussion}
-\subsubsection{Conclusion}
+\subsection{Conclusion}
 \input{chapters/benchmark/conclusion}
 
 
-\subsection{Ipop}\label{subsec:ipop}
+
+
+\section{Leveraging data to assess treatment efficacy}\label{subsec:ipop}
 This section is based on the paper entitled "so and so"
 
 %\input{chapters/ipop-paper}
 
-\subsection{Obs}\label{subsec:obs}
-This section is based on the paper entitled "so and so"
+\section{Leveraging data to create Clinical Decision Support Systems}\label{subsec:obs}
+This section is based on the paper entitled "Machine-learning in Obstetrics: FHIR-based Support System for predicting delivery type". This work was in part a result of the work in section \ref{subsec:distributed}. While testing for distributed mechanisms, we kind of felt that some of the evaluation metrics were inspiring to pursue this further. We built a \ac{cdss} system that is interoperable and aims to provide support for subpar evaluation of a \ac{cs}.
 
-\subsubsection{Introduction}
+\subsection{Introduction}
 \input{chapters/obs/intro}
-\subsubsection{Rationale and Related Work}
+\subsection{Rationale and Related Work}
 \input{chapters/obs/relatedwork}
-\subsubsection{Materials}
+\subsection{Materials}
 \input{chapters/obs/materials}
-\subsubsection{Methods}
+\subsection{Methods}
 \input{chapters/obs/methods}
-\subsubsection{Results}
+\subsection{Results}
 \input{chapters/obs/results}
-\subsubsection{Discussion}
+\subsection{Discussion}
 \input{chapters/obs/discussion}
-\subsubsection{Conclusion}
+\subsection{Conclusion}
 \input{chapters/obs/conclusion}
 
 

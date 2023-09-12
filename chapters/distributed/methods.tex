@@ -6,13 +6,13 @@ This study received Institutional Review Board approval from all hospitals inclu
 CHEDV; CA-371/2020-0t\_MP/CC, ULSAM; 11/2021.
 
 
-\subsubsubsection{Model Performance Evaluation}
+\subsubsection{Model Performance Evaluation}
 
 Local models were built with each silo's data. The distributed model was built as an ensemble of all the local models with weighted averaging. The centralised model was trained with a training dataset from all the silos combined. 
 All models were built for a certain outcome variable with cross-validation and then compared, over 10 stochastic runs, with evaluation being performed on a test set held out from each silo. The metrics used for classification models were Weighted \ac{auroc} computed as One-versus-Rest, Weighted \ac{auprc}. The metrics for regression models were \ac{rmse} and \ac{mae}. The algorithm is shown in the algorithm \ref{alg:distributed_1}. This rendered over 1000 different combinations.
 
 
-\subsubsubsection{Model Training}
+\subsubsection{Model Training}
 To avoid pitfalls of inductive bias from a certain learning strategy, we learned six different models (i) Decision Trees, (ii) Bayesian methods, (iii) a logistic regression model with Stochastic Gradient Descent, (iv) \ac{knn}, (v) AdaBoost and (vi) Multi-layer Perceptron. The decision was to create diversity in the models used, in order to assess if the training methodology could have an impact on distributed model creation.
 Nineteen features were used as target outcomes. These features were selected by filtering by the percentage of null (below 50\%). For categorical outcomes, thirteen were selected. For continuous variables, six were selected. Details can be seen in tables \ref{tab:distributed_materials_1} and \ref{tab:distributed_materials_2}.
 %TC:ignore

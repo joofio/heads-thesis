@@ -6,7 +6,7 @@ Table \ref{tab:allvsall} shows the aggregated metrics for \ac{auroc}, \ac{auprc}
  \renewcommand{\arraystretch}{1.3} % Default value: 1
   \captionsetup{justification=centering} 
 \centering
-\caption{Comparison for the centralised model, distributed model and local model (Mean for all model and all columns). Bold for \textit{P} value below 0.05.}
+\caption[Metrics for centralised model, distributed model and local model]{Comparison for the centralised model, distributed model and local model (Mean for all model and all columns). Bold for \textit{P} value below 0.05.}
 \label{tab:allvsall}
 \begin{tabular}{llcccc}
 \toprule
@@ -55,7 +55,7 @@ Table \ref{tab:allvsall} shows the aggregated metrics for \ac{auroc}, \ac{auprc}
 \captionsetup{justification=centering}
 
 \caption{Heatmap of classification algorithm and silo vs Target variable and model type. Value is the AUROC mean of all 10 experiments. Y axis is the algorithm and silo. X axis is Target variable and Method.}\label{fig:heatmap-cat} 
-\includegraphics[scale=0.22]{figures/heatmap-class.png}
+\includegraphics[scale=0.26]{figures/heatmap-class.png}
 \end{figure}
 %TC:endignore
 %TC:ignore
@@ -71,7 +71,7 @@ Table \ref{tab:allvsall} shows the aggregated metrics for \ac{auroc}, \ac{auprc}
 
 
 \definecolor{Gray}{gray}{0.85} 
- \newcolumntype{a}{>{\columncolor{Gray}}r} 
+ %\newcolumntype{a}{>{\columncolor{Gray}}r} 
  \begin{table}[htbp] 
  \setlength{\tabcolsep}{6pt} % Default value: 6pt 
  \renewcommand{\arraystretch}{1.1} % Default value: 1
@@ -79,10 +79,10 @@ Table \ref{tab:allvsall} shows the aggregated metrics for \ac{auroc}, \ac{auprc}
 \centering
 \caption[Hypothesis testing of Distributed versus Centralised and local models]{Hypothesis testing of Distributed versus Centralised and local for every test. Each cell is the total of distributed model when compared with centralised model (row) and local model (column). ($>$ for better, = for non significance and $<$ for worse)}
 \label{tab:hyp}
-\begin{tabular}{ll|rrr|a}
+\begin{tabular}{ll|rrr|r}
 \toprule
 
- &  & $>$ Local & = Local & $<$ Local & Row Total \\
+ &  & $>$ Local & = Local & $<$ Local &  Total \\
 
 
 \hline \multirow[t]{3}{*}{SGD} & $>$ Centralised & 72 & 14 & 9 & 95 \\
@@ -104,7 +104,7 @@ Table \ref{tab:allvsall} shows the aggregated metrics for \ac{auroc}, \ac{auprc}
  & =  Centralised & 8 & 0 & 0 & 8 \\
  & $<$ Centralised & 97 & 12 & 26 & 135 \\
  \midrule
-\rowcolor{Gray} Total &  & 511 & 263 & 252 & 1026 \\
+ Total &  & 511 & 263 & 252 & 1026 \\
  \bottomrule
 \end{tabular}
 \end{table}

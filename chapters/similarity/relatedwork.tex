@@ -6,7 +6,7 @@ Most recently, a unified metric appeared as the sum of other metrics known as de
 However, the most used metric is cross-validation, which takes two datasets, one that is real and a second which is synthetic and we split both into train and test and train a machine learning model on the real data training set, then we test the model on both test sets. Then a ratio is created, rendering the actual value. This methodology, even if gold-standard at the moment for this type of study, has some liabilities since this value can be a bit erratic, and even above one since the evaluation metric could be better on the second dataset and we don't have a clear grasp of what that can represent in terms of dataset similarity. The image \ref{fig:1} represents this in detail. Several works used this metric as the comparing metric \cite{mullerEvaluationSyntheticElectronic2022}.
 
 %TC:ignore
-\begin{figure}[htbp]
+\begin{figure}[tbph]
 \centering
 \caption{Cross-Validation of datasets}\label{fig:1} 
 \includegraphics[scale=0.35]{figures/imagem1.pdf}
