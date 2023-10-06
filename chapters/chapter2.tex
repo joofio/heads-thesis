@@ -20,7 +20,7 @@ The most exciting phrase to hear in science, the one that heralds new discoverie
 \caption{\ac{kdd} Process, adapted from \cite{Fayyad_Piatetsky-Shapiro_Smyth_1996}} \label{fig:kdd-generic}
 \end{figure}
 
-Several frameworks have been proposed to implement the \ac{kdd} process. One such prominent framework is \ac{crispdm}, which comprises business understanding, data understanding, data preparation, modelling, evaluation, and deployment. \ac{crispdm} was conceived in 1996 and became a \ac{eu} project under the ESPRIT funding initiative in 1997 \cite{Chapman2000CRISPDM1S}. %extend 
+Several frameworks have been proposed to implement the \ac{kdd} process. One such prominent framework is \ac{crispdm}, which comprises business understanding, data understanding, data preparation, modeling, evaluation, and deployment. \ac{crispdm} was conceived in 1996 and became a \ac{eu} project under the ESPRIT funding initiative in 1997 \cite{Chapman2000CRISPDM1S}. %extend 
 %Another significant framework is \ac{kddf}, which is designed explicitly for healthcare applications. It focuses on the acquisition and integration of data from diverse healthcare sources, data preprocessing, data mining, data interpretation, and knowledge utilization. %%FAKE
 %semma é proprietário
 
@@ -37,9 +37,9 @@ Regression Algorithms: These are used to predict continuous output variables. Ex
 
 Association Rule Mining Algorithms: These discover associations or patterns among a set of items in large databases. Apriori and FP-Growth are commonly used algorithms in this class, helping in discovering co-occurring health conditions or drug interactions.
 
-Sequential Pattern Mining Algorithms: These help discover or predict specific sequence of events, which is particularly useful in medical trajectory analysis.
+Sequential Pattern Mining Algorithms: These help discover or predict specific sequences of events, which is particularly useful in medical trajectory analysis.
 
-Most recently, more sophisticated architectures and algorithms appeared with neural networks, generative \ac{ai}, reinforcement learning....
+Most recently, more sophisticated architectures and algorithms appeared with neural networks, generative \ac{ai}, and reinforcement learning....
 
 %-tipos de algortimos paraa
 
@@ -66,7 +66,7 @@ Health Data Science is an interdisciplinary field that applies rigorous methods 
 
 In practice, Health Data Science involves the use of statistical and machine learning methods to analyze healthcare data. This data can be patient records, genomic data, demographic data, and more. It includes elements from various disciplines like biostatistics, epidemiology, informatics, and health economics. The ultimate goal is to provide a data-driven foundation for health decision-making for clinicians, health administrators, policymakers, and researchers.
 
-An integral part of Health Data Science is predictive modelling and hypothesis testing. Predictive modelling involves the creation and use of statistical models or machine learning algorithms to predict future outcomes based on historical data. Hypothesis testing, on the other hand, is used to test the validity of a claim or theory about a population based on sample data. These are crucial for health data science as they allow us to make educated guesses about health trends and outcomes.
+An integral part of Health Data Science is predictive modeling and hypothesis testing. Predictive modeling involves the creation and use of statistical models or machine learning algorithms to predict future outcomes based on historical data. Hypothesis testing, on the other hand, is used to test the validity of a claim or theory about a population based on sample data. These are crucial for health data science as they allow us to make educated guesses about health trends and outcomes.
 
 Importantly, Health Data Science has significant ethical and privacy considerations. Health data is often sensitive and personal, so maintaining privacy and confidentiality is crucial. This requires secure data handling and storage practices, as well as careful consideration of ethical implications when designing studies and algorithms. Health Data Scientists must also be wary of algorithmic bias and must ensure their models do not perpetuate or amplify health disparities. The ultimate goal of Health Data Science is to improve patient outcomes and health equity using the best available data and methods.
 
@@ -139,7 +139,7 @@ We can divide it into two main categories. Firstly the explanation type, which i
 
 Local Explanations: These involve understanding the prediction of a \ac{ml} model for a specific individual instance. They help to answer questions like: "Why did the model predict that this particular patient has cancer?" or "Why was this specific transaction flagged as fraudulent?". 
 
-Global Explanations: These focus on understanding the model behaviour across all instances, or more broadly on a dataset-wide level. They help to answer questions like: "What features are generally important for prediction in the model?" or "What is the overall logic of the model?". 
+Global Explanations: These focus on understanding the model behavior across all instances, or more broadly on a dataset-wide level. They help to answer questions like: "What features are generally important for prediction in the model?" or "What is the overall logic of the model?". 
 
 Secondly, we have the method type, where we have 3 main subcategories related to the stage of the data science process it is applied, pre, during and post-model training.
 
@@ -186,15 +186,15 @@ P(Q|E) = \frac{P(Q,E)}{P(E)} = \frac{P(Q,E)}{\sum_{q \in Q} P(Q=q,E)}
 where the denominator is a normalization constant ensuring the result is a valid probability distribution. Note that performing this inference is NP-hard, which is why various approximation algorithms have been developed.
 
 \textbf{Tree based methods}
-Tree-based machine learning methods are a subset of algorithms that use a tree-like graph structure for making decisions or predictions. The most basic type is the Decision Tree, where the tree is used to go from observations about an item to conclusions about the item's target value (classification or regression). Each node in the tree represents a feature in the dataset, each branch represents a decision rule, and each leaf node represents the output value. More advanced tree-based methods include Random Forests, which build multiple Decision Trees and average their predictions for better accuracy and generalization, and Gradient Boosted Trees, which build trees sequentially, each one correcting the errors from the previous one.
+Tree-based machine learning methods are a subset of algorithms that use a tree-like graph structure for making decisions or predictions. The most basic type is the Decision Tree, where the tree is used to go from observations about an item to conclusions about the item's target value (classification or regression). Each node in the tree represents a feature in the dataset, each branch represents a decision rule, and each leaf node represents the output value. More advanced tree-based methods include Random Forests, which build multiple Decision Trees and average their predictions for better accuracy and generalization, and gradient-boosted trees, which build trees sequentially, each one correcting the errors from the previous one.
 
 The major advantage of tree-based methods is their ease of interpretation and understanding, especially for Decision Trees. However, a single tree is often prone to overfitting, where it performs well on the training data but poorly on unseen data. This is why ensemble methods like Random Forest and Gradient Boosting are popular; they aim to increase robustness and predictive power by combining multiple trees. These methods are widely used in various domains including but not limited to finance, healthcare, and natural language processing for tasks like classification, regression, and even unsupervised learning tasks like clustering.
 
-\textbf{Post-Hoc \ac{xai}:} Post-hoc methods are applied after a model has been trained, to try to explain its decisions. This includes techniques like feature importance analysis, partial dependence plots, \ac{lime}, \ac{shap} and counterfactuals. For instance, \ac{lime} can be used to create local explanations for individual predictions made by any model, and \ac{shap} values can be used to interpret the impact of features on the model's output both locally and globally. Counterfactuals try to explain a model by example, providing possible changes that would alter the outcome provided by the model.
+\textbf{Post-Hoc \ac{xai}:} Post-hoc methods are applied after a model has been trained, to try to explain its decisions. This includes techniques like feature importance analysis, partial dependence plots, \ac{lime}, \ac{shap}, and counterfactuals. For instance, \ac{lime} can be used to create local explanations for individual predictions made by any model, and \ac{shap} values can be used to interpret the impact of features on the model's output both locally and globally. Counterfactuals try to explain a model by example, providing possible changes that would alter the outcome provided by the model.
 
 It is to be noted that a methodology can be classified into two categories. For example, \ac{lime} is a local explanation model in a \textit{post-hoc} manner.
 
-Finally, we can assess how these three types of model are in fact an explanation of the model, we could argue, like stated in \cite{rudinStopExplainingBlack2019} that only an intrinsically transparent model can really be the basis of \ac{xai} and applying \textit{post-hoc} methods is only a potentially wrong proxy for an explanation.
+Finally, we can assess how these three types of model are an explanation of the model, we could argue, as stated in \cite{rudinStopExplainingBlack2019} that only an intrinsically transparent model can really be the basis of \ac{xai} and applying \textit{post-hoc} methods is only a potentially wrong proxy for an explanation.
 %explicar mais disto e fechar.
 
 \subsection{Causality}
@@ -204,7 +204,7 @@ In order to merge the \ac{ebm} and \ac{xai}, we can follow on to the realm of \a
 %- causality vs observation
 
 \ac{cml} is a branch of machine learning that focuses on understanding and quantifying causal relationships from data. Instead of just finding patterns or correlations in data, \ac{cml} aims to uncover the cause-and-effect relationships that explain these patterns.
-This is specially important since current or traditional \ac{ml} and \ac{ai} methodologies rely heavily in association and not causation. So, \ac{cml} can support traditional algorithms to solve its limitations \cite{pearlTheoreticalImpedimentsMachine2018}.
+This is especially important since current or traditional \ac{ml} and \ac{ai} methodologies rely heavily on association and not causation. So, \ac{cml} can support traditional algorithms to solve its limitations \cite{pearlTheoreticalImpedimentsMachine2018}.
 There are currently two main frameworks for trying to unveil causality in data: the \ac{scm}  and the \ac{pof} \cite{shiLearningCausalEffects2022b}.
 
 \ac{scm} relies on \acp{dag} and structual equations.
@@ -241,7 +241,7 @@ Instrumental Variables: These are variables that are related to the treatment bu
 
 Instrumental variables (IVs) are a powerful tool used in causal inference to help address the problem of confounding variables, especially in situations where randomization is not feasible. An instrumental variable is a variable that is correlated with the independent variable (the treatment) but does not directly affect the dependent variable (the outcome), except through its effect on the treatment. In other words, it is a variable that induces changes in the explanatory variable but is otherwise unrelated to the outcome of interest.
 
-The idea behind using an instrumental variable is to isolate the portion of the variation in the treatment that is independent of the confounders, and therefore provides a "natural" form of randomization. The causal effect of the treatment on the outcome can then be estimated based on this variation.
+The idea behind using an instrumental variable is to isolate the portion of the variation in the treatment that is independent of the confounders and therefore provides a "natural" form of randomization. The causal effect of the treatment on the outcome can then be estimated based on this variation.
 
 For example, in a study assessing the impact of education on income, it's challenging to identify causal effects because numerous unobserved factors (like ability or motivation) could affect both education and income, thus confounding the relationship. If we find an instrumental variable – say, distance to the nearest college (which affects the likelihood of getting higher education but doesn't directly affect income) – we can use this to isolate the part of the variation in education that is unrelated to the unobserved confounders, and thereby get a more accurate estimate of the causal effect of education on income.
 

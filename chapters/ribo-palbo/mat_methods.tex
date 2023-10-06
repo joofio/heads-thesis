@@ -1,0 +1,77 @@
+
+
+\subsection{Study Design}
+
+%This prospective study was designed in 2015 when palbociclib was approved by the National Administration of Medicines—ANMAT (Administración Nacional de Medicamentos, Alimentos y Tecnología Médica). The aim of the study was to evaluate the clinical benefit, side effects and long-term survival of patients with HR+/HER2− ABC treated with palbociclib plus ET in different lines of treatment between October 2015 and August 2019. Inclusion criteria: pre and postmenopausal women, men, Oestrogen Receptor positive (defined by ER expression ≥1% of tumour cell by immunohistochemistry, IHC) and HER2 negative (by IHC and/or amplification assay) in primary tumour or metastatic site after biopsy, that have received at least one cycle of palbociclib in advanced setting. 
+
+This retrospective study was designed in 2022. The aim of the study was to evaluate the clinical benefit and long-term survival of patients with HR+/HER2$-$ that started treatment with CDK4\/6 inhibitors plus endocrine therapy in different lines of treatment between the 14th of March 2017 and the 31st of December 2021. The follow-up period was set until June 2022. 
+Inclusion criteria:  postmenopausal women, men, Oestrogen Receptor positive \% (defined by ER expression $\geq$ 1 \% of tumour cell by immunohistochemistry, IHC)
+and HER2 negative (by IHC and/or amplification assay) in the primary tumour or metastatic site after biopsy.
+Exclusion criteria: Patients that had only ambulatory medication, and patients involved in clinical trials, diagnosed with other neoplasms or with active treatment during the study period.
+The comparison group was defined by a population of patients, that were treated with hormone therapy as first-line (due to bone metastases) between 2015 and 13 of match 2017.
+
+The evaluation of effectiveness will involve overall survival and progression-free analysis. We will compare the three different cyclin-dependent kinase inhibitors in terms of efficacy in real-world patients and will also compare the effectiveness of this class of drug against traditional endocrine therapy. 
+
+
+%Desenho estudo
+%Estudo cohort retrospetivo de RWD. Este estudo não implica qualquer alteração na prática clínica e nos procedimentos atualmente em vigor no IPO Porto para estes doentes.
+
+%População
+%Mulheres com neoplasia maligna da mama localmente avançada ou metastática, RH positivos, HER2 negativo, com indicação para tratamento com palbociclib, ribococlib ou abemaciclib, em associação com hormonoterapia.
+
+%Critérios de inclusão:
+%- Grupo de estudo: Doentes com neoplasia maligna da mama localmente avançada ou metastática, RH positivos, HER2 negativo, com indicação para tratamento com palbociclib, ribococlib ou abemaciclib, em associação com hormonoterapia, que iniciaram tratamento no IPO Porto (14/3/2017) até 31/12/2021;
+%- Grupo controlo: Doentes que fizeram hormoterapia de 1ª linha (por metastização óssea) entre 2015 e 13/03/2017 (1º doente que iniciou inibidores das ciclinas).
+
+%Critérios de exclusão:
+%•	Doentes só com um levantamento na farmácia de ambulatório;
+%•	Doentes com outras neoplasias diagnosticadas ou em tratamento ativo durante o período de estudo;
+%•	Inclusão em ensaio clínico;
+%•	Não realizar tratamento completo no IPO Porto.
+ 
+%O período de follow up será até junho/2022.
+
+%All data were collected from original medical records from baseline to last visit or death. Data included: demographic information, age at first diagnosis and age at the beginning of treatment with palbociclib, clinical characteristics and performance status by Eastern Cooperative Oncology Group scale (ECOG). Treatment-related data: loco-regional and neo/adjuvant systemic treatment, number and type of treatments in advance setting before palbociclib, type of treatment beyond palbociclib progression, treatment strategy in premenopausal women (ovarian suppression / ovarian ablation, OS/OA), palliative radiation therapy before or during palbociclib treatment and partner of palbociclib in different lines. Metastatic data at the beginning of palbociclib: ‘de novo’ metastatic disease, site of metastases (bone, soft tissue, visceral, visceral and bone, central nervous system-CNS with or without other site), and metastatic site at palbociclib progression. Patients predisposition: side effects by frequency and grade (NCI-CTCAE version 4.0), starting dose and number of patients with dose interruption, delay, reduction or treatment discontinuation
+
+\subsection{Data collection}
+All data were collected from original medical records from baseline to last visit or death.
+The data was collected from Instituto Português de Oncologia – Porto (IPO-P).  Table \ref{tab:stats_ipop_cdk} shows a comparison between the groups.
+%%%copied
+Data included for population treated with CDK4\/6 inhibitors plus endocrine therapy: demographic information, age at first diagnosis and age at the beginning of treatment, clinical characteristics and performance status by Eastern Cooperative Oncology Group scale (ECOG), treatment line and treatment schema -  CDK4\/6 inhibitor and endocrine therapy, stage of the cancer, site of metastases (bone, soft tissue, visceral, visceral and bone, central nervous system-CNS with or without another site).
+%%%copied
+Data included for the population treated with endocrine therapy as first-line: demographic information, age at first diagnosis and age at the beginning of treatment, clinical characteristics and performance status by Eastern Cooperative Oncology Group scale (ECOG),  stage of the cancer.
+
+For comparison purposes, we used palbociclib and ribociclib since we had a small number of patients treated with abemaciclib (12).
+
+ 
+\begin{table}
+\caption{Descriptive statistics of cyclin-dependent kinase inhibitors group and endocrine therapy group. The Drug/combination refers to the actual drug or the combination for CDK4/6}
+\centering
+\label{tab:stats_ipop_cdk}
+\input{chapters/ribo-palbo/table2.tex}
+\end{table}
+
+
+
+
+\subsection{Statistical Analysis}
+%copied
+R was used for statistical analysis. Demographic, clinical characteristics and side effects were analyzed using descriptive statistics (count, percentages and median/range). Kaplan–Meier test was used to determine the median PFS and OS in the entire population and subgroups. Log-rank test was used for comparisons of PFS and OS among different subgroups. Cox Regression was used to assess feature importance and impact. All statistical tests were two-sided, and the significance level was 0.05. The evaluation of the proportional hazards assumptions was done by Schoenfeld residues analysis.
+We applied propensity score weights to achieve a more robust comparison between the two groups of CDK4\/6i. We used the existence of visceral metastases, treatment line, age at treatment start, and stage. We used the WeightIt package for R \cite{WeightIt}. We applied the weights to the Kaplan-Meier curves and to the Cox Regression. We applied the weights to get the ATE which is $E[Y_i(1)-Y_i(0)]$, the average effect of moving an entire population from untreated to treated, or from one drug to the other. Weights were used instead of matching since it is more suited for calculating ATE and the need to preserve the sample size since it is already small from the start. The formula for calculating the weights was through propensity score weighting with GLM. Multiple comparisons were done with the Benjamini-Hochberg (BH) method. 
+
+
+
+%Pretende-se que os dados venham do Instituto Português de Oncologia – Porto (IPO-P). Pretende-se utilizar a base de dados do hospital dos últimos 5 anos.
+%O estudo será registado e respeitará todos os requisitos éticos de aprovação a comissão de ética de cada instituição participante. Caso a instituição tenha um encarregado de Proteção de Dados (EPD), este será contactado a fim de dar seu parecer, e caso necessário, a sua opinião para melhorar possíveis pontos relacionados à segurança de dados.
+
+%The goal is to identify the clinical or biological variables that have the most impact on a specific outcome. To achieve this, considering the statistical models found, we can model things in terms of time series or survival trees to group outcomes and the clusters found. With this, we can analyze the effectiveness of the clinical course, probabilities of recurrence, or survival rates by subgroup. These models and relationships can form the basis of a clinical decision support system and can be crucial for making better healthcare decisions.
+
+%Some of the techniques used are unsupervised techniques such as k-means, DBSCAN, or hierarchical clustering.
+%The goal is to identify the clinical or biological variables that have the most impact on a specific outcome. To achieve this, considering the statistical models found, we can model things in terms of time series or survival trees to group outcomes and the clusters found. With this, we can analyze the effectiveness of the clinical course, probabilities of recurrence, or survival rates by subgroup. These models and relationships can form the basis of a clinical decision support system and can be crucial for making better healthcare decisions.
+
+%Some of the techniques used are unsupervised techniques such as k-means, DBSCAN, or hierarchical clustering.
+
+
+
+
+% breast cancer cells have either estrogen (ER) or progesterone (PR) receptors or both. (HR +)
