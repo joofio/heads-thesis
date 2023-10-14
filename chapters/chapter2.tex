@@ -71,39 +71,35 @@ An integral part of Health Data Science is predictive modeling and hypothesis te
 Importantly, Health Data Science has significant ethical and privacy considerations. Health data is often sensitive and personal, so maintaining privacy and confidentiality is crucial. This requires secure data handling and storage practices, as well as careful consideration of ethical implications when designing studies and algorithms. Health Data Scientists must also be wary of algorithmic bias and must ensure their models do not perpetuate or amplify health disparities. The ultimate goal of Health Data Science is to improve patient outcomes and health equity using the best available data and methods.
 
 
-The potential of using systematically created data in healthcare, which reaches the PB, has certainly a lot of potential. However, we have seen in the past as well, that the hype of \ac{ai} and \ac{ml} usually is not supported by truth. There are currently six main aspects that hinder the potential of health data science \cite{panchInconvenientTruthAI2019,peekThreeControversiesHealth2018}:
+The potential of using systematically created data in healthcare, which reaches the PB, has certainly a lot of potential. However, we have seen in the past as well, that the hype of \ac{ai} and \ac{ml} usually are not supported by truth. There are currently six main aspects that hinder the potential of health data science \cite{panchInconvenientTruthAI2019,peekThreeControversiesHealth2018}:
 \begin{myitemize}
     \item interoperability
     \item semantic
     \item secondary usage
     \item data quality
-    \item privacy and ethical
+    \item privacy and ethics
     \item observational data
 \end{myitemize}
 
-\textbf{Interoperability} is defined by .... sos and soo
-there are so and so definition
-%aulas
+\textbf{Interoperability} is defined by \textit{Interoperability is ability of two or more systems or components to exchange information and to use the information that has been exchanged}\cite{182763}. In the context of healthcare, this means that different systems should be able to exchange data and interpret the data that has been exchanged. This is a very important aspect of health data science, since the data is usually stored in different systems, with different structures and different purposes. So if systems are locked inside themselves and no export is possible, data becomes inaccessible. So, it is only natural that interoperability has been a key factor in gathering data. With tens or hundreds of different systems in every health institution, the possibility of exchanging data between \acp{ehr} plays a vital role. The usage of interoperable standards is of extreme importance in order to tackle the need to get data with a predefined structure.
 
 
-
-has been a key factor in gathering data. With tens or hundreds of different systems in every health institution, the possibility of exchanging data between \acp{ehr} gets a vital role. The usage of interoperable standards is of extreme importance in order to tackle the need of getting data with a predefined structure.
-
-
-\textbf{Semantic} adds a additional layer of the \\
+\textbf{Semantic} adds a layer to the previous points, being sometimes related to interoperability as well. The fact that several institutions and \acp{ehr} are involved in creating knowledge from data, raises the problem that not all have data coded in clinical terminologies, or if they do, it is seldom the same across systems, since semantics has a very tight relationship with domain, especially in healthcare. So the normalization of uncoded terms is often required and mapping across terminologies is also very common, which is time-consuming and requires expertise in several fields.
 %mts ehrs
 %mts 
-\textbf{Secondary usage} is related with the fact that we are aiming to use data for a purpose for whihch the data was not created for. The main goal for the healthcare data is to provide care. It is not meant for analysis and gain insights.\\
+\textbf{Secondary usage} is related to the fact that we are aiming to use data for a purpose for which the data was not created. The main goal of the healthcare data is to provide care. It is not meant for analysis and gaining insights. More than that, is already pretty well documented that the usage of \ac{ehr} is very different from institution to institution and from country to country \cite{anckerHowElectronicHealth2014,weiskopfMethodsDimensionsElectronic2013a,peekThreeControversiesHealth2018}. This means that the context where data was collected, even the actual person who inserted the information could be key to interpreting the results. To make things more complicated, the degree of precision of the data inserted varies highly on the type of information and context, as reported in \cite{cruz-correiaDataQualityIntegration2009}. 
 
-\textbf{Data Quality} stems  from the secondary usage. Since it is a very complicated concepts...\\
+\textbf{Data Quality} stems from the secondary usage. If the data is not reliable, how can we use it to gather useful knowledge from it? In order to, at least, try to counter this, we can apply several statistical methods and machine learning algorithms to try to clean the data. However, this is not a trivial task, since the data is usually very heterogeneous and the context where it was collected is not always available. So, data quality is a very important aspect of health data science, since it can be the difference between a good and a bad model.
 
 
-\textbf{privacy and ethical} adds a additional layer of the \\
+\textbf{privacy and ethics} adds yet another layer to the problems of health data science. The fact that we are dealing with sensitive private data, which is not meant to be used for secondary purposes, raises the question of privacy and ethical concerns. Anonymization techniques and privacy-preserving methods are key to tackling this problem. However, they are not problem-free and are often complicated to assess. Moreover, the risks are very high, since the data is very sensitive and the consequences of a breach of privacy can be very serious, undermining public trust in clinicians, healthcare institutions and the healthcare system as a whole.
 
 %%%LLM
 %Health data science and evidence-based medicine are closely intertwined fields that leverage the power of data analysis and research to improve patient outcomes and inform clinical decision-making. Health data science involves the collection, management, and analysis of vast amounts of health-related data, including electronic health records, medical imaging, genomics, and wearable devices. By applying advanced statistical and machine learning techniques to these datasets, health data scientists can uncover patterns, trends, and insights that can enhance our understanding of diseases, treatment effectiveness, and population health.
 
 %Evidence-based medicine, on the other hand, is an approach to clinical practice that integrates the best available research evidence, clinical expertise, and patient values and preferences. It aims to guide healthcare professionals in making informed decisions about patient care by using rigorous scientific evidence. Health data science plays a crucial role in evidence-based medicine by providing the necessary data and analytical tools to generate high-quality evidence. Through the analysis of large-scale health datasets, researchers can identify associations, evaluate treatment effectiveness, and uncover potential risk factors, all of which contribute to the evidence base that informs clinical practice guidelines and treatment recommendations.
+\textbf{Observational Data} relates to the fact that all health data science will be based on observational data. This means that the data is not collected in a controlled environment, which is the case for \acp{rct}. This means that the data is subject to several biases, which are not always possible to control. The corner-stone of \acp{rct} is simply not possible to apply here, unabling a proper comparasion between groups. And even though there are techniques to tackle unbalance in the measured variables, there is no way to control the unmeasured variables, which can be the cause of the observed effect. This is particular importance and a major area of research at the moment, like we will see in the section \ref{subsec:xai} and \ref{causalml}.
+
 
 The integration of health data science and evidence-based medicine has the potential to revolutionize healthcare delivery and improve patient outcomes. By leveraging the power of data analysis and advanced algorithms, health data scientists can identify novel biomarkers, develop predictive models, and personalize treatment plans based on individual patient characteristics. This not only enhances clinical decision-making but also enables precision medicine, where treatments can be tailored to the specific needs of each patient. Additionally, the use of health data science in evidence-based medicine allows for the continuous monitoring of treatment effectiveness and safety, facilitating the identification of best practices and the refinement of clinical guidelines over time.
 
@@ -126,7 +122,7 @@ According to the European Commission \cite{DefinitionAIMain2019} and \cite{Ethic
 
 
 
-\subsection{Explainable Artificial Intelligence}
+\subsection{Explainable Artificial Intelligence}\label{subsec:xai}
 \ac{ai} has experienced unprecedented advancements in the last decade, leading to its integration in various domains, including medicine. It has been instrumental in transforming clinical decision-making, drug discovery, patient monitoring, and predicting disease trajectories. Despite these advancements, the "black box" nature of complex \ac{ai} models poses interpretability challenges, limiting their widespread adoption in healthcare, a field where transparency, reliability, and understanding of decision-making processes are vital. This lack of interpretability, also known as opacity, can lead to misdiagnoses, inappropriate treatment plans, and, most importantly, breaches in trust among clinicians, patients, and \ac{ai} systems.
 
 As such, the concept of \ac{xai}, which aims to create a suite of techniques that produce more explainable models while maintaining a high level of predictive accuracy, has gained significant attention in medical \ac{ai} research. \ac{xai} seeks to bridge the gap between \ac{ai} opacity and human interpretability, and in doing so, it can enhance the transparency, reliability, and acceptance of \ac{ai} applications in the healthcare setting.
@@ -197,7 +193,7 @@ It is to be noted that a methodology can be classified into two categories. For 
 Finally, we can assess how these three types of model are an explanation of the model, we could argue, as stated in \cite{rudinStopExplainingBlack2019} that only an intrinsically transparent model can really be the basis of \ac{xai} and applying \textit{post-hoc} methods is only a potentially wrong proxy for an explanation.
 %explicar mais disto e fechar.
 
-\subsection{Causality}
+\subsection{Causality}\label{causalml}
 
 In order to merge the \ac{ebm} and \ac{xai}, we can follow on to the realm of \ac{cml}.
 
@@ -300,8 +296,36 @@ This could lead to biased and discriminatory systems....
 %%%chat
 The importance of ethics in \ac{ai} cannot be overstated, primarily because the decisions that these systems make can have profound implications on individuals and society. These decisions may affect anything from employment opportunities to legal outcomes, and increasingly, health outcomes. As AI models grow in complexity and application, they possess an enormous power that needs to be harnessed responsibly. This necessitates rigorous ethical considerations to ensure fair, unbiased, and transparent operations. Ethical lapses can result in discrimination, loss of privacy, and unjust outcomes, among other issues, which erode public trust in these technologies.
 
-Equally important in the realm of AI is the understanding of why a model works the way it does. This concept, known as "explainability" or "interpretability", is central to AI ethics. It concerns the transparency of AI algorithms and the ability to understand and interpret their inner workings and decisions. Without this understanding, we run the risk of blind reliance on AI's 'black box' that may lead to erroneous or biased outcomes. It is critical to scrutinize AI models' reasoning processes, ensuring they align with human values and principles and are not based on inappropriate or discriminatory features.
+Equally important in the realm of \ac{ai} is the understanding of why a model works the way it does. This concept, known as "explainability" or "interpretability", is central to AI ethics. It concerns the transparency of AI algorithms and the ability to understand and interpret their inner workings and decisions. Without this understanding, we run the risk of blind reliance on AI's 'black box' that may lead to erroneous or biased outcomes. It is critical to scrutinize AI models' reasoning processes, ensuring they align with human values and principles and are not based on inappropriate or discriminatory features.
 
 In the context of healthcare, these considerations take on an even greater significance. AI applications in healthcare, such as diagnostic tools or treatment recommendation systems, directly impact human lives. They may influence critical decisions such as who gets treatment, what kind of treatment is administered, and when it should be given. These systems must not only be accurate but also transparent, fair, and accountable. They should be designed and implemented in a way that respects patient rights, including privacy, autonomy, and informed consent.
 
-Therefore, in healthcare, the need for ethical AI and model explainability is not just a matter of good practice, it's a matter of life and death. Bias or errors in AI could lead to misdiagnoses or inappropriate treatment recommendations, with potentially fatal consequences. Similarly, if AI-based systems make decisions that healthcare professionals or patients can't understand, it may lead to mistrust and potential harm. It's crucial for the advancement of AI in healthcare to ensure ethical considerations and explainability are at the core of AI model design, development, and deployment. This will build trust in AI systems and ultimately lead to better health outcomes.
+Therefore, in healthcare, the need for ethical \ac{ai} and model explainability is not just a matter of good practice, it's a matter of life and death. Bias or errors in AI could lead to misdiagnoses or inappropriate treatment recommendations, with potentially fatal consequences. Similarly, if AI-based systems make decisions that healthcare professionals or patients can't understand, it may lead to mistrust and potential harm. It's crucial for the advancement of AI in healthcare to ensure ethical considerations and explainability are at the core of AI model design, development, and deployment. This will build trust in AI systems and ultimately lead to better health outcomes.
+
+
+The European Health Data Space (EHDS) refers to a strategic initiative by the European Union (EU) aimed at creating a unified and secure platform for sharing and accessing health-related data across member states. Artificial Intelligence (AI) is expected to have a significant impact on the EHDS in several ways:
+
+\begin{itemize}
+    \item Improved Diagnostics and Personalized Medicine: AI can analyze vast amounts of health data, including medical records, imaging, and genetic information, to enhance diagnostic accuracy and tailor treatments to individual patients. This can lead to more effective and efficient healthcare delivery.
+\item Data Integration and Interoperability: AI can help harmonize data from various sources within the EHDS, including electronic health records, wearable devices, and clinical databases. This promotes interoperability, allowing healthcare professionals to access comprehensive patient information seamlessly.
+
+\item Predictive Analytics: AI-powered predictive models can help forecast disease outbreaks, patient admission rates, and healthcare resource utilization. This enables better resource allocation and proactive healthcare planning.
+
+\item Drug Discovery and Development: AI can accelerate drug discovery by analyzing genetic data, identifying potential drug candidates, and predicting their efficacy and safety profiles. This can expedite the development of new treatments and therapies.
+
+\item Enhanced Clinical Decision Support: AI can provide healthcare providers with real-time decision support, offering recommendations based on the latest medical evidence and patient-specific data. This can lead to more informed clinical decisions and better patient outcomes.
+
+\item Data Security and Privacy: The EHDS must ensure the privacy and security of health data. AI can help by implementing robust encryption, access controls, and anomaly detection systems to safeguard sensitive information.
+
+\item Research and Insights: AI can facilitate large-scale data analysis for medical research, enabling researchers to identify patterns, correlations, and potential breakthroughs in healthcare. This can lead to advancements in medical knowledge and treatments.
+
+\item Patient Engagement and Monitoring: AI-driven apps and wearable devices can empower patients to take a more active role in managing their health. These technologies can monitor vital signs, offer health advice, and send alerts to healthcare providers when necessary.
+
+\item Reduced Healthcare Costs: By optimizing healthcare processes, improving diagnosis accuracy, and preventing medical errors, AI can contribute to cost savings within the healthcare system, making it more sustainable.
+
+\item Regulatory Challenges: Implementing AI in healthcare requires navigating complex regulatory frameworks, ensuring ethical use, and addressing issues related to bias and fairness in AI algorithms. The EHDS will need to establish guidelines and standards to address these challenges.
+
+\end{itemize}
+
+
+In summary, AI is poised to revolutionize the European Health Data Space by enhancing the quality and accessibility of healthcare data, improving patient outcomes, and fostering innovation in medical research and treatment. However, it also presents challenges related to data privacy, security, and ethical considerations that must be carefully addressed in the implementation process.
