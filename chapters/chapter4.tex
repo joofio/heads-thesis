@@ -22,7 +22,7 @@ This section is based on the paper entitled "Dataset Comparison Tool: Utility an
 
 
 \section{Can we use machine learning feature to compare datasets?}\label{subsec:similarity}
-This section is based on the paper entitled "so and so"
+This section is based on the paper entitled "Using Machine Learning Models' feature importance to assess dataset similarity". The reasoning behind this paper was the results of \ref*{subsec:gans}, where we felt that evaluation metrics for synthetic data could be improved. Better yet, we felt that the comparison of two datasets (that shared the same columns) could be done in a more robust way. Being that the current gold-standard was cross-validation which was not bound to any number range and the significance of the result could not be easily interpretable. We used the feature importance of several \ac{ml} models to compare datasets and concluded that it was a valid alternative to the traditional metrics.
 
 \subsection{Introduction}
 \input{chapters/similarity/intro}
@@ -41,7 +41,7 @@ This section is based on the paper entitled "so and so"
 \input{chapters/similarity/conclusion}
 
 
-\section{Data quality}\label{subsec:dq}
+\section{Data quality Metrics}\label{subsec:dq}
 This section is based on the paper entitled "so and so"
 %\input{chapters/data-quality-paper}
 \subsection{Introduction}
@@ -62,8 +62,8 @@ This section is based on the paper entitled "so and so"
 
 
 
-\section{Distributed}\label{subsec:distributed}
-This section is based on the paper entitled "so and so"
+\section{Leveraging Distributed systems in healthcare: is it advisable?}\label{subsec:distributed}
+This section is based on the paper entitled "Evaluating distributed-learning algorithms on real-world healthcare data". This paper was focused on the fact that access to healthcare data is often laboursome and time-consuming. So we evaluated the distributed paradigm to its gold-standard, the centralized paradigm. We used 9 real-world datasets of obstetrics \acp{ehr} and compared the performance of several \ac{ml} algorithms in both paradigms. We concluded that the distributed paradigm is a valid alternative to the centralized paradigm, with the added benefit of not requiring heavy data sharing.
 
 \subsection{Introduction}
 \input{chapters/distributed/intro}
@@ -81,9 +81,8 @@ This section is based on the paper entitled "so and so"
 \input{chapters/distributed/conclusion}
 
 
-\section{Benchmark}\label{subsec:benchmark}
-This section is based on the paper entitled "so and so"
-
+\section{Can Institutions share their performance metrics without hesitation of retaliation?}\label{subsec:benchmark}
+This section is based on the paper entitled "Benchmarking institutions' health outcomes with clustering methods". This paper was focused on the fact that many healthcare institutions harbor reservations about openly sharing production metrics. One predominant concern is the potential for retaliatory actions, be it from regulatory bodies, competitors, or the public. In this paper, we propose the application of a clustering methodology that allows institutions to compare performance metrics without disclosing the actual values. The method is based on clustering, which involves grouping health institutions' outcomes into a known number of clusters, allowing institutions to position themselves in a range of clusters without sharing the true means of their target data. The proposed method uses the K-means and K-modes clustering algorithms and was tested on data from real Electronic health records and public datasets. This approach provides a valid benchmark of hospital metrics and performances while protecting the privacy of participating institutions. 
 \subsection{Introduction}
 \input{chapters/benchmark/intro}
 \subsection{Rationale and Related Work}
@@ -118,8 +117,6 @@ This section is based on the paper entitled "Comparative Analysis of Palbociclib
 \subsection{Conclusion}
 \input{chapters/ribo-palbo/conclusion.tex}
 
-
-\input{chapters/ipop-paper}
 
 \section{Leveraging data to create Clinical Decision Support Systems}\label{subsec:obs}
 This section is based on the paper entitled "Machine-learning in Obstetrics: FHIR-based Support System for predicting delivery type". This work was in part a result of the work in section \ref{subsec:distributed}. While testing for distributed mechanisms, we kind of felt that some evaluation metrics were inspiring to pursue this further. We built a \ac{cdss} system that is interoperable and aims to provide support for subpar evaluation of a \ac{cs}.
