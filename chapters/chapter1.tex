@@ -10,7 +10,7 @@ However, in the last 20-30 years, technology, in the broader sense of digital an
 %artigos dados
 
 So we are now faced with huge amounts of data, with the potential of describing clinical practice and outcomes from the whole world with a granularity impossible until now. But how can we materialize this potential?
-being that the current gold standard of evidence creation is \acp{rct} which can vary on quality and cost: whether time or resources. A \ac{rct} may cost no less than 20 million euros to run, according to a report submitted to the \ac{us} Department of Health and Human Services \cite{sertkayaaylinEXAMINATIONCLINICALTRIAL2014}. Costing as much as 100 million \ac{us} dollars. This is indeed a very steep price to get the information we need to innovate.
+Being that the current gold standard of evidence creation is \acp{rct} which can vary on quality and cost: whether time or resources. A \ac{rct} may cost no less than 20 million euros to run, according to a report submitted to the \ac{us} Department of Health and Human Services \cite{sertkayaaylinEXAMINATIONCLINICALTRIAL2014}. Costing as much as 100 million \ac{us} dollars. This is indeed a very steep price to get the information we need to innovate.
 Another mechanism, usually supported by these \acp{rct} are systematic reviews and meta-analysis, precipitated by \ac{ebm} which are estimated to cost around 140 thousand dollars each \cite{michelsonSignificantCostSystematic2019}.
 So can this data, stored in \acp{ehr} be leveraged to create:
 \begin{myitemize}
@@ -33,43 +33,20 @@ Spoiler alert: I believe it is all of these and more. And so here we are.
 
 %%falar da pouca adoção de ML e CDSS
 
-On the other hand, it is still inconclusive if \acp{cdss} and \ac{ml} based systems have actually a beneficial impact on clinical and economic outcomes. Several studies still find it inconclusive \cite{muhiyaddinImpactClinicalDecision2020,kilsdonkFactorsInfluencingImplementation2017,muhiyaddinImpactClinicalDecision2020} to say the least.
-additionally, it is a popular assumption that 87\% of data science projects never get into production \cite{Why87Data2019}. In specifically for healthcare, 
+On the other hand, it is still inconclusive if \acp{cdss} and \ac{ml} based systems have a beneficial impact on clinical and economic outcomes. Several studies still find it inconclusive \cite{muhiyaddinImpactClinicalDecision2020,kilsdonkFactorsInfluencingImplementation2017,muhiyaddinImpactClinicalDecision2020} to say the least.
+Additionally, it is a popular assumption that 87\% of data science projects never get into production \cite{Why87Data2019}. In specifically for healthcare, 
 
-
+%%%TODO finish
 So, with this introduction, we have there is still a long way to go to actually harvest all the potential healthcare data has to offer. And so my research objectives are focused on powering up this adoption.
 \section{Research Objectives}
 %%rework
 This thesis has three main goals:
-%\begin{itemize}
-%
- %   \item Goal 1: Synthesis of \ac{ehr} evidence (Chapter 3) %- sections \ref{sec:}
-%    \begin{itemize}
-%        \item  To gather and analyze existing evidence on risk and diagnostic factors for obstructive sleep apnea
-%(OSA) that posteriorly can be collected from Portuguese care centers, as for all available types of models to predict OSA.
-%    \end{itemize}
 
-
- %   \item Goal 2: Classification and Prediction (Chapter 4)
- %       \begin{itemize}
- %       \item  To propose diagnostic Bayesian network models based on factors identified, focusing on interpretability.
- %  \end{itemize}
-
-
- %   \item Goal 3: Implementation (Chapter 5)
-   %         \begin{itemize}
-   %     \item  To develop and validate a decision support system, based on the proposed Bayesian network model, to be used in Portuguese health system.
-   % \end{itemize}
-
-
-
-
-%\end{itemize}
 
 \begin{itemize}
-    \item Goal 1: Improve Data Quality. Whether through synthetic data generation to enlarge data volume and protect privacy or by creating automatic data quality assessments. Will be covered in sections \ref{subsec:gans}, \ref{subsec:tabular}, \ref{subsec:similarity} and \ref{subsec:dq}
+    \item Goal 1: Research methods for improving Data Quality. Whether through synthetic data generation to enlarge data volume and protect privacy or by creating automatic data quality assessments. Will be covered in sections \ref{subsec:gans}, \ref{subsec:tabular}, \ref{subsec:similarity} and \ref{subsec:dq}
 
     \item Goal 2: Assess alternative ways of usage of data without having access to all of it. This will be covered in sections \ref{subsec:distributed} and \ref{subsec:benchmark}.
 
-    \item Goal 3: How to convert data into decision, whether through \ac{ml} or traditional statistics. This will be covered in sections \ref{subsec:ipop} and \ref{subsec:obs}.
+    \item Goal 3: Difficulties and steps resulting from attempts to convert data into decisions and policies, whether through \ac{ml} or traditional statistics. This will be covered in sections \ref{subsec:ipop} and \ref{subsec:obs}.
 \end{itemize}
