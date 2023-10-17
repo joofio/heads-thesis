@@ -1,0 +1,51 @@
+
+%%%TODO GDPR, health european data space, questoes eticas
+As Health Data Science, \ac{kdd} and \ac{ai} in healthcare get more and more popular, it is important to consider the words postulated by Francis Bacon in the "Wisdom of the Ancients", \textit{“mechanical arts are of ambiguous use, serving as well for hurt as for remedy.” } \cite{bacon_2011}. This is currently as true for \ac{ai} as it was at the time. We must consider the good and the bad of such technologies, and how to mitigate the bad and enhance the good. In this section, we will discuss the legal and ethical considerations of \ac{ai} in healthcare. Ensuring the proper use of healthcare data is key to preserving public trust and ensuring the long-term viability of data-driven health initiatives.
+
+One of the primary legal considerations is data privacy. Laws such as the \ac{hipaa} in the \ac{us}, and the \ac{gdpr} in the \ac{eu}, set stringent rules on how healthcare data should be stored, shared, and processed. They require data scientists and healthcare providers to take steps to anonymize data and limit the scope of data usage. Breaching these regulations can lead to severe penalties, including fines and imprisonment.
+Secondly, there's the matter of data security. With the rise of cyber-attacks, ensuring the robustness of the system against such breaches is both a legal requirement and an ethical obligation. Security breaches could lead to sensitive patient data being stolen, with severe implications for the individuals involved and for the trust in the healthcare system as a whole.
+
+
+The \ac{ehds} refers to a strategic initiative by the \ac{eu} aimed at creating a unified and secure platform for sharing and accessing health-related data across member states. \ac{ai} is expected to have a significant impact on the \ac{ehds} in several ways \cite{ehds}:
+
+\begin{itemize}
+    \item Improved Diagnostics and Personalized Medicine: \ac{ai} can analyze vast amounts of health data, including medical records, imaging, and genetic information, to enhance diagnostic accuracy and tailor treatments to individual patients. This can lead to more effective and efficient healthcare delivery.
+\item Data Integration and Interoperability: \ac{ai} can help harmonize data from various sources within the \ac{ehds}, including electronic health records, wearable devices, and clinical databases. This promotes interoperability, allowing healthcare professionals to access comprehensive patient information seamlessly.
+
+\item Predictive Analytics: \ac{ai}-powered predictive models can help forecast disease outbreaks, patient admission rates, and healthcare resource utilization. This enables better resource allocation and proactive healthcare planning.
+
+\item Drug Discovery and Development: \ac{ai} can accelerate drug discovery by analyzing genetic data, identifying potential drug candidates, and predicting their efficacy and safety profiles. This can expedite the development of new treatments and therapies.
+
+\item Enhanced Clinical Decision Support: \ac{ai} can provide healthcare providers with real-time decision support, offering recommendations based on the latest medical evidence and patient-specific data. This can lead to more informed clinical decisions and better patient outcomes.
+
+\item Data Security and Privacy: The \ac{ehds} must ensure the privacy and security of health data. \ac{ai} can help by implementing robust encryption, access controls, and anomaly detection systems to safeguard sensitive information.
+
+\item Research and Insights: \ac{ai} can facilitate large-scale data analysis for medical research, enabling researchers to identify patterns, correlations, and potential breakthroughs in healthcare. This can lead to advancements in medical knowledge and treatments.
+
+\item Patient Engagement and Monitoring: AI-driven apps and wearable devices can empower patients to take a more active role in managing their health. These technologies can monitor vital signs, offer health advice, and send alerts to healthcare providers when necessary.
+
+\item Reduced Healthcare Costs: By optimizing healthcare processes, improving diagnosis accuracy, and preventing medical errors, \ac{ai} can contribute to cost savings within the healthcare system, making it more sustainable.
+
+\item Regulatory Challenges: Implementing \ac{ai} in healthcare requires navigating complex regulatory frameworks, ensuring ethical use, and addressing issues related to bias and fairness in \ac{ai} algorithms. The \ac{ehds} will need to establish guidelines and standards to address these challenges.
+
+\end{itemize}
+
+
+On the ethical front, considerations include ensuring data fairness and avoiding bias. Given the diversity of patients in terms of age, race, sex, socioeconomic status, etc., algorithms should be designed and validated to ensure that they don't unintentionally perpetuate or amplify societal biases. For instance, a predictive model for disease risk should not unfairly disadvantage certain demographic groups. 
+If we use data to derive knowledge and create  \acp{cdss} that orient and support clinical practice, they can be biased by the type of data that originated said knowledge \cite{EthicsGuidelinesTrustworthy2019,barocas-hardt-narayanan}.
+
+%%%chat
+The importance of ethics in \ac{ai} cannot be overstated, primarily because the decisions that these systems make can have profound implications on individuals and society. These decisions may affect anything from employment opportunities to legal outcomes, and increasingly, health outcomes. As \ac{ai} models grow in complexity and application, they possess an enormous power that needs to be harnessed responsibly. This necessitates rigorous ethical considerations to ensure fair, unbiased, and transparent operations. Ethical lapses can result in discrimination, loss of privacy, and unjust outcomes, among other issues, which erode public trust in these technologies.
+
+Equally important in the realm of \ac{ai} is the understanding of why a model works the way it does. This concept, known as "explainability" or "interpretability", is central to \ac{ai} ethics. It concerns the transparency of \ac{ai} algorithms and the ability to understand and interpret their inner workings and decisions. Without this understanding, we run the risk of blind reliance on AI's 'black box' that may lead to erroneous or biased outcomes. It is critical to scrutinize \ac{ai} models' reasoning processes, ensuring they align with human values and principles and are not based on inappropriate or discriminatory features.
+
+In the context of healthcare, these considerations take on an even greater significance. \ac{ai} applications in healthcare, such as diagnostic tools or treatment recommendation systems, directly impact human lives. They may influence critical decisions such as who gets treatment, what kind of treatment is administered, and when it should be given. These systems must not only be accurate but also transparent, fair, and accountable. They should be designed and implemented in a way that respects patient rights, including privacy, autonomy, and informed consent.
+
+Therefore, in healthcare, the need for ethical \ac{ai} and model explainability is not just a matter of good practice, it's a matter of life and death. Bias or errors in \ac{ai} could lead to misdiagnoses or inappropriate treatment recommendations, with potentially fatal consequences. Similarly, if AI-based systems make decisions that healthcare professionals or patients can't understand, it may lead to mistrust and potential harm. The advancement of \ac{ai} in healthcare must ensure ethical considerations and explainability are at the core of \ac{ai} model design, development, and deployment. This will build trust in \ac{ai} systems and ultimately lead to better health outcomes.
+
+Furthermore, the informed consent of patients is another significant ethical consideration. Patients should be fully informed about how their data will be used, and they should have the right to \textit{opt-out} if they wish.
+%%TODO rework
+Transparency is another crucial aspect that straddles both legal and ethical dimensions. It involves explaining how decisions or predictions are made by complex algorithms, particularly when they have significant implications for patient care. For instance, if an \ac{ai} model is used to prioritize patients for treatment, it should be transparent about how the model makes its decisions. The explainability of machine learning models can help achieve this transparency, which aids in maintaining accountability and trust.
+
+Finally, at the moment of this writing, there are in the \ac{eu} several proposals that could impact \ac{ai} in general and in healthcare in specific.
+The Medical Device regulation could impact the deployment of \ac{ai} based systems and the \ac{ai} act could also impact the development of \ac{ai} based systems in healthcare.

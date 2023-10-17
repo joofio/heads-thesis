@@ -1,0 +1,51 @@
+%sacket 
+%graph of evidence based medicine
+%inconvenient truth ai
+%Three controversies in health data science
+Health Data Science is an interdisciplinary field that applies rigorous methods to transform healthcare data into actionable knowledge for improving health outcomes. It involves the collection, interpretation, and application of vast amounts of biological, clinical, population, and health system data to improve patient care and public health. The advent of electronic health records, genomics, mobile health technologies, and other forms of big data have fueled the growth of this discipline.
+
+In practice, Health Data Science involves the use of statistical and machine learning methods to analyse healthcare data. This data can be patient records, genomic data, demographic data, and more. It includes elements from various disciplines like biostatistics, epidemiology, informatics, and health economics. The ultimate goal is to provide a data-driven foundation for health decision-making for clinicians, health administrators, policymakers, and researchers.
+
+An integral part of Health Data Science is predictive modeling and hypothesis testing. Predictive modeling involves the creation and use of statistical models or machine learning algorithms to predict future outcomes based on historical data. Hypothesis testing, on the other hand, is used to test the validity of a claim or theory about a population based on sample data. These are crucial for health data science as they allow us to make educated guesses about health trends and outcomes.
+
+Importantly, Health Data Science has significant ethical and privacy considerations. Health data is often sensitive and personal, so maintaining privacy and confidentiality is crucial. This requires secure data handling and storage practices, as well as careful consideration of ethical implications when designing studies and algorithms. Health Data Scientists must also be wary of algorithmic bias and must ensure their models do not perpetuate or amplify health disparities. The ultimate goal of Health Data Science is to improve patient outcomes and health equity using the best available data and methods.
+
+
+The potential of using systematically created data in healthcare, which reaches the PB, has certainly a lot of potential. However, we have seen in the past as well, that the hype of \ac{ai} and \ac{ml} usually are not supported by truth. There are currently six main aspects that hinder the potential of health data science \cite{panchInconvenientTruthAI2019,peekThreeControversiesHealth2018}:
+\begin{myitemize}
+    \item interoperability
+    \item semantic
+    \item secondary usage
+    \item data quality
+    \item privacy and ethics
+    \item observational data
+\end{myitemize}
+
+\textbf{Interoperability} is defined by \textit{Interoperability is the ability of two or more systems or components to exchange information and to use the information that has been exchanged}\cite{182763}. In the context of healthcare, this means that different systems should be able to exchange data and interpret the data that has been exchanged. This is a very important aspect of health data science since the data is usually stored in different systems, with different structures and different purposes. So if systems are locked inside themselves and no export is possible, data becomes inaccessible. So, it is only natural that interoperability has been a key factor in gathering data. With tens or hundreds of different systems in every health institution, the possibility of exchanging data between \acp{ehr} plays a vital role. The usage of interoperable standards is of extreme importance in order to tackle the need to get data with a predefined structure.
+
+
+\textbf{Semantic} adds a layer to the previous points, being sometimes related to interoperability as well. The fact that several institutions and \acp{ehr} are involved in creating knowledge from data, raises the problem that not all have data coded in clinical terminologies, or if they do, it is seldom the same across systems, since semantics has a very tight relationship with domain, especially in healthcare. So the normalization of uncoded terms is often required and mapping across terminologies is also very common, which is time-consuming and requires expertise in several fields.
+
+
+
+%mts ehrs
+%mts 
+\textbf{Secondary usage} is related to the fact that we are aiming to use data for a purpose for which the data was not created. The main goal of the healthcare data is to provide care. It is not meant for analysis and gaining insights. More than that, is already pretty well documented that the usage of \ac{ehr} is very different from institution to institution and from country to country \cite{anckerHowElectronicHealth2014,weiskopfMethodsDimensionsElectronic2013a,peekThreeControversiesHealth2018}. This means that the context where data was collected, even the actual person who inserted the information could be key to interpreting the results. To make things more complicated, the degree of precision of the data inserted varies highly on the type of information and context, as reported in \cite{cruz-correiaDataQualityIntegration2009}. 
+
+
+
+\textbf{Data Quality} stems from the secondary usage. If the data is not reliable, how can we use it to gather useful knowledge from it? In order to, at least, try to counter this, we can apply several statistical methods and machine learning algorithms to try to clean the data. However, this is not a trivial task, since the data is usually very heterogeneous and the context where it was collected is not always available. So, data quality is a very important aspect of health data science, since it can be the difference between a good and a bad model.
+
+
+
+\textbf{Privacy and ethics} adds yet another layer to the problems of health data science. The fact that we are dealing with sensitive private data, which is not meant to be used for secondary purposes, raises the question of privacy and ethical concerns. Anonymization techniques and privacy-preserving methods are key to tackling this problem. However, they are not problem-free and are often complicated to assess. Moreover, the risks are very high, since the data is very sensitive and the consequences of a breach of privacy can be very serious, undermining public trust in clinicians, healthcare institutions and the healthcare system as a whole.
+
+%%%LLM
+%Health data science and evidence-based medicine are closely intertwined fields that leverage the power of data analysis and research to improve patient outcomes and inform clinical decision-making. Health data science involves the collection, management, and analysis of vast amounts of health-related data, including electronic health records, medical imaging, genomics, and wearable devices. By applying advanced statistical and machine learning techniques to these datasets, health data scientists can uncover patterns, trends, and insights that can enhance our understanding of diseases, treatment effectiveness, and population health.
+
+%Evidence-based medicine, on the other hand, is an approach to clinical practice that integrates the best available research evidence, clinical expertise, and patient values and preferences. It aims to guide healthcare professionals in making informed decisions about patient care by using rigorous scientific evidence. Health data science plays a crucial role in evidence-based medicine by providing the necessary data and analytical tools to generate high-quality evidence. Through the analysis of large-scale health datasets, researchers can identify associations, evaluate treatment effectiveness, and uncover potential risk factors, all of which contribute to the evidence base that informs clinical practice guidelines and treatment recommendations.
+\textbf{Observational Data} relates to the fact that all health data science will be based on observational data. This means that the data is not collected in a controlled environment, which is the case for \acp{rct}. This means that the data is subject to several biases, which are not always possible to control. The cornerstone of \acp{rct} is simply not possible to apply here, preventing a proper comparison between groups. Even though there are techniques to tackle unbalance in the measured variables, there is no way to control the unmeasured variables, which can be the cause of the observed effect. This is of particular importance and a major area of research at the moment, as we will see in the sections \ref{subsec:xai} and \ref{causalml}.
+
+With this in mind, it is natural to assume that health data science and \ac{ebm} are very synergic. If, on the one hand, we could argue that \ac{kdd} can take \ac{ebm} even further by using Data Mining and \ac{ai} to produce synthetic evidence by analyzing, summarizing, or even combining evidence from several sources in order to feed medical practice with the best evidence available in a useful manner. We could also argue that \ac{ebm} can be used to guide the \ac{kdd} process, by providing the necessary domain knowledge to interpret the results and to guide the process of data preparation, selection, and contextualization. The domain knowledge mentioned in the \ac{kdd} section could be applied by \ac{ebm}.
+
+This has the potential to revolutionize healthcare delivery and improve patient outcomes. By leveraging the power of data analysis and advanced algorithms, health data scientists can identify novel biomarkers, develop predictive models, and personalize treatment plans based on individual patient characteristics. This not only enhances clinical decision-making but also enables precision medicine, where treatments can be tailored to the specific needs of each patient. Additionally, the use of health data science in evidence-based medicine allows for the continuous monitoring of treatment effectiveness and safety, facilitating the identification of best practices and the refinement of clinical guidelines over time.
