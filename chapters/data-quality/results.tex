@@ -1,32 +1,32 @@
-A Bayesian network with structure and parameters learned from the training dataset reached an average of \ac{auroc} of 0.89. The results are in the table \ref{tab:result_auc}.
+A Bayesian network with structure and parameters learned from the training dataset reached an average Area Under the Receiver Operating Characteristic Curve of 0.857. The results are in the table \ref{tab:result_auc}.
 
-\begin{table}[htbp] 
- \caption{Validation Results (Column AUROC)} 
- \label{tab:result_auc} 
+
+
+\begin{table}[htpb]
+ \caption{Validation Results: Column acronym with AUROC along with 95\% CI} \label{tab:result_auc} 
 
 \renewcommand{\arraystretch}{1.2}
-\setlength{\tabcolsep}{18pt}
+%\setlength{\tabcolsep}{8pt}
+\centering
+\begin{tabular} { p{1.5cm} p{1.5cm} p{3cm} p{1.5cm} p{1.5cm} l }
+\hline
+AP & 0.944 & [0.943, 0.945] & VNH & 0.894 & [0.893, 0.895] \\
+AG & 0.797 & [0.778, 0.816] & TPEE & 0.816 & [0.815, 0.816] \\
+EA & 0.969 & [0.968, 0.969] & AA & 0.751 & [0.743, 0.758] \\
+CA & 0.958 & [0.958, 0.958] & GR & 0.931 & [0.93, 0.932] \\
+IA & 0.638 & [0.637, 0.638] & V & 0.983 & [0.982, 0.983] \\
+PI & 0.881 & [0.88, 0.881] & TP & 0.866 & [0.865, 0.868] \\
+IMC & 0.881 & [0.881, 0.882] & VCS & 0.79 & [0.789, 0.791] \\
+NRC & 0.75 & [0.75, 0.75] & ANP & 0.942 & [0.938, 0.946] \\
+IGA & 0.968 & [0.968, 0.969] & GS & 0.514 & [0.507, 0.52] \\
+SGP & 0.974 & [0.974, 0.974] & S & 0.896 & [0.896, 0.897] \\
+VA & 0.974 & [0.974, 0.974] & VP & 0.771 & [0.77, 0.772] \\
+TG & 0.728 & [0.726, 0.73] & TPNP & 0.952 & [0.951, 0.952] \\
+\hline
+ \multicolumn{6}{c}{\textbf{Average}  \textbf{0.857 [0.846, 0.868]}} \\
 
-\begin{tabularx}{\textwidth} { X X X X  }
 \hline
-IA & 0.674 & AA & 0.787 \\
-PI & 0.873 & TP & 0.868 \\
-IMC & 0.872 & A30 & 0.863 \\
-NRCPN & 0.703 & GR & 0.936 \\
-IGA & 0.955 & ANP & 1.000 \\
-SGP & 0.962 & VCS & 0.730 \\
-EPC30 & 0.946 & TG & 0.836 \\
-APARA & 0.989 & TPEE & 0.842 \\
-AGESTA & 0.931 & V & 0.987 \\
-EA & 0.993 & VNH & 0.849 \\
-VA & 0.962 & TPNP & 0.928 \\
-FA & 0.962 & VP & 0.793 \\
-CA & 0.998 &  \\
-\hline
- \multicolumn{4}{c}{\textbf{Average}  \textbf{0.890}} \\
-
-\hline
-\end{tabularx}
+\end{tabular}
 \end{table}
 
 
@@ -39,25 +39,44 @@ The network is as represented in figure \ref{fig:network}.
 \end{figure}
 %TC:endignore
 
-As for the rules created, they were conformance based, like the format of dates, and conformance to the value set (i.e. Robson group, bishop scores, or delivery types). We also added plausibility rules, like expected values for BMI, weight and gestational age. We also added plausibility for the relationship between columns, namely weight across different weeks of gestation. We added a relationship of greatness between weights more than 5 weeks apart. 
+As for the rules created, they were conformance-based, like the format of dates, and conformance to the value set (i.e. Robson group, bishop scores, or delivery types). We also added plausibility rules, like expected values for BMI, weight, and gestational age. We also added plausibility for the relationship between columns, namely weight across different weeks of gestation. We have also added a relationship of greatness between ultrasound weights more than 5 weeks apart. 
+The method of calculating the final score is stated in figure \ref*{fig:wf}.
 
 
+%TC:ignore
+\begin{figure}[htbp]
+    \centering
+    \caption{Workflow for creating the final score and which elements are used to do so.}\label{fig:wf} 
+    \includegraphics[scale=0.38]{figures/workflow.png}
+    \end{figure}
+    %TC:endignore
 
 
+\subsection{Deployment \& Validation}
+The purpose of this model is to serve as an API for usage within a healthcare institution and act as a supplementary decision support tool for obstetrics teams. Although a concrete, vendor-specific information model and health information system were initially used, our goal is to develop a more universal clinical decision support system. This system should be usable across all systems involved in birth and obstetrics departments. Therefore, we constructed it using the Health Level 7 (HL7) Fast Healthcare Interoperable Resources (FHIR) R5 version standard. This approach simplifies the process of API interaction.
+Rather than utilizing a proprietary model for the data, we based our decision on the use of FHIR resources: Bundle and Observation. These resources handle the request and response through a customized operation named "\$quality\_check". We intend to publish the profiles of these objects to streamline API access via standardized mechanisms and data models. The model then makes use of the customized operation and of several base resources to construct a FHIR message, which are: Bundle, MessageHeader, Observation, Device. Observation is where the information about the record is contained, Device contains information about the model, and MessageHeader is used to add information about the request. Finally, the Bundle is used to group all of these resources together. The current version of the profiles can be accessed at this URL: \url{https://joofio.github.io/obs-cdss-fhir/}. 
 
-\subsubsection{Deployment \& Validation} 
-The purpose of this model is to be served as an API for usage within a healthcare institution and act as a supplementary decision support tool for obstetrics teams. Although a concrete, vendor-specific information model and health information system were initially used, our goal is to develop a more universal clinical decision support system. This system should be usable across all systems involved in birth and obstetrics departments. Therefore, we constructed it using the \ac{hl7} \ac{fhir}  R5 version standard. This approach simplifies the process of \ac{api} interaction.
-Rather than utilizing a proprietary model for the data, we based our decision on the use of \ac{fhir} resources: Bundle and Observation. These resources handle the request and response through a customized operation named "\$quality\_check". Our intention is to publish the profiles of these objects to streamline API access via standardized mechanisms and data models. The current version of the profiles can be accessed at this URL: \url{https://joofio.github.io/obs-cdss-fhir/}. 
+
+For validation, we deployed the tool in docker format in a hospital to gather new data. We gathered 3231 new cases and returned a score for quality as exemplified in figure \ref{fig:scores}. Being that the score is from 0 to 1, the average score was 0.23 and IQR was 0.03. We also used the clinician from one of the hospitals that we get data from and asked this clinician to assess 10 records in terms of quality. We gathered the 10 records at random and asked the clinician to assess them in terms of quality. Our purpose was then to compare the rankings of each evaluator; the model and the clinician, to assess how similar they were as can be seen in figure \ref{fig:clinical}.
 
 
-For validation, we deployed the tool in docker format in a hospital to gather new data. We gathered 3231 new cases and returned a score for quality as exemplified in figure \ref{fig:scores}. Being that the score is from 0 to 1, the average score was 0.12 and \acp{iqr} was 0.15. We also used the clinician from one of the hospitals that we get data from and asked this clinician to assess 10 records in terms of quality. We gathered the 10 records at random and asked the clinician to assess them in terms of quality. Our purpose was then to compare the rankings of each evaluator; the model and the clinician, in order to assess how similar they were.
 
 
 
 %TC:ignore
 \begin{figure}[htbp]
 \centering
-\caption{Scores}\label{fig:scores} 
+\caption{Model score for newly seen data}\label{fig:scores} 
 \includegraphics[scale=0.78]{figures/Scoring.png}
 \end{figure}
 %TC:endignore
+
+%TC:ignore
+\begin{figure}[htbp]
+\centering
+\caption{Comparasion of clinical assessment of records with the model}\label{fig:clinical} 
+\includegraphics[scale=0.52]{figures/clinical_assessment_dataqual.png}
+\end{figure}
+%TC:endignore
+
+The Average Spearman's Rank Correlation Coefficient was 0.14 and the Kendall's Tau was 0.096 with a \textit{p-value} of 0.712.

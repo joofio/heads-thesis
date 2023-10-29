@@ -1,10 +1,16 @@
-We wrote all of the code in Python 3.10.6 with the usage of the scikit-learn library for preprocessing, and evaluation \cite{scikit-learn}. 
-For plausibility, a Bayesian network structure definition and parametrization methods of the package pgmpy \cite{pgmpy} was used. For this, all null representations were standardized. Data was prepossessed with the removal of features with high missing rates ($>$ 80\% overall). All missing value representations were standardized. The imputation process was performed with the median for continuous and a new category (NULLIMP) for categorical variables. Then, the continuous variables were discretized into three bins defined by quantile. The evaluation was with a holdout dataset for each column as the target. Z-Scores were defined for all continuous variables based on the inter-quartile range. Then, rows were also assessed with distance analysis, with Local Outlier Factor and Elliptic Envelope from scikit-learn and the outlier-tree algorithm. We also added a rule engine, using the great\_expectations package. Rules were defined by the team, focusing on impossible numbers present in age, weight or relationship between variables. As for missing information was created with all the data, creating the scoring based on the inverse of the missing percentage. Missing detection was based on primary key variables.
-For completeness, we used the inverse of the percentage of nulls in the training set.
-The API for serving the prediction models was developed with FastAPI. So, the methods applied in terms of the DQA framework are described in the table \ref{tab:methods}.
+We wrote all the code in Python 3.10.6 with the usage of the scikit-learn library for preprocessing, and evaluation \cite{scikit-learn}. 
+For plausibility, a Bayesian network was used. We used this model due to the possibility of using a single model for classifying the plausibility of all columns and due to its interpretable nature. The networks were created with the pgmpy package \cite{pgmpy}.
+We also added the outlier-tree method \cite{cortesExplainableOutlierDetection2020} which tries to integrate a decision tree that "predicts" the values of each column based on the values of each other column. In the process, every time separation is evaluated, it takes observations from each branch as a homogeneous cluster to search for outliers in the predicted 1-d distribution of the column. Outliers are determined according to confidence intervals in this 1-d distribution and need to have large gaps in order to be marked as outliers in the next observation. Because it looks for outliers in the branch of the decision tree, it knows the conditions that make it a rare observation relative to other observation types corresponding to the same conditions, and these conditions are always related to target variables (as predicted by them). As such, it can only detect outliers described by decision tree logic, and unlike other methods such as isolation forests, it can not assign outlier points to each observation, or detect outliers that are generally rare, but will always provide human-readable justification when it recognizes outliers.
+
+As for preprocessing, all null representations were standardized, we also removed features with high missing rates ($>$ 80\% ).  The imputation process was performed with the median for continuous and a new category (NULLIMP) for categorical variables. 
+
+For the usage of the Bayesian network in particular, the continuous variables were discretized into three bins defined by quantile. We defined three as the number of bins in order to reduce the number of states in each node of the network. The evaluation was done with cross-validation with 10 splits and two repetitions for each column as the target. 
+
+As for  Z-Scores, they were defined for all continuous variables based on the interquartile range. Then, rows were also assessed with distance analysis, with Local Outlier Factor and Elliptic Envelope from scikit-learn and the outlier-tree algorithm. We also added a rule engine, using the \textit{great\_expectations} package. Rules were defined by the team, focusing on impossible numbers present in age, weight, or relationship between variables. As for missing information was created with all the data, creating the scoring based on the inverse of the missing percentage. Missing detection was based on primary key variables. For completeness, we used the inverse of the percentage of nulls in the training set.
+The API for serving the prediction models was developed with FastAPI. So, the methods applied in terms of the DQA framework shown in figure \ref{fig:categories} are described in the table \ref{tab:methods}.
 
 \begin{table}[htpb]
-\caption{Implemented Methods for data quality assessment} 
+\caption{Implemented Methods} \label{tab:methods}
 \renewcommand{\arraystretch}{1.4}
 \setlength{\tabcolsep}{10pt}
 
@@ -21,16 +27,9 @@ Plausibility & Atemporal Plausibility           & Manual Rule engine            
 Plausibility & Atemporal Plausibility           & outlier-tree                      \\ 
 \hline
 \end{tabularx}
-\label{tab:methods}
+
 \end{table}
+
+
 The method of scoring was to obtain a single value that could grasp the quality of the row or patient.
-%TC:ignore
-%\begin{figure}[htbp]
-%\centering
-%\caption{Scoring Method}\label{fig:scoring} 
-%\includegraphics[scale=0.38]{imgs/workflow.png}
-%\end{figure}
-%TC:endignore
-
-To assess the tool's usefulness, we will implement it in a production environment and collect metrics regarding the data being produced. Then we intended to present some of the results to obstetrics clinicians for them to assess how likely the information is to be suitable for usage.
-
+To assess the tool's usefulness, we will implement it in a production environment and collect metrics regarding the data being produced. Then we intended to present some results to selected obstetrics clinicians for them to assess how likely the information is to be suitable for usage. We will also compare the results with the ones from the model to make sanity checks regarding the model's performance and adequacy. We aim to use Kendal Tau and Average Spearman's Rank Correlation Coefficient. Kendall Tau is a non-parametric statistic used to measure the strength and direction of the association between two ordinal variables. It calculates the difference between the number of concordant and discordant pairs of observations, normalized to ensure a value between -1 (perfect disagreement) and 1 (perfect agreement). Spearman's rank correlation coefficient is a non-parametric measure that assesses the strength and direction of a monotonic relationship between two ranked variables. It is based on the ranked values of the variables rather than their raw data, producing a value between -1 (perfect inverse relationship) and 1 (perfect direct relationship).
