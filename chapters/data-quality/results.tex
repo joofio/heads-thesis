@@ -57,7 +57,7 @@ The method of calculating the final score is stated in figure \ref{fig:wf}.
 The purpose of this model is to serve as an \ac{api} for usage within a healthcare institution and act as a supplementary data quality assessment tool. Although a concrete, vendor-specific information model and health information system were initially used, our goal is to develop a more universal clinical decision support system. This system should be usable across all systems involved in birth and obstetrics departments. Therefore, we constructed it using the \ac{hl7} \ac{fhir} R5 version standard. This approach simplifies the process of API interaction. Rather than utilizing a proprietary model for the data, we based our decision on the use of \ac{fhir} resources: Bundle and Observation. These resources handle the request and response through a customized operation named "\$quality\_check". We intend to publish the profiles of these objects to streamline API access via standardized mechanisms and data models. The model then makes use of the customized operation and of several base resources to construct a \ac{fhir} message, which are: Bundle, MessageHeader, Observation, Device. Observation is where the information about the record is contained, Device contains information about the model, and MessageHeader is used to add information about the request. Finally, the Bundle is used to group all of these resources together. The current version of the profiles can be accessed here \cite{almeidaObstetricsClinicalDecision}.
 
 For validation, we deployed the tool in docker format in a hospital to gather new data. We gathered 3231 new cases and returned a score for quality as exemplified in figure \ref{fig:scores}. Being that the score is from 0 to 1, the average score was 0.23 and \ac{iqr} was 0.03.
-As for the clinicians' assessment, we got 4 answers. Figure \ref{fig:clinical} shows the aggregated rankings of the clinicians per record and is ordered by the rank provided by the model.
+As for the clinicians' assessment, we got 4 answers. Figure \ref{fig:clinical_dq} shows the aggregated rankings of the clinicians per record and is ordered by the rank provided by the model.
 
 
 
@@ -72,9 +72,9 @@ As for the clinicians' assessment, we got 4 answers. Figure \ref{fig:clinical} s
 %TC:ignore
 \begin{figure}[htbp]
 \centering
-\caption{Comparison of clinical assessment of records with the model. Y is the clinicians' assessment, X is the ranking of the record per the model. Equal numbers on the X mean a tie per the model interpretation. Color is the record ID.}\label{fig:clinical} 
+\caption{Comparison of clinical assessment of records with the model. Y is the clinicians' assessment, X is the ranking of the record per the model. Equal numbers on the X mean a tie per the model interpretation. Color is the record ID.}\label{fig:clinical_dq} 
 \includegraphics[scale=0.52]{figures/clinical_assessment_dataqual_scatter.png}
 \end{figure}
 %TC:endignore
 
-The Average Spearman's Rank Correlation Coefficient was 0.04 and the Kendall's Tau was 0.0 with a \textit{\textit{P} value} of 1.
+The Average Spearman's Rank Correlation Coefficient was 0.04 and the Kendall's Tau was 0.0 with a \textit{P} value of 1.

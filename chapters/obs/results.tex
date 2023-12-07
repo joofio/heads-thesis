@@ -1,39 +1,36 @@
 \subsubsection{The model}
-The results are mainly the model that predicts the occurrence of a \ac{cs} or natural delivery. 
-The evaluation metrics are present in the table below for the best hyper-parameters found for the training data.
+The results are mainly the model that predicts the occurrence of a \ac{cs} or natural delivery. The evaluation metrics are present in the table below for the best hyper-parameters found for the training data.
 
 \begin{table}[htbp]
   \centering
-  \caption[Performance Metrics in the training set]{Performance Metrics in the training set with mean \ac{auroc} and 95\% \acl{ci}}
-  \label{tab:performance_metrics_auc}
+  \caption[Performance Metrics in the training set]{Performance Metrics in the training set with mean AUROC and 95\% Confidence Interval}
+  \label{tab:performancemetricsauc}
   \renewcommand{\arraystretch}{1.5} % Adjust the vertical spacing
   \setlength{\tabcolsep}{12pt} % Adjust the horizontal spacing
   \begin{tabular}{lcc}
     \hline
-    \textbf{Metric} & \textbf{AUC} & \textbf{CI 95\%} \\
+    \textbf{Metric} & \textbf{AUROC} & \textbf{CI 95\%} \\
     \hline
-    \ac{xgboost} & 0.8809 & 0.8799, 0.882 \\  
+    xgboost & 0.8809 & 0.8799, 0.882 \\  
     Decision Tree & 0.8337 & 0.8324, 0.8349 \\
     Logistic Regression & 0.8716 & 0.8706, 0.8726 \\
     AdaBoost & 0.8753 & 0.874, 0.8766 \\ 
-    \ac{lightgbm} & 0.8805 & 0.8793, 0.8817 \\ 
+    lightgbm & 0.8805 & 0.8793, 0.8817 \\ 
     Stochastic Gradient Descent & 0.8704 & 0.8694, 0.8713 \\ 
     Random Forest & 0.8752 & 0.8743, 0.8762 \\  
     \hline
   \end{tabular}
 \end{table}
 
-
-
-\ac{xgboost} and \ac{lightgbm} were the best-performing algorithms. However, we selected \ac{lightgbm} \cite{lightgbm}. since it is faster and requires less memory. The threshold selected for deploying the model was 0.7457247885715557 which rendered the metrics in the test set like it is shown in table \ref{tab:performance_metrics_threshold}.
+\ac{xgboost} and \ac{lightgbm} were the best-performing algorithms. However, we selected \ac{lightgbm} \cite{lightgbm} since it is faster and requires less memory. The threshold selected for deploying the model was 0.7457247885715557 which rendered the metrics in the test set like it is shown in table \ref{tab:performancemetricsthreshold}.
 
 \begin{table}[htbp]
   \centering
-  \caption{Performance Metrics in the test set with chosen threshold}
-  \label{tab:performance_metrics_threshold}
-  \renewcommand{\arraystretch}{1.5} % Adjust the vertical spacing
-  \setlength{\tabcolsep}{12pt} % Adjust the horizontal spacing
-  \begin{tabular}{lc}
+\caption{Performance Metrics in the test set with chosen threshold}
+\label{tab:performancemetricsthreshold}
+\renewcommand{\arraystretch}{1.5} % Adjust the vertical spacing
+\setlength{\tabcolsep}{12pt} % Adjust the horizontal spacing
+\begin{tabular}{lc}
     \hline
     \textbf{Metric} & \textbf{Value} \\
     \hline
@@ -49,8 +46,9 @@ The evaluation metrics are present in the table below for the best hyper-paramet
 
 
 \subsubsection{Deployment}
-The purpose of this model is to be served as an \ac{api} for usage within a healthcare institution and act as a supplementary management decision support tool for obstetrics teams. And for that to happen, a health information system must make the requests to the API. Even though a concrete, vendor-specific information model and input health information system were used, we hope to create a more interoperable clinical decision support system which can be used by every system that acts upon births and obstetrics departments. That is why we built it around the \ac{hl7} \ac{fhir} standard (R5 version) in order to simplify the method of interacting with the API. This decision, opposed as to using a proprietary model for the data, sits upon the usage of \ac{fhir} resources: Bundle and Observation for request and returning the result as a message through a custom operation called "\$predict". It is intended to publish the profiles of these objects in order to facilitate access to the API using standardized mechanisms and data models - current build of the profiles \url{https://joofio.github.io/obs-cdss-fhir/}. The current spec is detailed in the following link. The process is identified in figure \ref{fig:deploy}.
+The purpose of this model is to be served as a \ac{api} for usage within a healthcare institution and act as a supplementary management decision support tool for obstetrics teams. And for that to happen, a health information system must make the requests to the API. Even though a concrete, vendor-specific information model and input health information system were used, we hope to create a more interoperable clinical decision support system which can be used by every system that acts upon births and obstetrics departments. That is why we built it around the \ac{hl7} \ac{fhir} standard (R5 version) in order to simplify the method of interacting with the API. This decision, opposed as to using a proprietary model for the data, sits upon the usage of \ac{fhir} resources: Bundle and Observation for request and returning the result as a message through a custom operation called "\$predict". It is intended to publish the profiles of these objects in order to facilitate access to the API using standardized mechanisms and data models - current build of the profiles \url{https://joofio.github.io/obs-cdss-fhir/}. The current spec is detailed in the following link. The process is identified in figure \ref{fig:deploy}.
 We deployed this model in production in a single hospital and without a user interface, only collecting the data and prediction for later discussion and analysis. We collected 3231 requests. During this time, the number of alarms that were triggered was 123 (3.8\%). From this, we tried to understand the level of certainty for the decision and check the difference from the threshold of these alarms. The distance to the threshold for 73 was lower than 0.1 and was bigger than 0.1 for 50 (1.55\%) cases.
+
 %TC:ignore
 
 \begin{figure}[htbp]
@@ -79,15 +77,7 @@ As for feature importance, from the 60 answers, we got 55\% with labour being th
 %TC:endignore
 
 
-%TC:ignore
 
-%\begin{figure}[htbp]
-%\centering
-%\captionsetup{justification=centering}
-%\caption{Feature Importance of the model.}\label{fig:features} %
-%\includegraphics[scale=0.50]{figures/features.png}
-%\end{figure}
-%TC:endignore
 
 \subsubsection{Potential Financial Impact}
 The financial support provided to public hospitals in Portugal is partially tied to the rate of \acp{cs}. To assess the potential impact of this mechanism on all Portuguese public hospitals, we conducted a simulation study. We got data for every public hospital for the last 12 months \cite{pordatacesarianas} and applied a reduction of 3.8\% (the rate of warnings triggered in the new dataset) and recalculated the rate of \acp{cs}. The increase in support was calculated by the state-mandated rate as shown in table \ref{tab:corrections}. With this new rate, we observed that implementing our tool would result in financial benefits for 30\% (11 hospitals) of the public hospitals. Specifically, five hospitals would begin receiving support instead of no support at all. Three hospitals would experience a doubling of their financial benefit, while two hospitals would see a 50\% increase. Furthermore, one hospital would receive an additional one-third of financial support.
@@ -108,7 +98,7 @@ Rate of \acp{cs}   & Support \\
 {[}25\%, 26.4\%{]}   & 0.75 x   \\
 {[}26.5\%, 27.9\%{]} & 0.5 x    \\
 {[}28\%, 29.4\%{]}   & 0.25 x   \\
-\textgreater{}29,5\% & 0      \\
+\textgreater{}29.5\% & 0      \\
     \hline
 \end{tabular}
 \end{table}
