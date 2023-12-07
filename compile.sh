@@ -4,7 +4,9 @@
 pdflatex thesis.tex
 
 # Run BibTeX
-bibtex thesis.aux
+#bibtex thesis.aux
+
+biber thesis.aux
 
 # Compile again to include bibliography
 pdflatex thesis.tex

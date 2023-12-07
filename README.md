@@ -17,7 +17,9 @@
 3. rever estrutura bibliografia
 4. rever informação de cada referencia
 5. normalizar escrita (UK vs US, real world vs real-world, etc)
-6. ...
+6. nomes de figuras e tableas para intro e no texto
+7. Goals - reformular
+8. ...
 
 
 ## NOTAS

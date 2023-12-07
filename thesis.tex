@@ -19,7 +19,9 @@
 %\usepackage[acronym]{glossaries}
 \usepackage[nonumberlist]{glossaries}
 
-
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{references.bib}
+\addbibresource{full-thesis.bib}
 %%%%%%% English version 
 
 %% MIMED options
@@ -123,6 +125,7 @@
 \input{pieces/acro}
 \input{pieces/terms}
 \input{mymacros}
+
 
 %%========================================
 %% Start of document
@@ -230,9 +233,9 @@
 %% Comment the next command if BibTeX file not used
 %% bibliography is in ``myrefs.bib''
 
-\PrintBib{references, full-thesis}
+%\PrintBib{references, full-thesis}
 %\bibliographystyle{plainnat}
-%\bibliography{references,full-thesis}
+\printbibliography
 %% Index
 %% Uncomment next command if index is required
 %% don't forget to run ``makeindex thesis'' command
