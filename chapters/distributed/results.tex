@@ -1,4 +1,4 @@
-Table \ref{tab:allvsall} shows the aggregated metrics for \ac{auroc}, \ac{auprc}, \ac{rmse} and \ac{mae} for distributed, centralised and local models predicting capabilities on each silo. The data refers to the mean of the metric values for all columns tested as targets for all methods and all silos. We also calculated the 95\% confidence interval for each model (local and distributed per silo in order to assess how well the distributed model would work as opposed to the local one per silo. We also calculated the p Value for the means.
+Table \ref{tab:allvsall} shows the aggregated metrics for \ac{auroc}, \ac{auprc}, \ac{rmse} and \ac{mae} for distributed, centralised and local models predicting capabilities on each silo. The data refers to the mean of the metric values for all columns tested as targets for all methods and all silos. We also calculated the 95\% confidence interval for each model (local and distributed per silo in order to assess how well the distributed model would work as opposed to the local one per silo. We also calculated the \textit{P} value for the means.
 %TC:ignore
 
 \begin{table}[htbp] 
@@ -54,7 +54,7 @@ Table \ref{tab:allvsall} shows the aggregated metrics for \ac{auroc}, \ac{auprc}
 \centering
 \captionsetup{justification=centering}
 
-\caption{Heatmap of classification algorithm and silo vs Target variable and model type. Value is the AUROC mean of all 10 experiments. Y axis is the algorithm and silo. X axis is Target variable and Method.}\label{fig:heatmap-cat} 
+\caption{Heatmap of classification algorithm and silo vs Target variable and model type. Value is the \ac{auroc} mean of all 10 experiments. Y axis is the algorithm and silo. X axis is Target variable and Method.}\label{fig:heatmap-cat} 
 \includegraphics[scale=0.26]{figures/heatmap-class.png}
 \end{figure}
 %TC:endignore
@@ -64,7 +64,7 @@ Table \ref{tab:allvsall} shows the aggregated metrics for \ac{auroc}, \ac{auprc}
 \centering
 \captionsetup{justification=centering}
 
-\caption{Heatmap of regression algorithm and silo vs Target variable and model type. Value is the MAE mean of all 10 experiments. The y axis is the algorithm and silo. X axis is Target variable and Method.}\label{fig:heatmpa-int} 
+\caption{Heatmap of regression algorithm and silo vs Target variable and model type. Value is the \ac{mae} mean of all 10 experiments. The y axis is the algorithm and silo. X axis is Target variable and Method.}\label{fig:heatmpa-int} 
 \includegraphics[scale=0.22]{figures/heatmap-reg.png}
 \end{figure}
 %TC:endignore

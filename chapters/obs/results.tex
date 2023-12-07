@@ -4,7 +4,7 @@ The evaluation metrics are present in the table below for the best hyper-paramet
 
 \begin{table}[htbp]
   \centering
-  \caption[Performance Metrics in the training set]{Performance Metrics in the training set with mean AUROC and 95\% Confidence Interval (CI)}
+  \caption[Performance Metrics in the training set]{Performance Metrics in the training set with mean \ac{auroc} and 95\% \acl{ci}}
   \label{tab:performance_metrics_auc}
   \renewcommand{\arraystretch}{1.5} % Adjust the vertical spacing
   \setlength{\tabcolsep}{12pt} % Adjust the horizontal spacing
@@ -12,11 +12,11 @@ The evaluation metrics are present in the table below for the best hyper-paramet
     \hline
     \textbf{Metric} & \textbf{AUC} & \textbf{CI 95\%} \\
     \hline
-    XGBoost & 0.8809 & 0.8799, 0.882 \\  
+    \ac{xgboost} & 0.8809 & 0.8799, 0.882 \\  
     Decision Tree & 0.8337 & 0.8324, 0.8349 \\
     Logistic Regression & 0.8716 & 0.8706, 0.8726 \\
     AdaBoost & 0.8753 & 0.874, 0.8766 \\ 
-    LightGBM & 0.8805 & 0.8793, 0.8817 \\ 
+    \ac{lightgbm} & 0.8805 & 0.8793, 0.8817 \\ 
     Stochastic Gradient Descent & 0.8704 & 0.8694, 0.8713 \\ 
     Random Forest & 0.8752 & 0.8743, 0.8762 \\  
     \hline
@@ -25,7 +25,7 @@ The evaluation metrics are present in the table below for the best hyper-paramet
 
 
 
-XGBoost and LightGBM were the best-performing algorithms. However, we selected LightGBM \cite{lightgbm}. since it is faster and requires less memory. The threshold selected for deploying the model was 0.7457247885715557 which rendered the metrics in the test set like it is shown in table \ref{tab:performance_metrics_threshold}.
+\ac{xgboost} and \ac{lightgbm} were the best-performing algorithms. However, we selected \ac{lightgbm} \cite{lightgbm}. since it is faster and requires less memory. The threshold selected for deploying the model was 0.7457247885715557 which rendered the metrics in the test set like it is shown in table \ref{tab:performance_metrics_threshold}.
 
 \begin{table}[htbp]
   \centering
@@ -63,7 +63,7 @@ We deployed this model in production in a single hospital and without a user int
 
 \subsubsection{Clinical Evaluation}
 The clinical evaluation was done by sending questionnaires to clinicians with a relationship with obstetrics in order to assess 10 patients, with only access to the variables used by the model and to answer 3 questions for each. The first was to give a score from 1-10 of how likely that patient would give birth through \ac{cs}, then to select the feature/variable that most influenced the decision and which feature they would require to make a better assessment. We sent the questionnaire to 20 people and got 6 answers. This rendered the results in figure \ref{fig:clinical}. We also predicted the result with the model as stated in figure \ref{fig:clinical}. These patients were new and not seen ever by the model in the training phase. 
-As for the analysis of the most important features and missing features, the missing features were categorized into 3 categories: 1) Existent in the dataset but not included in the model, 2) Non-existent in the dataset and 3) existent in the dataset and included but that particular information was not filled for the patient assessed. This rendered a total of 62\% non-existent and 38 \% existent but no information was provided at that moment. No feature mentioned existed but had not been included in the model. From the non-existent, 38 \% were new clinical assessments, 38\% were linked to information from previous births,  15\% connected in more in-depth information about provided information (i.e, motive for induction) and 11\% were related to the mother's choice (if she wanted a \ac{cs}).
+As for the analysis of the most important features and missing features, the missing features were categorized into 3 categories: 1) Existent in the dataset but not included in the model, 2) Non-existent in the dataset and 3) existent in the dataset and included but that particular information was not filled for the patient assessed. This rendered a total of 62\% non-existent and 38\% existent but no information was provided at that moment. No feature mentioned existed but had not been included in the model. From the non-existent, 38\% were new clinical assessments, 38\% were linked to information from previous births,  15\% connected in more in-depth information about provided information (i.e, motive for induction) and 11\% were related to the mother's choice (if she wanted a \ac{cs}).
 As for feature importance, from the 60 answers, we got 55\% with labour being the most important factor. 15\% answered the number of previous vaginal births, 8\% the evolution of weight and another 8\% the number of previous \acp{cs}. The remaining 14\% were various features, from \ac{bmi}, neuroaxis techniques, gestational age and weight of the mother. Of all of these, 90\% were included and were in the top 10 features of the model.
 
 

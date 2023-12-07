@@ -41,13 +41,7 @@ Rank-biased overlap (RBO) \cite{webberSimilarityMeasureIndefinite2010} is a meas
 where $\rho$ is the weight, $g_d$ is the gain at depth $d$, and $\sum_{d=1}^{\infty}$ indicates the summation over all depths.
 
 
-Finally, we intend to use text-distance metrics. The theory behind this experiment is to treat the ordered columns in a ranking manner and apply text-distance metrics to check the distance between the two. Levenshtein distance \cite{navarroGuidedTourApproximate2001} is the minimum number of single-character insertions, deletions, or substitutions required to transform one string into another.
-
-Damerau-Levenshtein distance \cite{navarroGuidedTourApproximate2001} is similar to Levenshtein distance but also includes the transposition of two adjacent characters as an allowable operation.
-
-The hamming distance \cite{6772729} is a measure of the difference between two strings of equal length, defined as the number of positions at which the corresponding symbols are different.
-
-Jaro-Winkler distance \cite{navarroGuidedTourApproximate2001} is a string similarity measure that takes into account the number of matching characters, the number of transpositions, and the length of common prefixes, with a higher weight given to the common prefix.
+Finally, we intend to use text-distance metrics. The theory behind this experiment is to treat the ordered columns in a ranking manner and apply text-distance metrics to check the distance between the two. Levenshtein distance \cite{navarroGuidedTourApproximate2001} is the minimum number of single-character insertions, deletions, or substitutions required to transform one string into another. Damerau-Levenshtein distance \cite{navarroGuidedTourApproximate2001} is similar to Levenshtein distance but also includes the transposition of two adjacent characters as an allowable operation. The hamming distance \cite{6772729} is a measure of the difference between two strings of equal length, defined as the number of positions at which the corresponding symbols are different. Jaro-Winkler distance \cite{navarroGuidedTourApproximate2001} is a string similarity measure that takes into account the number of matching characters, the number of transpositions, and the length of common prefixes, with a higher weight given to the common prefix.
 
 
 
@@ -77,7 +71,7 @@ Train-Test Split (95:5)
 
 
 
-The algorithms chosen were decision trees, random forests, \ac{svm},  \ac{knn}, and linear regression/logistic regression as implemented in the scikit-learn package \cite{scikit-learn}. The text distance metrics were implemented by the text-distance package \cite{orsiniumTextdistanceComputeDistance}. Kendall tau, weighted Kendall tau were used as implemented by scipy \cite{virtanenSciPyFundamentalAlgorithms2020a} and RBO, as implemented in \cite{chenRankbiasedOverlapRBO2023}.
+The algorithms chosen were decision trees, random forests, \ac{svm},  \ac{knn}, and linear regression/logistic regression as implemented in the \textit{scikit-learn} package \cite{scikit-learn}. The text distance metrics were implemented by the text-distance package \cite{orsiniumTextdistanceComputeDistance}. Kendall tau, weighted Kendall tau were used as implemented by scipy \cite{virtanenSciPyFundamentalAlgorithms2020a} and RBO, as implemented in \cite{chenRankbiasedOverlapRBO2023}.
 
 
 

@@ -9,7 +9,7 @@ For the usage of the \acp{bn} in particular, the continuous variables were discr
 The \ac{api} for serving the prediction models was developed with FastAPI. So, the methods applied in terms of the DQA framework shown in figure \ref{fig:categories} are described in the table \ref{tab:methods}.
 
 
-As for  Z-Scores, they were defined for all continuous variables based on the interquartile range. Then, rows were also assessed with distance analysis, with Local Outlier Factor and Elliptic Envelope from scikit-learn and the outlier-tree algorithm. We also added a rule engine, using the  package. Rules were defined by the team, focusing on impossible numbers present in age, weight, or relationship between variables. As for missing information was created with all the data, creating the scoring based on the inverse of the missing percentage. Missing detection was based on primary key variables. For completeness, we used the inverse of the percentage of nulls in the training set.
+As for  Z-Scores, they were defined for all continuous variables based on the interquartile range. Then, rows were also assessed with distance analysis, with Local Outlier Factor and Elliptic Envelope from \textit{scikit-learn} and the outlier-tree algorithm. We also added a rule engine, using the  package. Rules were defined by the team, focusing on impossible numbers present in age, weight, or relationship between variables. As for missing information was created with all the data, creating the scoring based on the inverse of the missing percentage. Missing detection was based on primary key variables. For completeness, we used the inverse of the percentage of nulls in the training set.
 The API for serving the prediction models was developed with FastAPI. So, the methods applied in terms of the DQA framework shown in figure \ref{fig:categories} are described in the table 
 
 \begin{table}[htpb]
@@ -22,7 +22,7 @@ The API for serving the prediction models was developed with FastAPI. So, the me
  Category   & Subcategory           & Method   \\ \hline
 Completeness     & N/A               & Score by the inverse percentage of missing in the train data         \\ 
 Plausibility & Atemporal Plausibility & Bayesian model prediction based on the other values of row \\ 
-Plausibility & Atemporal Plausibility         & Z-score for column value based on IQR train data       \\    
+Plausibility & Atemporal Plausibility         & Z-score for column value based on \acs{iqr} train data       \\    
 Plausibility & Atemporal Plausibility           & Elliptic Envelope                       \\ 
 Plausibility & Atemporal Plausibility           & Local Outlier Factor                \\ 
 Conformance & Value Conformance           & Manual Rule engine                           \\ 
@@ -34,7 +34,7 @@ Plausibility & Atemporal Plausibility           & outlier-tree                  
 \end{table}
 
 For trying to compile all of these models into a single value, that could grasp the quality of the row or patient, a scoring method was created. The method of calculating the final score is stated in figure \ref{fig:scores}. To assess the tool’s usefulness, we implemented it in a production environment and collect metrics regarding the data being produced. Then we presented some rows (or patient's records) to selected obstetrics clinicians for them to assess how likely the information is to be suitable for usage or rank it according to the perceived quality of the record. We also compared the results with the ones from the model to make sanity checks regarding the model’s performance and adequacy. We used Kendal Tau and Average Spearman’s Rank Correlation Coefficient. Kendall Tau is a non-parametric statistic used to measure the strength and direction of the association between two ordinal variables. It calculates the difference between the number of concordant and discordant pairs of observations, normalized to ensure a value between -1 (perfect disagreement) and 1 (perfect agreement). Spearman’s rank correlation coefficient is a non-parametric measure that assesses the strength and direction of a monotonic relationship between two ranked variables. It is based on the ranked values of the variables rather than their raw data, producing a value between -1 (perfect inverse relationship) and 1 (perfect direct relationship).
-We wrote all the code in Python 3.10.6 with the usage of the scikit-learn library for preprocessing, and evaluation \cite{scikit-learn}.
+We wrote all the code in Python 3.10.6 with the usage of the \textit{scikit-learn} library for preprocessing, and evaluation \cite{scikit-learn}.
 
 
 
