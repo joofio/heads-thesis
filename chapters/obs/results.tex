@@ -1,28 +1,114 @@
-\subsubsection{The model}
-The results are mainly the model that predicts the occurrence of a \ac{cs} or natural delivery. The evaluation metrics are present in the table below for the best hyper-parameters found for the training data.
+\subsubsection{Descriptive Statistics}
+The number of samples varied across the hospitals, ranging from 2364 to 18177. Distributions of the selected variables are presented in table \ref{tab:obs_material_1}. The sum of all samples totals 73351.
 
+\begin{table}[htbp]
+  \centering
+  \caption{Distribution of features used for prediction, Mean and Standard Deviation (SD) for continuous variables. Mode and percentage for categorical variables. Number of samples is 73351.}
+  \label{tab:obs_material_1}
+   \renewcommand{\arraystretch}{1.02} % Adjust the vertical spacing
+  \setlength{\tabcolsep}{12pt} % Adjust the horizontal spacing
+    \begin{tabular}{m{15em}cc}
+    \toprule
+        Variable & M (SD) & Mode [\%] \\ 
+        \hline
+        Mother Age & 31.0 (5.6) & ~ \\ 
+        Weight pre-pregnancy & 65.8 (13.9) & ~ \\ 
+        Weight on admission & 78.6 (14.2) & ~ \\ 
+        \ac{bmi} & 25.0 (5.4) & ~ \\ 
+        Previous eutocic delivery & 0.4 (0.7) & ~ \\ 
+        Previous vacuum-assisted delivery & 0.1 (0.3) & ~ \\ 
+        Previous forceps & 0.0 (0.1) & ~ \\ 
+        Previous \ac{cs} & 0.1 (0.4) & ~ \\ 
+        Fetal presentation on admission & ~ & cephalic [26.323\%] \\ 
+        Bishop score & 5.5 (3.0) & ~ \\ 
+        Gestational age on admission & 38.9 (1.9) & ~ \\ 
+        Premature rupture of the membrane & ~ & No [87.991\%] \\ 
+        Chronic hypertension & ~ & No [97.676\%] \\ 
+        Gestational hypertension & ~ & No [97.749\%] \\ 
+        Preeclampsia & ~ & No [98.299\%] \\ 
+        Gestational diabetes & ~ & No [89.811\%] \\ 
+        Gestational diabetes treated with diet & ~ & No [94.285\%] \\ 
+        Gestational diabetes treated with insulin & ~ & No [98.083\%] \\ 
+        Gestational diabetes treated with oral antidiabetic drugs & ~ & No [97.797\%] \\ 
+        Maternal Diabetes & ~ & No [99.509\%] \\ 
+        Type 1 Diabetes & ~ & No [99.816\%] \\ 
+        Type 2 Diabetes & ~ & No [99.843\%] \\ 
+        Presentation at birth & ~ & Vertex presentation [94.000\%] \\ 
+        Delivery & ~ & Spontaneous [53.864\%] \\ 
+        Gestational age on birth & 39.0 (1.8) & ~ \\ 
+        Smoking during pregnancy & ~ & No [88.442\%] \\ 
+        Alcohol consumption during pregnancy & ~ & No [98.65\%] \\ 
+        Consumed drugs during pregnancy & ~ & No [99.825\%] \\ 
+        Nr of pregnancies (with current) & 1.9 (1.1) & ~ \\ 
+        Pregnancy type & ~ & Spontaneous [85.417\%] \\ 
+        Surveillance & ~ & yes [97.699\%] \\ 
+        Hospital surveillance & ~ & yes [67.807\%] \\ 
+        Pelvis Adequacy & ~ & Adequate [17.512\%] \\ 
+        Consistency of the cervix & 1.6 (0.6) & ~ \\ 
+        Fetal station & 0.8 (0.8) & ~ \\ 
+        Dilation of the cervix & 1.3 (0.8) & ~ \\ 
+        Effacement of the cervix & 1.2 (1.2) & ~ \\ 
+        Position of the cervix & 0.6 (0.7) & ~ \\ 
+        Haematologic disease & ~ & No [95.674\%] \\ 
+        Respiratory disease & ~ & No [95.605\%] \\ 
+        Cerebral disease & ~ & No [98.793\%] \\ 
+        Cardiac disease & ~ & No [92.967\%] \\ 
+        Neuroaxis techniques & ~ & 1 [69.5\%] \\ 
+        Number of children  & 0.6 (0.8)  & ~\\ 
+        \bottomrule
+    \end{tabular}
+
+
+\end{table}
+The outcome variable had the following distribution as stated in table \ref{tab:delivery_methods}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Distribution of Delivery Methods}
+  \label{tab:delivery_methods}
+  \renewcommand{\arraystretch}{1.5} % Adjust the vertical spacing
+  \setlength{\tabcolsep}{12pt} % Adjust the horizontal spacing
+  \begin{tabular}{lc}
+    \hline
+    \textbf{Type of delivery} & \textbf{Frequency (\%)} \\
+\hline
+    \ac{cs} & 19 803 \, (27\%) \\
+
+    Vaginal & 38 189 \, (52\%) \\
+
+    Instrumental delivery & 15 359 \, (21\%) \\
+    \hline
+  \end{tabular}
+\end{table}
+%Vaginal      0.520634
+%Cesariana    0.269976
+%auxiliado    0.209390
+
+
+
+\subsubsection{The model}
+The AUROC is presented in table \ref{tab:performancemetricsauc} for the best hyper-parameters found for each algorithm in the training data. All models used the variables indicated in table \ref{tab:obs_material_1}.
 \begin{table}[htbp]
   \centering
   \caption[Performance Metrics in the training set]{Performance Metrics in the training set with mean AUROC and 95\% Confidence Interval}
   \label{tab:performancemetricsauc}
   \renewcommand{\arraystretch}{1.5} % Adjust the vertical spacing
   \setlength{\tabcolsep}{12pt} % Adjust the horizontal spacing
-  \begin{tabular}{lcc}
+  \begin{tabular}{lccc}
     \hline
-    \textbf{Metric} & \textbf{AUROC} & \textbf{CI 95\%} \\
+    \textbf{Metric} & \textbf{AUROC} & \textbf{CI 95\%} \textbf{p value} \\
     \hline
-    xgboost & 0.8809 & 0.8799, 0.882 \\  
-    Decision Tree & 0.8337 & 0.8324, 0.8349 \\
-    Logistic Regression & 0.8716 & 0.8706, 0.8726 \\
-    AdaBoost & 0.8753 & 0.874, 0.8766 \\ 
-    lightgbm & 0.8805 & 0.8793, 0.8817 \\ 
-    Stochastic Gradient Descent & 0.8704 & 0.8694, 0.8713 \\ 
-    Random Forest & 0.8752 & 0.8743, 0.8762 \\  
+    XGBoost & 0.8809 & 0.8799, 0.882 & - \\  
+    Decision Tree & 0.8337 & 0.8324, 0.8349 & $le$ 0.001\\
+    Logistic Regression & 0.8716 & 0.8706, 0.8726 & $le$ 0.001\\
+    AdaBoost & 0.8753 & 0.874, 0.8766 & $le$ 0.001\\ 
+    lightgbm & 0.8805 & 0.8793, 0.8817 &  0.003\\ 
+    Stochastic Gradient Descent & 0.8704 & 0.8694, 0.8713& $le$ 0.001\\ 
+    Random Forest & 0.8752 & 0.8743, 0.8762& $le$ 0.001 \\  
     \hline
   \end{tabular}
 \end{table}
-
-\ac{xgboost} and \ac{lightgbm} were the best-performing algorithms. However, we selected \ac{lightgbm} \cite{lightgbm} since it is faster and requires less memory. The threshold selected for deploying the model was 0.7457247885715557 which rendered the metrics in the test set like it is shown in table \ref{tab:performancemetricsthreshold}.
+While XGBoost was the best-performing algorithm, we selected LightGBM  \cite{lightgbm} because of its speed and lower memory requirements, which we believe are better suited for deployment in a low-hardware environment. The threshold selected for deploying the model was 0.7457 which rendered the metrics in the test set, as shown in table \ref{tab:performancemetricsthreshold}.
 
 \begin{table}[htbp]
   \centering
@@ -60,9 +146,7 @@ We deployed this model in production in a single hospital and without a user int
 %TC:endignore
 
 \subsubsection{Clinical Evaluation}
-The clinical evaluation was done by sending questionnaires to clinicians with a relationship with obstetrics in order to assess 10 patients, with only access to the variables used by the model and to answer 3 questions for each. The first was to give a score from 1-10 of how likely that patient would give birth through \ac{cs}, then to select the feature/variable that most influenced the decision and which feature they would require to make a better assessment. We sent the questionnaire to 20 people and got 6 answers. This rendered the results in figure \ref{fig:clinical}. We also predicted the result with the model as stated in figure \ref{fig:clinical}. These patients were new and not seen ever by the model in the training phase. 
-As for the analysis of the most important features and missing features, the missing features were categorized into 3 categories: 1) Existent in the dataset but not included in the model, 2) Non-existent in the dataset and 3) existent in the dataset and included but that particular information was not filled for the patient assessed. This rendered a total of 62\% non-existent and 38\% existent but no information was provided at that moment. No feature mentioned existed but had not been included in the model. From the non-existent, 38\% were new clinical assessments, 38\% were linked to information from previous births,  15\% connected in more in-depth information about provided information (i.e, motive for induction) and 11\% were related to the mother's choice (if she wanted a \ac{cs}).
-As for feature importance, from the 60 answers, we got 55\% with labour being the most important factor. 15\% answered the number of previous vaginal births, 8\% the evolution of weight and another 8\% the number of previous \acp{cs}. The remaining 14\% were various features, from \ac{bmi}, neuroaxis techniques, gestational age and weight of the mother. Of all of these, 90\% were included and were in the top 10 features of the model.
+The median scores given by each clinician are presented in figure \ref{fig:clinical}. We also predicted the result using our model as stated in figure 2. The model misclassified only one record (4). As for the analysis of missing features for the responders, they were divided into 3 categories: 1) Existent in the dataset but not included in the model, 2) Non-existent in the dataset and 3) existent in the dataset and included but that particular information was not filled for the patient assessed. This rendered a total of 62\% non-existent and 38\% existent but no information was provided at that moment. No feature mentioned existed but had not been included in the model. From the non-existent, 38\% were new clinical assessments, 38\% were linked to information from previous births, 15\% connected in more in-depth information about provided information (i.e, motive for induction) and 11\% were related to the mother’s choice (if she wanted a C-section). As for feature importance, from the 60 answers, we got 55\% with labor being the most important factor. 15\% answered the number of previous vaginal births, 8\% the evolution of weight and another 8\% the number of previous C-sections. The remaining 14\% were various features, from BMI, neuroaxis techniques, gestational age and weight of the mother. Of all of these, 90\% were in the top 10 features of the model.
 
 
 
@@ -80,8 +164,7 @@ As for feature importance, from the 60 answers, we got 55\% with labour being th
 
 
 \subsubsection{Potential Financial Impact}
-The financial support provided to public hospitals in Portugal is partially tied to the rate of \acp{cs}. To assess the potential impact of this mechanism on all Portuguese public hospitals, we conducted a simulation study. We got data for every public hospital for the last 12 months \cite{pordatacesarianas} and applied a reduction of 3.8\% (the rate of warnings triggered in the new dataset) and recalculated the rate of \acp{cs}. The increase in support was calculated by the state-mandated rate as shown in table \ref{tab:corrections}. With this new rate, we observed that implementing our tool would result in financial benefits for 30\% (11 hospitals) of the public hospitals. Specifically, five hospitals would begin receiving support instead of no support at all. Three hospitals would experience a doubling of their financial benefit, while two hospitals would see a 50\% increase. Furthermore, one hospital would receive an additional one-third of financial support.
-If we assumed that only half of the warnings found in the new data were actually true (1.9\%) we found that only 6 hospitals would be benefited. 3 from 0 to 0.25, 2 from 0.25 to 0.50 and 1 from 0.50 to 0.75.
+The financial support provided to public hospitals in Portugal is partially tied to the rate of C-sections. To assess the potential impact of this mechanism on Portuguese public hospitals, we conducted a simulation. We got data for every public hospital for the last 12 months and applied a 3.8\% reduction (the rate of warnings triggered in the new dataset) and recalculated the rate of C-sections. The increase in support was calculated by the state-mandated rate as shown in table 5. With this new rate, we observed that implementing our tool would result in financial benefits for 30\% (11 hospitals) of the public hospitals. Specifically, five hospitals would begin receiving support instead of no support at all. Three hospitals would experience a doubling of their financial benefit, while two hospitals would see a 50\% increase. Furthermore, one hospital would receive an additional one third of financial support. If we assumed that only half of the warnings found in the new data were actually true (1.9\%) we found that only 6 hospitals would be benefited. 3 from 0 to 0.25, 2 from 0.25 to 0.50 and 1 from 0.50 to 0.75.
 
 
 \begin{table}[htbp]

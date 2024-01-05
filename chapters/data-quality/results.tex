@@ -4,7 +4,7 @@ A \ac{bn} with structure and parameters learned from the training dataset reache
 
 
 \begin{table}[htpb]
- \caption{Validation Results: Column acronym with \ac{auroc} along with 95\% \ac{ci}. Acronym description is available in appendix \ref{appendix:data_dict}} \label{tab:result_auc} 
+ \caption{Repeated Cross-Validation (10x2) Results: Column acronym with \ac{auroc} along with 95\% \ac{ci}. Acronym description is available in appendix \ref{appendix:data_dict}} \label{tab:result_auc} 
 
 \renewcommand{\arraystretch}{1.2}
 %\setlength{\tabcolsep}{8pt}
@@ -77,4 +77,4 @@ As for the clinicians' assessment, we got 4 answers. Figure \ref{fig:clinical_dq
 \end{figure}
 %TC:endignore
 
-The Average Spearman's Rank Correlation Coefficient was 0.04 and the Kendall's Tau was 0.0 with a \textit{P} value of 1.
+The Average Spearman's Rank Correlation Coefficient was 0.04 and the Kendall's Tau was 0.0 with a \textit{P} value of 1. Defining the threshold for the model at 0.23 and the threshold for the physician at 8, we got an accuracy of 0.9, precision of 1, recall of 0.66 and f1-score at 0.8.
