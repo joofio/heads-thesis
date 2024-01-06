@@ -4,11 +4,11 @@ without passion.
 \qauthor{Friedrich Hegel}
 \end{savequote}
 
-\chapter{Assess health data science  methods with limited data access}\label{chap:goal2}
+\chapter{Assess Health Data Science Methods With Limited Data Access}\label{chap:goal2}
 This section delves into the assessment of health data science methods under the constraints of limited data access, as outlined in sections \ref{subsec:distributed} and \ref{subsec:benchmark}. It emphasizes the importance of developing and evaluating data science techniques that can operate effectively even when direct access to comprehensive datasets is restricted. In section \ref{subsec:distributed}, the focus is on distributed data approaches, which allow for the analysis of health data across multiple locations without the need to centralize the information. This method is crucial for maintaining privacy and security, especially in sensitive health data contexts. Meanwhile, section \ref{subsec:benchmark} discusses benchmarking strategies for these methodologies, providing a framework to evaluate their effectiveness and reliability. These benchmarks are essential to ensure that the methods yield accurate and useful insights, despite the limitations in data accessibility.
 
 
-\section{Leveraging Distributed systems in healthcare: is it advisable?}\label{subsec:distributed}
+\section{Leveraging Distributed Systems in Healthcare: is it Advisable?}\label{subsec:distributed}
 This section is based on the paper entitled "Evaluating distributed-learning algorithms on real-world healthcare data". This paper was focused on the fact that access to healthcare data is often laboursome and time-consuming. So we evaluated the distributed paradigm to its gold-standard, the centralized paradigm. We used 9 real-world datasets of obstetrics \acp{ehr} and compared the performance of several \ac{ml} algorithms in both paradigms. We concluded that the distributed paradigm is a valid alternative to the centralized paradigm, with the added benefit of not requiring heavy data sharing.
 
 \subsection{Introduction}
@@ -27,17 +27,19 @@ This section is based on the paper entitled "Evaluating distributed-learning alg
 \input{chapters/distributed/conclusion}
 
 
-\section{Can Institutions share their performance metrics without hesitation of retaliation?}\label{subsec:benchmark}
+\section{Can Institutions Share Their Performance Metrics Without Hesitation of Retaliation?}\label{subsec:benchmark}
 This section is based on the paper entitled "Benchmarking institutions' health outcomes with clustering methods". This paper was focused on the fact that many healthcare institutions harbor reservations about openly sharing production metrics. One predominant concern is the potential for retaliatory actions, be it from regulatory bodies, competitors, or the public. In this paper, we propose the application of a clustering methodology that allows institutions to compare performance metrics without disclosing the actual values. The method is based on clustering, which involves grouping health institutions' outcomes into a known number of clusters, allowing institutions to position themselves in a range of clusters without sharing the true means of their target data. The proposed method uses the K-means and K-modes clustering algorithms and was tested on data from real Electronic health records and public datasets. This approach provides a valid benchmark of hospital metrics and performances while protecting the privacy of participating institutions. 
 \subsection{Introduction}
 \input{chapters/benchmark/intro}
 \subsection{Rationale and Related Work}
 \input{chapters/benchmark/relatedwork}
 \subsection{Materials \& Methods}
+
+\subsubsection{Materials}
+\input{chapters/benchmark/materials}
 \subsubsection{Method Overview}
 \input{chapters/benchmark/methods}
-\subsubsection{Data used}
-\input{chapters/benchmark/materials}
+
 \subsection{Results}
 \input{chapters/benchmark/results}
 \subsection{Discussion}
