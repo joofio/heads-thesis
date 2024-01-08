@@ -1,5 +1,11 @@
 %some macro definitions
-
+% Define a custom glossary style without a header
+\newglossarystyle{myStyle}{
+  % Start with the 'list' style
+  \setglossarystyle{list}
+  % Remove the group headings
+  \renewcommand*{\glsgroupheading}[1]{}
+}
 % format
 \newcommand{\class}[1]{{\normalfont\slshape #1\/}}
 
