@@ -19,3 +19,5 @@ pdflatex thesis.tex
 pdflatex thesis.tex
 
 # END: Compile LaTeX file
+
+pandoc --from latex --to docx  --citeproc --bibliography references.bib --bibliography full-thesis.bib -s thesis.tex -o thesis.docx
