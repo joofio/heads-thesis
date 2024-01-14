@@ -19,7 +19,9 @@
 5. normalizar escrita (UK vs US, real world vs real-world, etc)
 6. nomes de figuras e tableas para intro e no texto
 7. Goals - reformular
-8. ...
+8. s detailed in the ’Ethics Approval and Consent to Participate’ subsection.  (rever se ha e mudar acordingly)
+9. 
+10. ...
 
 
 ## NOTAS
