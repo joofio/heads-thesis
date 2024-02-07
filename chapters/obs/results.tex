@@ -60,7 +60,7 @@ The number of samples varied across the hospitals, ranging from 2364 to 18177. D
 
 
 \end{table}
-The outcome variable had the following distribution as stated in table \ref{tab:delivery_methods}
+The outcome variable had the following distribution as stated in table \ref{tab:delivery_methods}.
 
 \begin{table}[htbp]
   \centering
@@ -90,21 +90,21 @@ The outcome variable had the following distribution as stated in table \ref{tab:
 The AUROC is presented in table \ref{tab:performancemetricsauc} for the best hyper-parameters found for each algorithm in the training data. All models used the variables indicated in table \ref{tab:obs_material_1}.
 \begin{table}[htbp]
   \centering
-  \caption[Performance Metrics in the training set]{Performance Metrics in the training set with mean AUROC and 95\% Confidence Interval}
+  \caption[Performance Metrics in the training set]{Repeated Cross-validation (10x2) results in the training set with mean AUROC and 95\% Confidence Interval (CI) for best hyper-parameters found for each algorithm. Wilcoxon Test for comparing with the best performing algorithm.}
   \label{tab:performancemetricsauc}
   \renewcommand{\arraystretch}{1.5} % Adjust the vertical spacing
   \setlength{\tabcolsep}{12pt} % Adjust the horizontal spacing
   \begin{tabular}{lccc}
     \hline
-    \textbf{Metric} & \textbf{AUROC} & \textbf{CI 95\%} \textbf{p value} \\
+    \textbf{Metric} & \textbf{AUROC} & \textbf{CI 95\%} \textit{\textbf{P value}} \\
     \hline
     XGBoost & 0.8809 & 0.8799, 0.882 & - \\  
-    Decision Tree & 0.8337 & 0.8324, 0.8349 & $le$ 0.001\\
-    Logistic Regression & 0.8716 & 0.8706, 0.8726 & $le$ 0.001\\
-    AdaBoost & 0.8753 & 0.874, 0.8766 & $le$ 0.001\\ 
+    Decision Tree & 0.8337 & 0.8324, 0.8349 & $\leq$ 0.001\\
+    Logistic Regression & 0.8716 & 0.8706, 0.8726 & $\leq$ 0.001\\
+    AdaBoost & 0.8753 & 0.874, 0.8766 & $\leq$ 0.001\\ 
     lightgbm & 0.8805 & 0.8793, 0.8817 &  0.003\\ 
-    Stochastic Gradient Descent & 0.8704 & 0.8694, 0.8713& $le$ 0.001\\ 
-    Random Forest & 0.8752 & 0.8743, 0.8762& $le$ 0.001 \\  
+    Stochastic Gradient Descent & 0.8704 & 0.8694, 0.8713& $\leq$ 0.001\\ 
+    Random Forest & 0.8752 & 0.8743, 0.8762& $\leq$ 0.001 \\  
     \hline
   \end{tabular}
 \end{table}
@@ -132,8 +132,8 @@ While XGBoost was the best-performing algorithm, we selected LightGBM  \cite{lig
 
 
 \subsubsection{Deployment}
-The purpose of this model is to be served as a \ac{api} for usage within a healthcare institution and act as a supplementary management decision support tool for obstetrics teams. And for that to happen, a health information system must make the requests to the API. Even though a concrete, vendor-specific information model and input health information system were used, we hope to create a more interoperable clinical decision support system which can be used by every system that acts upon births and obstetrics departments. That is why we built it around the \ac{hl7} \ac{fhir} standard (R5 version) in order to simplify the method of interacting with the API. This decision, opposed as to using a proprietary model for the data, sits upon the usage of \ac{fhir} resources: Bundle and Observation for request and returning the result as a message through a custom operation called "\$predict". It is intended to publish the profiles of these objects in order to facilitate access to the API using standardized mechanisms and data models - current build of the profiles \url{https://joofio.github.io/obs-cdss-fhir/}. The current spec is detailed in the following link. The process is identified in figure \ref{fig:deploy}.
-We deployed this model in production in a single hospital and without a user interface, only collecting the data and prediction for later discussion and analysis. We collected 3231 requests. During this time, the number of alarms that were triggered was 123 (3.8\%). From this, we tried to understand the level of certainty for the decision and check the difference from the threshold of these alarms. The distance to the threshold for 73 was lower than 0.1 and was bigger than 0.1 for 50 (1.55\%) cases.
+The purpose of this model is to serve as an API for usage within a healthcare institution and to act as a supplementary clinical decision support tool for obstetrics teams. For this to happen, a health information system must make the requests to the API. Even though a concrete, vendor-specific information model and input health information system were used, we hope to create a more interoperable clinical decision support system that can be used by every system that acts on birth and obstetrics departments. Therefore, we built it around the HL7 FHIR standard (R5 version) to simplify the method of interacting with the API. This decision, opposed as to using a proprietary model for the data, sits upon the usage of FHIR resources: Bundle and Observation for request and returning the result as a message through a custom operation called "\$predict". It is intended to publish the profiles of these objects in order to facilitate access to the API using standardized mechanisms and data models. The current build of the profiles can be seen in the published FHIR Implementation Guide where the current specifications are described in detail \url{https://joofio.github.io/obs-cdss-fhir/}. The process is illustrated in figure \ref{fig:deploy}. We deployed this model in production in a single hospital without a user interface, collecting only the data and predictions for later discussion and analysis. We collected 3231 requests. During this period, 123 (3.8\%) alarms were triggered. From this, we tried to understand the level of certainty for the decision and check the difference from the threshold of these alarms. The distance to the threshold for 73 was lower than 0.1 and was bigger than 0.1 for 50 (1.55\%) cases.
+
 
 %TC:ignore
 
@@ -146,7 +146,7 @@ We deployed this model in production in a single hospital and without a user int
 %TC:endignore
 
 \subsubsection{Clinical Evaluation}
-The median scores given by each clinician are presented in figure \ref{fig:clinical}. We also predicted the result using our model as stated in figure 2. The model misclassified only one record (4). As for the analysis of missing features for the responders, they were divided into 3 categories: 1) Existent in the dataset but not included in the model, 2) Non-existent in the dataset and 3) existent in the dataset and included but that particular information was not filled for the patient assessed. This rendered a total of 62\% non-existent and 38\% existent but no information was provided at that moment. No feature mentioned existed but had not been included in the model. From the non-existent, 38\% were new clinical assessments, 38\% were linked to information from previous births, 15\% connected in more in-depth information about provided information (i.e, motive for induction) and 11\% were related to the mother’s choice (if she wanted a C-section). As for feature importance, from the 60 answers, we got 55\% with labor being the most important factor. 15\% answered the number of previous vaginal births, 8\% the evolution of weight and another 8\% the number of previous C-sections. The remaining 14\% were various features, from BMI, neuroaxis techniques, gestational age and weight of the mother. Of all of these, 90\% were in the top 10 features of the model.
+The median scores given by each clinician are presented in figure \ref{fig:clinical}. We also predicted the result using our model as stated in figure 2. The model misclassified only one record (4). As for the analysis of missing features for the responders, they were divided into 3 categories: 1) Existent in the dataset but not included in the model, 2) Non-existent in the dataset and 3) existent in the dataset and included but that particular information was not filled for the patient assessed. This rendered a total of 62 \% non-existent and 38 \% existent but no information was provided at that moment. No feature mentioned existed in the dataset but had not been included in the model. From the non-existent, 38 \% were new clinical assessments, 38\% were linked to information from previous births, 15\% connected in more in-depth information about provided information (i.e, motive for induction) and 11\% were related to the mother's choice (if she wanted a C-section). As for feature importance, from the 60 answers, we got 55 \% with labor being the most important factor. 15 \% answered the number of previous vaginal births, 8 \% the evolution of weight and another 8\% the number of previous C-sections. The remaining 14\% were various features, from BMI, neuroaxis techniques, gestational age and weight of the mother. Of all of these, 90 \% were in the top 10 features of the model.
 
 
 
@@ -155,7 +155,7 @@ The median scores given by each clinician are presented in figure \ref{fig:clini
 \begin{figure}[htbp]
 \centering
 \captionsetup{justification=centering}
-\caption[Obstetrics questionnaires data]{Validation data. The colour represents the actual birth type. The boxplot represents the median and \ac{iqr} of the reviewers and the X represent each patient case. Contains 6 Vaginal births and 4 \acp{cs}. * represents wrong predictions of the model.}\label{fig:clinical} 
+\caption[Obstetrics questionnaires data]{Validation data. The colour represents the actual birth type. The boxplot represents the median and \ac{iqr} of the reviewers and the X represent each patient case. Contains 6 Vaginal births and 4 \acp{cs}. * represents wrong predictions of the model. (ID: 4)}\label{fig:clinical} 
 \includegraphics[scale=0.60]{figures/clinical_assessment.png}
 \end{figure}
 %TC:endignore
@@ -164,7 +164,7 @@ The median scores given by each clinician are presented in figure \ref{fig:clini
 
 
 \subsubsection{Potential Financial Impact}
-The financial support provided to public hospitals in Portugal is partially tied to the rate of C-sections. To assess the potential impact of this mechanism on Portuguese public hospitals, we conducted a simulation. We got data for every public hospital for the last 12 months and applied a 3.8\% reduction (the rate of warnings triggered in the new dataset) and recalculated the rate of C-sections. The increase in support was calculated by the state-mandated rate as shown in table 5. With this new rate, we observed that implementing our tool would result in financial benefits for 30\% (11 hospitals) of the public hospitals. Specifically, five hospitals would begin receiving support instead of no support at all. Three hospitals would experience a doubling of their financial benefit, while two hospitals would see a 50\% increase. Furthermore, one hospital would receive an additional one third of financial support. If we assumed that only half of the warnings found in the new data were actually true (1.9\%) we found that only 6 hospitals would be benefited. 3 from 0 to 0.25, 2 from 0.25 to 0.50 and 1 from 0.50 to 0.75.
+The financial support provided to public hospitals in Portugal is partially tied to the rate of C-sections. To assess the potential impact of this mechanism on Portuguese public hospitals, we conducted a simulation. We got data for every public hospital for the last 12 months and applied a 3.8\% reduction (the rate of warnings triggered in the new dataset) and recalculated the rate of C-sections. The increase in support was calculated by the state-mandated rate as shown in table \ref{tab:corrections}. With this new rate, we observed that implementing our tool would result in financial benefits for 30\% (11 hospitals) of the public hospitals. Specifically, five hospitals would begin receiving support instead of no support at all. Three hospitals would experience a doubling of their financial benefit, while two hospitals would see a 50\% increase. Furthermore, one hospital would receive an additional one third of financial support. If we assumed that only half of the warnings found in the new data were actually true (1.9\%) we found that only 6 hospitals would be benefited. 3 from 0 to 0.25, 2 from 0.25 to 0.50 and 1 from 0.50 to 0.75.
 
 
 \begin{table}[htbp]
