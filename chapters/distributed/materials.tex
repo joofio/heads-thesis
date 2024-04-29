@@ -1,12 +1,41 @@
 % !TeX root = ../../thesis.tex
 
-Clinical data was gathered from nine different Portuguese hospitals regarding obstetric information, pertaining to admissions from 2019 to 2020. This originated nine different files representing different sets of patients but with the same features associated to them. The software for collecting data was the same in every institution (although different versions existed across hospitals) - ObsCare. The data columns are the same in every hospital's database. Each hospital was considered a silo and summary statistics of the different silos are reported in the tables \ref{tab:distributed_materials_1} and \ref{tab:distributed_materials_2}. The data dictionary is in appendix \ref{appendix:data_dict}.
+%Clinical data was gathered from nine different Portuguese hospitals regarding obstetric information, pertaining to admissions from 2019 to 2020. This originated nine different files representing different sets of patients but with the same features associated to them. The software for collecting data was the same in every institution (although different versions existed across hospitals) - ObsCare. The data columns are the same in every hospital's database. Each hospital was considered a silo and summary statistics of the different silos are reported in the tables \ref{tab:distributed_materials_1} and \ref{tab:distributed_materials_2}. The data dictionary is in appendix \ref{appendix:data_dict}.
+%TC:ignore
+
+%{\small
+%\begin{table}[!ht]
+
+%\caption[Silos overview.]{\label{tab:distributed_materials_1 part 1}Silos overview. categorical columns have a snippet of the most used category and a percentage. Continuous variables have a mean and standard deviation. Abbreviation meaning in the appendix \ref{appendix:data_dict}. The last row is the number of patients. * columns were used as target.}
+
+%\centering
+%\input{chapters/distributed/table1}
+%\end{table}
+%}
+%\newpage
+
+%{\small
+%\begin{table}[!ht]
+
+%\caption[Silos overview part 2.]{\label{tab:distributed_materials_2}Silos overview part 2. categorical columns have a snippet of the most used category and a percentage. Continuous variables have a mean and standard deviation. Abbreviation meaning in the appendix \ref{appendix:data_dict}. The last row is the number of patients. * columns were used as target.}
+%\centering
+%\input{chapters/distributed/table2}
+
+%\end{table}
+%}
+%TC:endignore
+
+
+Clinical data was gathered from nine different Portuguese hospitals regarding obstetric information, pertaining to admissions from 2019 to 2020. This originated nine different files representing different sets of patients but with the same features associated to them. The software for collecting data was the same in every institution (although different versions existed across hospitals) - ObsCare \cite{obscare}. The data columns are the same in every hospital's database. Each hospital was considered a silo and summary statistics of the different silos are reported in the tables \ref{tab:1} and \ref{tab:1.2}. The data dictionary is in appendix \ref{appendix:data_dict}.
+The datasets were anonymized and de-identified prior to analysis and each hospital was assigned a number to ensure confidentiality. Each dataset represents a different hospital, which we will use for this analysis as a isolated silo and the number of patients in each dataset is reported in the last row of the tables \ref{tab:1} and \ref{tab:1.2}. Dataset comprised of patient's features like age and weight and characteristics as well, like if the patient smoked during pregnancy or had gestational diabetes. The dataset also comprises information about the pregnancy like number of weeks, type of birth, bishop score (pre-labor scoring system used to predict the success of induction of labor), or if the pregnancy was followed by a specific physician in a specific scenario.
+
+This study received Institutional Review Board approval from all hospitals included in this study with the following references: Centro Hospitalar São João; 08/2021, Centro Hospitalar Baixo Vouga; 12-03-2021, Unidade Local de Saúde de Matosinho; 39/CES/JAS, Hospital da Senhora da Oliveira; 85/2020, Centro Hospitalar Tamega Sousa; 43/2020, Centro Hospitalar Vila Nova de Gaia/Espinho; 192/2020, Centro Hospitalar entre Douro e Vouga; CA-371/2020-0t\_MP/CC, Unidade Local de saúde do Alto Minho; 11/2021.
+All methods were carried out in accordance with relevant guidelines and regulations.
 %TC:ignore
 
 {\small
-\begin{table}[!ht]
-
-\caption[Silos overview.]{\label{tab:distributed_materials_1 part 1}Silos overview. categorical columns have a snippet of the most used category and a percentage. Continuous variables have a mean and standard deviation. Abbreviation meaning in the appendix \ref{appendix:data_dict}. The last row is the number of patients. * columns were used as target.}
+\begin{table}[htbp]
+\caption[Silos overview part 1]{\label{tab:1}Silos overview. Each hospital is considered a silo. Categorical columns have the number of categories (C) and the percentage of the most frequent (\%). Continuous variables have a mean ($\mu$) and standard deviation ($\sigma$).  The first row is the number of patients. Bold columns were used as target (n=19).}
 
 \centering
 \input{chapters/distributed/table1}
@@ -15,12 +44,11 @@ Clinical data was gathered from nine different Portuguese hospitals regarding ob
 \newpage
 
 {\small
-\begin{table}[!ht]
-
-\caption[Silos overview part 2.]{\label{tab:distributed_materials_2}Silos overview part 2. categorical columns have a snippet of the most used category and a percentage. Continuous variables have a mean and standard deviation. Abbreviation meaning in the appendix \ref{appendix:data_dict}. The last row is the number of patients. * columns were used as target.}
+\begin{table}[htbp]
+\caption[Silos overview part 2]{\label{tab:1.2}Silos overview part 2. Each hospital is considered a silo. Categorical columns have the number of categories (C) and the percentage of the most frequent (\%). Continuous variables have a mean ($\mu$) and standard deviation ($\sigma$). Abbreviation meaning in the appendix. The first row is the number of patients. Bold columns were used as target (n=19).}
 \centering
 \input{chapters/distributed/table2}
-
 \end{table}
 }
+
 %TC:endignore

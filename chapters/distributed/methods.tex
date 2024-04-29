@@ -1,56 +1,60 @@
 % !TeX root = ../../thesis.tex
 
-Data was prepossessed with the removal of features with high missing rates ($>$ 90\% in all silos). All missing value representations were standardized. The imputation process was done using the mean value (for continuous variables) or a new category (NULLIMP) for categorical variables. All categories were encoded as numbers using a previous mapping created based on all possible categories in all silos. Even though an ordinal relationship is created among features, we believe that since we are applying this methodology to all datasets, which will be the source for all tests (local, distributed and centralised), that fact may be ignored.
-When training classification models, all of the target variable classes must be known at that moment and should be present in each split of the cross-validation. So, when assessing the training dataset, low-frequency target classes (n $<$ 25) were up-sampled with \ac{smote} \cite{smote} and missing target classes were addressed with dummy rows creation by the imputation of the mean for continuous variables and mode for categorical variables (per silo). These preprocessing mechanisms were applied in each run and for each target.
-The distributed model was an ensemble of models from each silo on a weighted soft-voting basis, defining weights and thresholds based on the training set scores. 
-All procedures were coded in Python 3.9.7 with the usage of the \textit{scikit-learn} library \cite{scikit-learn} and \textit{mlxtend} library \cite{mlxtend}.
-This study received Institutional Review Board approval from all hospitals included in this study with the following references: CHUSJ; 08/2021, CHBV; 12-03-2021, ULSM; 39/CES/JAS, HSOG; 85/2020, CHTS; 43/2020, CHVNGE; 192/2020,
-CHEDV; CA-371/2020-0t\_MP/CC, ULSAM; 11/2021.
+The section will cover the steps we took for evaluating the models. We first addressed the preprocessing of the data, then the training of the models and finally the evaluation of the models. The evaluation was done by comparing the performance of the distributed model with the local and centralised models. The performance was measured by the AUROC, AUPRC, RMSE and MAE. The results were then compared using a 2-sample T-test.
+\subsubsection{Preprocessing}
 
+The initial dataset underwent preprocessing by eliminating attributes that were missing more than 90\% of their data across all storage units (or silo). We standardized the representation of missing values, which varied widely, including representations such as "-1" "missing" or simply blank spaces. For imputation, we utilized the mean for continuous variables (calculated within site) and introduced a special category (NULLIMP) for categorical variables. We converted all categories into numerical values based on a predefined mapping that covered all potential categories across the datasets. Although this approach introduces an ordinal relationship and potential bias is created among features, we disregarded this concern because the methodology was uniformly applied across all datasets intended for training local, distributed and centralised. These preprocessing tasks were executed once for each dataset and silo.
 
-\subsubsection{Model Performance Evaluation}
+However, in the context of training classification models, it is crucial that all classes of the target variable are known at the time of training and are represented in each split of the cross-validation process. To address this, we employed SMOTE \cite{smote} to up-sampled low-frequency target classes. We established a threshold of n$<$25 for low-frequency variables to ensure that each cross-validation split contained at least two instances of the class—although a minimum of 10 instances (10 splits) might suffice, we opted for 25 to mitigate potential distribution issues and have at least two examples of the class in each split. Additionally, we created dummy rows for missing target classes by imputing the mean for continuous variables and the mode for categorical variables (calculated within site). The necessity for up-sampling and missing variable creation was evaluated and applied as needed for each training session and for each target, considering that each session's split could result in a training set lacking instances of low-frequency classes.
 
-Local models were built with each silo's data. The distributed model was built as an ensemble of all the local models with weighted averaging. The centralised model was trained with a training dataset from all the silos combined. 
-All models were built for a certain outcome variable with cross-validation and then compared, over 10 stochastic runs, with evaluation being performed on a test set held out from each silo. The metrics used for classification models were Weighted \ac{auroc} computed as One-versus-Rest, Weighted \ac{auprc}. The metrics for regression models were \ac{rmse} and \ac{mae}. The algorithm is shown in the algorithm \ref{alg:distributed_1}. This rendered over 1000 different combinations.
+All procedures were coded in python 3.9.7 with the usage of the scikit-learn library \cite{scikit-learn} and mlxtend library \cite{mlxtend}.
 
 
 \subsubsection{Model Training}
-To avoid pitfalls of inductive bias from a certain learning strategy, we learned six different models (i) Decision Trees, (ii) Bayesian methods, (iii) a logistic regression model with Stochastic Gradient Descent, (iv) \ac{knn}, (v) AdaBoost and (vi) Multi-layer Perceptron. The decision was to create diversity in the models used, in order to assess if the training methodology could have an impact on distributed model creation.
-Nineteen features were used as target outcomes. These features were selected by filtering by the percentage of null (below 50\%). For categorical outcomes, thirteen were selected. For continuous variables, six were selected. Details can be seen in tables \ref{tab:distributed_materials_1} and \ref{tab:distributed_materials_2}.
+To avoid pitfalls of inductive bias from a certain learning strategy, we learned six different models (i) Decision Trees, (ii) Bayesian methods, (iii) a logistic regression model with Stochastic Gradient Descent, (iv) K-nearest neighbours, (v) AdaBoost and (vi) Multi-layer Perceptron. The decision was to create diversity in the models used, in order to assess if the training methodology could have an impact on distributed model creation.
+The distributed model was an ensemble of models from each silo on a weighted soft-voting basis. The weights were defined by weighted averages of the scores each model obtained in the training set. Then the final result is obtained by creating a weighted average of the class predictions for classification and a weighted average for regression. A model like this can be implemented with peer-to-peer or federated approaches.
+Nineteen features were used as target outcomes. These features were selected by filtering by the percentage of null values (below 50\%). This choice was related to maintaining a equilibrium between having a wide range of variables to test how the target variables affects the outcome and having target variables that did go through an harsh imputation mechanism. For categorical outcomes, thirteen were selected (AA - Position Admission; ANP - Position on Delivery; AGESTA - Nr of Pregnancies; APARA - Nr of born babies; GS - Blood Group; GR - Robson Group; TG -Pregnancy Type; TP - Delivery Type; TPEE - Spontaneous Delivery; TPNP - Actual Type of Delivery; V - Followed physician; VCS - Followed physician primary care; VNH - Followed physician hospital delivery;). For continuous variables, six were selected (IA - Mother Age; IGA - Weeks on Admission; IMC - BMI; NRCPN - Nr of consultations; PI - Weight start of pregnancy; SGP - Weeks on Delivery;). Details can be seen in tables \ref{tab:1} and \ref{tab:1.2}.
+Local models were built with each silo's data. The centralised model was trained with a training dataset from all the silos combined. 
+
+
 %TC:ignore
+\subsubsection{Model Performance Evaluation}
+
+All models were built for a certain outcome variable with a repeated cross-validation (2 times and 10 splits each) and then compared, over 10 stochastic runs, with evaluation being performed on a test set held out from each silo. By performing cross-validation twice, we aimed to generate a more robust estimation of the model’s performance metrics by averaging the results over two separate runs, each partitioning the data differently. This approach is particularly useful in scenarios where data is limited or highly variable, as it provides a clearer insight into the model's expected performance in unseen data scenarios. The metrics used for classification models were Weighted Area Under the Receiver Operating Characteristic Curve (AUROC) computed as One-versus-Rest, Weighted Area Under the Precision-Recall Curve (AUPRC). The metrics for regression models were Root Mean Squared Error (RMSE) and Mean Absolute Error (MAE). The algorithm is shown in the algorithm \ref{alg:1}. This rendered over 1000 different combinations. When a variable was used as outcome to predict, all others were used as predictors.
+
+
 
 
 \begin{algorithm}[hbtp]
-\caption{Creation and evaluation of the 3 different models}
-\label{alg:distributed_1}
+\caption{Creation and evaluation of the 3 different models. We first preprocessed data. Then for each target, we created a distributed and centralised model. Then, over 10 repetitions per silo, we created a new train and test set and local model and tested the centralised, distributed and local on this test set.}
+\label{alg:1}
 Pre-process all silos (null standardization, imputation, encoding)\;
-
-
 \For {target in target list}{ 
-Create a centralised model with all the data with a 2x10 \ac{cv} 
-
-Create distributed (ensemble of all models) model with: 
+  \For{n in 10 repetitions}{
 
 \For {silo in imputed silos}{
-\begin{itemize}
-\item Train-Test Split (80:20)
-\item   check for low frequency or nonexistent labels in train set 
-\item train local model with hyper-parameter tuning with 2x10 CV
-  \item define weights based on  scores in the train set
-  \end{itemize}}
+Train-Test Split (80:20)\;
+ check for low frequency or nonexistent labels in train set \;
+ train local model with hyper-parameter tuning with 2x10 repeated CV \;
+ define weights based on scores in the train set (weighted average for predicting the value) for the distributed model\;
 
-        \For{n in 10 repetitions}{
+  }
 
-\For {silo in imputed silos}{
-\begin{itemize}
-  \item Train-Test Split (80:20)
-  \item train local model with hyper-parameter tuning with 2x10 CV\
-  \item predict local on the test set
-  \item predict distributed on the test set
-  \item predict centralised on the test set
-    \end{itemize}
- }}}
+  Create distributed (ensemble of all models) model with weights\;
+  predict local on the test set\;
+  predict distributed on the test set\;
+\vspace{3mm}
+
+
+Create a centralised model with all the data with a 2x10 repeated CV \;
+Test the centralised model on the test set\;
+}}
+
+
+
  \end{algorithm}
 %TC:endignore
 
-After all the data was collected, we used the standard independent 2-sample T-test to check if the differences were significant with a $\alpha$ of 0.05. We did the comparison between the distributed model and sequentially the centralised and correspondent local model across all algorithms.
+After all the data was collected, we used the standard independent 2-sample T-test to check if the differences were significant with a $\alpha$ of 0.05. First, we compared the overall performance of the distributed model vs their centralised and local counterpart.  We also compared every distributed model per algorithm and sequentially the centralised and correspondent local model across all algorithms and repetitions and outcome variables with 2-sample T-test as well.
+
+
