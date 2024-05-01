@@ -1,11 +1,9 @@
 % !TeX root = ../../thesis.tex
 
-A \ac{bn} with structure and parameters learned from the training dataset reached an average \ac{auroc} of 0.857. The results are in the table \ref{tab:result_auc}.
-
-
+A Bayesian network with structure and parameters learned from the training dataset reached an average Area Under the Receiver Operating Characteristic Curve of 0.857. The results are in the table \ref{tab:result_auc}.
 
 \begin{table}[htpb]
- \caption{Repeated Cross-Validation (10x2) Results: Column acronym with \ac{auroc} along with 95\% \ac{ci}. Acronym description is available in appendix \ref{appendix:data_dict}} \label{tab:result_auc} 
+ \caption{Repeated Cross-Validation (10x2) Results: Column description with AUROC along with 95\% CI.} \label{tab:result_auc} 
 
 \renewcommand{\arraystretch}{1.2}
 %\setlength{\tabcolsep}{8pt}
@@ -36,46 +34,45 @@ The network is as represented in figure \ref{fig:network}.
 %TC:ignore
 \begin{figure}[htbp]
 \centering
-\caption{Network learned}\label{fig:network} 
-\includegraphics[scale=0.68]{figures/network.png}
+\caption{Bayesian Network learned. Nodes acronyms are explained in appendix 1. The example shows the inference for the Robson Group (10 groups) and the probability of each, given a set of other features. It can be updated with new information (when we know the variables) or leave it empty when unknown. The plausability is calculated comparing the most probable one and the real one. Performance shown in table 2.}\label{fig:network} 
+\includegraphics[scale=0.38]{figures/new-bn.png}
 \end{figure}
 %TC:endignore
 
-As for the rules created, they were conformance-based, like the format of dates, and conformance to the value set (i.e. Robson group, bishop scores, or delivery types). We also added plausibility rules, like expected values for BMI, weight, and gestational age. We also added plausibility for the relationship between columns, namely weight across different weeks of gestation. We have also added a relationship of greatness between ultrasound weights more than 5 weeks apart. 
-The method of calculating the final score is stated in figure \ref{fig:wf}.
-
-
-%TC:ignore
-\begin{figure}[htbp]
-    \centering
-    \caption{Workflow for creating the final score and which elements are used to do so}\label{fig:wf} 
-    \includegraphics[scale=0.38]{figures/wf-update-dq.png}
-    \end{figure}
-    %TC:endignore
 
 
 \subsection{Deployment \& Validation}
-The purpose of this model is to serve as an \ac{api} for usage within a healthcare institution and act as a supplementary data quality assessment tool. Although a concrete, vendor-specific information model and health information system were initially used, our goal is to develop a more universal clinical decision support system. This system should be usable across all systems involved in birth and obstetrics departments. Therefore, we constructed it using the \ac{hl7} \ac{fhir} R5 version standard. This approach simplifies the process of API interaction. Rather than utilizing a proprietary model for the data, we based our decision on the use of \ac{fhir} resources: Bundle and Observation. These resources handle the request and response through a customized operation named "\$quality\_check". We intend to publish the profiles of these objects to streamline API access via standardized mechanisms and data models. The model then makes use of the customized operation and of several base resources to construct a \ac{fhir} message, which are: Bundle, MessageHeader, Observation, Device. Observation is where the information about the record is contained, Device contains information about the model, and MessageHeader is used to add information about the request. Finally, the Bundle is used to group all of these resources together. The current version of the profiles can be accessed here \cite{almeidaObstetricsClinicalDecision}.
 
-For validation, we deployed the tool in docker format in a hospital to gather new data. We gathered 3231 new cases and returned a score for quality as exemplified in figure \ref{fig:scores}. Being that the score is from 0 to 1, the average score was 0.23 and \ac{iqr} was 0.03.
-As for the clinicians' assessment, we got 4 answers. Figure \ref{fig:clinical_dq} shows the aggregated rankings of the clinicians per record and is ordered by the rank provided by the model.
+The purpose of this model is to serve as an API for usage within a healthcare institution and act as a supplementary data quality assessment tool. Although a concrete, vendor-specific information model and health information system were initially used, our goal is to develop a more universal clinical decision support system. This system should be usable across all systems involved in birth and obstetrics departments. Therefore, we constructed it using the Health Level 7 (HL7) Fast Healthcare Interoperable Resources (FHIR) R5 version standard. This approach simplifies the process of API interaction. Rather than utilizing a proprietary model for the data, we based our decision on the use of FHIR resources: Bundle and Observation. These resources handle the request and response through a customized operation named "\$quality\_check". We intend to publish the profiles of these objects to streamline API access via standardized mechanisms and data models. The model then makes use of the customized operation and of several base resources to construct a FHIR message, which are: Bundle, MessageHeader, Observation, Device. Observation is where the information about the record is contained, Device contains information about the model, and MessageHeader is used to add information about the request. Finally, the Bundle is used to group all of these resources together. The current version of the profiles can be accessed here\unskip~\cite{obs-ig}. 
 
+For validation, we deployed the tool in docker format in a hospital to gather new data. We gathered 3223 new cases and returned a score for quality as exemplified in figure \ref{fig:scores}. Being that the score is from 0 to 1, the average score was 0.75 and IQR was 0.016. The formula gives weights to different dimensions since we feel some are more robust than others. We gave more weight to rule system, and gave less to the missing and IQR score.
+
+As for the clinicians' assessment, we got 4 answers. Figure \ref{fig:clinical} shows the distribution of the perceived ranking of each record.
 
 
 %TC:ignore
 \begin{figure}[htbp]
 \centering
 \caption{Model score for newly seen data}\label{fig:scores} 
-\includegraphics[scale=0.78]{figures/Scoring.png}
+\includegraphics[scale=0.78]{figures/Scoring_V2.png}
 \end{figure}
 %TC:endignore
 
 %TC:ignore
 \begin{figure}[htbp]
 \centering
-\caption{Comparison of clinical assessment of records with the model. Y is the clinicians' assessment, X is the ranking of the record per the model. Equal numbers on the X mean a tie per the model interpretation. Color is the record ID.}\label{fig:clinical_dq} 
-\includegraphics[scale=0.52]{figures/clinical_assessment_dataqual_scatter.png}
+\caption{Distribution of rankings obtained from the assessment of 10 records by 4 different clinicians. Y is the distribution of clinicians' assessment, X is the patient ID.}\label{fig:clinical} 
+\includegraphics[scale=0.52]{figures/clinical_assessment_no_model.png}
 \end{figure}
 %TC:endignore
 
-The Average Spearman's Rank Correlation Coefficient was 0.04 and the Kendall's Tau was 0.0 with a \textit{P} value of 1. Defining the threshold for the model at 0.23 and the threshold for the physician at 8, we got an accuracy of 0.9, precision of 1, recall of 0.66 and f1-score at 0.8.
+%The Average Spearman's Rank Correlation Coefficient was 0.14 and the Kendall's Tau was 0.096 with a \textit{p-value} of 0.712.
+Figure \ref{fig:auc_changes} shows the performance of the model with several ranking thresholds to differentiate bad quality record from good quality record. Each line/color is a threshold (3,4,5,6) and the AUC is shown in the label. The Average Spearman's Rank Correlation Coefficient was 0.42 (p-value: 0.23) and the Kendall's Tau was 0.3 (p-value: 0.2). Both tests were based on a $\alpha$ of 0.05.
+
+%TC:ignore
+\begin{figure}[htbp]
+    \centering
+    \caption{Model Performance in terms of AUROC, depending on the threshold defined on the physician assessed data. The colors show different threshold used to consider a bad quality record given the average ranking. Label shows the threshold and respective AUROC.}\label{fig:auc_changes} 
+    \includegraphics[scale=0.78]{figures/auroc_curve_threshold.png}
+    \end{figure}
+    %TC:endignore
