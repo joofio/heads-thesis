@@ -20,6 +20,7 @@
 \usepackage[nonumberlist, nogroupskip]{glossaries}
 \usepackage{lettrine}
 %\usepackage[backref=page]{hyperref}
+\usepackage{adforn}
 
 \usepackage[backend=biber, style=numeric,maxbibnames=7,sorting=none]{biblatex}
 \addbibresource{references.bib}
@@ -88,6 +89,10 @@
 \usepackage[helvetica]{quotchap}  % the quotchap package to get fancy chapter styles
 \usepackage{titlesec}
 \usepackage{adjustbox}
+
+%\usepackage{garamondx}
+%\setmainfont{EB Garamond} % or any Garamond version you have
+
 %% Include source-code listings package
 \usepackage{listings}
 \lstset{ %
@@ -170,11 +175,14 @@
 
 %% Specify cover logo (in folder ``figures'')
 % \logo{uporto-feup.pdf}
+
 \logo{uporto-fmup.png}
 \logo{fmup_heads.png}
 
 %% Uncomment next line for additional text below the author's name (front page)
-\additionalfronttext{Dissertação Provisória}
+
+\additionalfronttext{Dissertação Provisória\\ \vspace{5mm} \adforn{21}}
+
 
 %%----------------------------------------
 %% Preliminary materials
