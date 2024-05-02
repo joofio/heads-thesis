@@ -47,7 +47,7 @@ The purpose of this model is to serve as an API for usage within a healthcare in
 
 For validation, we deployed the tool in docker format in a hospital to gather new data. We gathered 3223 new cases and returned a score for quality as exemplified in figure \ref{fig:scores}. Being that the score is from 0 to 1, the average score was 0.75 and IQR was 0.016. The formula gives weights to different dimensions since we feel some are more robust than others. We gave more weight to rule system, and gave less to the missing and IQR score.
 
-As for the clinicians' assessment, we got 4 answers. Figure \ref{fig:clinical} shows the distribution of the perceived ranking of each record.
+As for the clinicians' assessment, we got 4 answers. Figure \ref{fig:clinical-dq} shows the distribution of the perceived ranking of each record.
 
 
 %TC:ignore
@@ -61,7 +61,7 @@ As for the clinicians' assessment, we got 4 answers. Figure \ref{fig:clinical} s
 %TC:ignore
 \begin{figure}[htbp]
 \centering
-\caption{Distribution of rankings obtained from the assessment of 10 records by 4 different clinicians. Y is the distribution of clinicians' assessment, X is the patient ID.}\label{fig:clinical} 
+\caption{Distribution of rankings obtained from the assessment of 10 records by 4 different clinicians. Y is the distribution of clinicians' assessment, X is the patient ID.}\label{fig:clinical-dq} 
 \includegraphics[scale=0.52]{figures/clinical_assessment_no_model.png}
 \end{figure}
 %TC:endignore
