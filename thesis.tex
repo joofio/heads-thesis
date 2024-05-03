@@ -15,6 +15,14 @@
 
 \documentclass[11pt,a4paper,twoside,openright]{report}
 \usepackage[utf8]{inputenc}
+
+%\usepackage{sectsty}
+%\usepackage{blindtext}
+
+% Headings setup (sectsty)
+%\allsectionsfont{helvetica}
+
+
 %\usepackage[latin1]{inputenc}
 %\usepackage[acronym]{glossaries}
 \usepackage[nonumberlist, nogroupskip]{glossaries}
@@ -90,8 +98,16 @@
 \usepackage{titlesec}
 \usepackage{adjustbox}
 
-%\usepackage{garamondx}
-%\setmainfont{EB Garamond} % or any Garamond version you have
+
+%\usepackage{ebgaramond} % Load Garamond font
+\titleformat*{\section}{\sffamily\Large\bfseries}
+\titleformat*{\subsection}{\sffamily\large\bfseries}
+\titleformat*{\subsubsection}{\sffamily\normalsize\bfseries}
+%\fancyhead[LO]{\sffamily \nouppercase{\rightmark}}  % Use Helvetica for headers
+%\fancyhead[RE]{\sffamily \nouppercase{\leftmark}}
+
+\renewcommand*{\sectfont}{\fontfamily{phv}\bfseries\Large}  % 'phv' is Helvetica
+
 
 %% Include source-code listings package
 \usepackage{listings}

@@ -134,6 +134,7 @@ with the `report' document style}{}}{}
 \clubpenalty=6000
 \widowpenalty=6000
 
+%\RequirePackage[scaled]{ebgaramond} % font garamond
 \RequirePackage{mathptmx}	   % font times
 \RequirePackage[scaled]{couriers}  % font courier
 \RequirePackage[scaled]{helvet}    % font helvetica
@@ -384,8 +385,9 @@ with the `report' document style}{}}{}
 \def\pagenumbering#1{\global\c@page\@ne \@pagenumbering{#1}}
 
 %% Hyperrefs
-\RequirePackage[pdftex,pdfpagelabels,bookmarks,hyperindex,hyperfigures]{hyperref}
-
+\RequirePackage[pdfpagelabels,bookmarks,hyperindex,hyperfigures]{hyperref}
+%remove pdftex
+%https://tex.stackexchange.com/questions/33049/package-hyperref-error-wrong-driver-option-pdftex-when-using-mk4ht
 \if@backrefs
   \RequirePackage[hyperpageref]{backref}
   \renewcommand*{\backref}[1]{}
@@ -450,7 +452,7 @@ with the `report' document style}{}}{}
 
 %% Known degrees (always in Portuguese)
 \if@mimed
-  \degree{Programa Doutoral em Ciência de Dados de Saúde  }
+  \degree{Programa Doutoral em Ciência de Dados de Saúde}
 \fi
 
 %% Some language-dependent definitions
