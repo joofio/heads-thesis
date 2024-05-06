@@ -1,9 +1,13 @@
 % !TeX root = ../thesis.tex
 
-\begin{savequote}[75mm]
-If we knew what it was we were doing, it would not be called research, would it?
-\qauthor{Albert Einstein}
-\end{savequote}
+
+\begin{savequote}[85mm]
+    Nothing great in the world was accomplished 
+    without passion.
+    \qauthor{Friedrich Hegel}
+    \end{savequote}
+
+
 \chapter{Introduction} \label{chap:intro}
 
 %reset de nomeclaturas
@@ -60,7 +64,14 @@ This thesis has three main goals:
     \end{itemize}
 \end{itemize}
 
-For this goal, our aim is to improve the quality of data used in health data science. We will start by exploring the use of \ac{gan} to create realistic tabular datasets (section \ref{subsec:gans}). We have seen the advent and deep learning in creating data, namely for image, video and sound. From these examples, \acp{gan} have been providing excellent results, but do we know if this performance is matched in tabular datasets? Then we will explore the methods for comparing datasets (section \ref{subsec:tabular}), which relates to the first point since we cannot create good synthetic data if we do not have good metrics to assess how equal they are. So we tried to compile the current state-of-the-art metrics for such. And since we did not find, in our opinion, a good set of metrics in the 2nd point, we tried to apply \ac{ml} to create a good evaluation metrics for comparing two tabular datasets (section \ref{subsec:similarity}). Finally,  we will then explore the use of \ac{ml} to create automatic data quality assessments. This is a very important point since we need to know if the data we are using is good enough for the task at hand. This is especially important when we are using \ac{ml} methods since they are very sensitive to data quality (section \ref{subsec:dq}).
+For this goal, we aim to improve the quality of data used in health data science. We will start by exploring the use of \ac{gan} to create realistic tabular datasets (Section \ref{subsec:gans}). The advent of deep learning has led to remarkable progress in generating data, particularly for images, videos, and sounds. From these examples, \acp{gan} have produced excellent results. However, can this performance be matched in tabular datasets?
+
+Next, we will explore methods for comparing datasets (Section \ref{subsec:tabular}), which relates to the first point since we cannot create good synthetic data without having robust metrics to assess their similarity. Therefore, we have attempted to compile the current state-of-the-art metrics for this purpose.
+
+Since we did not find, in our opinion, a comprehensive set of metrics in the second point, we sought to apply \ac{ml} to create effective evaluation metrics for comparing two tabular datasets (Section \ref{subsec:similarity}). Finally, we will explore the use of \ac{ml} to create automatic data quality assessments (Section \ref{subsec:dq}). This is crucial because we need to know if the data we are using is of sufficient quality for the task at hand. This is especially important when using \ac{ml} methods, as they are highly sensitive to data quality.
+
+%our aim is to improve the quality of data used in health data science. We will start by exploring the use of \ac{gan} to create realistic tabular datasets (section \ref{subsec:gans}). We have seen the advent and deep learning in creating data, namely for image, video and sound. From these examples, \acp{gan} have been providing excellent results. However, can this performance be matched in tabular datasets? Then we will explore the methods for comparing datasets (section \ref{subsec:tabular}), which relates to the first point since we cannot create good synthetic data if we do not have good metrics to assess how equal they are. So we tried to compile the current state-of-the-art metrics for such. And since we did not find, in our opinion, a good set of metrics in the 2nd point, we tried to apply \ac{ml} to create a good evaluation metrics for comparing two tabular datasets (section \ref{subsec:similarity}). Finally,  we will then explore the use of \ac{ml} to create automatic data quality assessments. This is a very important point since we need to know if the data we are using is good enough for the task at hand. This is especially important when we are using \ac{ml} methods since they are very sensitive to data quality (section \ref{subsec:dq}).
+
 
 \begin{itemize}
 
@@ -71,7 +82,9 @@ For this goal, our aim is to improve the quality of data used in health data sci
     \end{itemize}
 \end{itemize}
 
-For this goal, we tried to overcome the data access limitations. If we do not have access to data, how can we explore its potential? There are several issues that are set in place to guarantee the good, safe and ethical usage of data, but sometimes it creates hurdles to a timely usage of the data. So we tried to evaluate if distributed learning was a fitting option to overcome this limitation (section \ref{subsec:distributed}). Then we tried to come up with an alternative to compare health institutions without actually sharing their true metrics, but still be able to position themselves in a scale (section \ref{subsec:benchmark}). 
+To achieve this goal, we sought to overcome data access limitations. If we do not have access to data, how can we explore its potential? Several limitations are in place to ensure the ethical, safe, and appropriate use of patient data, but sometimes these limitations create obstacles to timely data usage or even prevent access altogether. Therefore, we aimed to evaluate whether distributed learning is a viable option to overcome this limitation (Section \ref{subsec:distributed}).
+
+Subsequently, we attempted to develop an alternative method for comparing health institutions performance metrics without knowing the true values of each metric, but still enabling them to position themselves on a scale (Section \ref{subsec:benchmark}).
 
 \begin{itemize}
     \item Goal 3: How can we convert health data into decisions and policies?
