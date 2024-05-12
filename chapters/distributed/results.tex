@@ -1,6 +1,6 @@
 % !TeX root = ../../thesis.tex
 
-Table \ref{tab:allvsall} shows the aggregated metrics for AUROC, AUPRC, RMSE and MAE for distributed, centralised and local models predicting capabilities on each silo. The data refers to the mean of the metric values for all columns tested as targets for all methods and all silos. We also calculated the 95\% confidence interval for each model (local and distributed per silo) in order to assess how well the distributed model would work as opposed to the local one per silo. We also calculated the p Value for the means of the distributed vs centralised and distributed vs local.
+Table \ref{tab:allvsall} shows the aggregated metrics for \ac{auroc}, \ac{auprc}, \ac{rmse} and \ac{mae} for distributed, centralised and local models predicting capabilities on each silo. The data refers to the mean of the metric values for all columns tested as targets for all methods and all silos. We also calculated the 95\% confidence interval for each model (local and distributed per silo) in order to assess how well the distributed model would work as opposed to the local one per silo. We also calculated the p Value for the means of the distributed vs centralised and distributed vs local.
 %TC:ignore
 %\setlength{\tabcolsep}{7pt} % Default value: 6pt
 %\renewcommand{\arraystretch}{1.3} % Default value: 1
@@ -51,7 +51,7 @@ Table \ref{tab:allvsall} shows the aggregated metrics for AUROC, AUPRC, RMSE and
 
 %TC:endignore
 
-Figure \ref{fig:heatmap-cat} shows the AUROC of each algorithm and silo on the Y axis and target variable and type of model on the X. The color bar refers to the value of the AUROC. Blue being lower values and red bigger values. The same type of graph was created for regression, where the Figure \ref{fig:heatmpa-int} shows the MAE for each silo and algorithm and target variable and type of model. 
+Figure \ref{fig:heatmap-cat} shows the \ac{auroc} of each algorithm and silo on the Y axis and target variable and type of model on the X. The color bar refers to the value of the \ac{auroc}. Blue being lower values and red bigger values. The same type of graph was created for regression, where the Figure \ref{fig:heatmpa-int} shows the \ac{mae} for each silo and algorithm and target variable and type of model. 
 
 
 %TC:ignore
@@ -75,7 +75,6 @@ Figure \ref{fig:heatmap-cat} shows the AUROC of each algorithm and silo on the Y
 \end{figure}
 %TC:endignore
 
-{\small
 \definecolor{Gray}{gray}{0.85} 
  \begin{table}[h] 
  \setlength{\tabcolsep}{6pt} % Default value: 6pt 
@@ -84,7 +83,10 @@ Figure \ref{fig:heatmap-cat} shows the AUROC of each algorithm and silo on the Y
 \centering
 \caption[Model comparison: Distributed versus centralised and local for every test]{Model comparison: Distributed versus centralised and local for every test. Each cell is the total of distributed model when compared with centralised model (row) and local model (column) across different silos and outcome variable. ($>$ for better, = for non significance and $<$ for worse). The first example is 72 which means that 72 iterations of the distributed SGD was better than the centralised and local. SGD: Stochastic Gradient Descent, NN: Neural Network, KNN: K-Nearest Neighbors, ADA: AdaBoost, NB: Naive Bayes, DT: Decision Tree. Comparison was done with 2-sample T-test with a $\alpha$ of 0.05. (\% in parentheses)}
 \label{tab:hyp}
-\begin{tabular}{llrrrr}
+\newcolumntype{L}{>{\scriptsize}l}  % "small" can be changed to "scriptsize" or "footnotesize" for even smaller text
+\newcolumntype{R}{>{\scriptsize}r}  % "small" can be changed to "scriptsize" or "footnotesize" for even smaller text
+
+\begin{tabular}{LLRRRR}
 \toprule
 
 
@@ -136,7 +138,7 @@ Figure \ref{fig:heatmap-cat} shows the AUROC of each algorithm and silo on the Y
  \bottomrule
 \end{tabular}
 \end{table}
-}
+
 
 
 
