@@ -1,11 +1,11 @@
 % !TeX root = ../../thesis.tex
 
-The section will cover the steps we took for evaluating the models. We first addressed the preprocessing of the data, then the training of the models and finally the evaluation of the models. The evaluation was done by comparing the performance of the distributed model with the local and centralised models. The performance was measured by the AUROC, AUPRC, RMSE and MAE. The results were then compared using a 2-sample T-test.
+The section will cover the steps we took for evaluating the models. We first addressed the preprocessing of the data, then the training of the models and finally the evaluation of the models. The evaluation was done by comparing the performance of the distributed model with the local and centralised models. The performance was measured by the \ac{auroc}, \ac{auprc}, \ac{rmse} and \ac{mae}. The results were then compared using a 2-sample T-test.
 \subsubsection{Preprocessing}
 
 The initial dataset underwent preprocessing by eliminating attributes that were missing more than 90\% of their data across all storage units (or silo). We standardized the representation of missing values, which varied widely, including representations such as "-1" "missing" or simply blank spaces. For imputation, we utilized the mean for continuous variables (calculated within site) and introduced a special category (NULLIMP) for categorical variables. We converted all categories into numerical values based on a predefined mapping that covered all potential categories across the datasets. Although this approach introduces an ordinal relationship and potential bias is created among features, we disregarded this concern because the methodology was uniformly applied across all datasets intended for training local, distributed and centralised. These preprocessing tasks were executed once for each dataset and silo.
 
-However, in the context of training classification models, it is crucial that all classes of the target variable are known at the time of training and are represented in each split of the cross-validation process. To address this, we employed SMOTE \cite{smote} to up-sampled low-frequency target classes. We established a threshold of n$<$25 for low-frequency variables to ensure that each cross-validation split contained at least two instances of the class—although a minimum of 10 instances (10 splits) might suffice, we opted for 25 to mitigate potential distribution issues and have at least two examples of the class in each split. Additionally, we created dummy rows for missing target classes by imputing the mean for continuous variables and the mode for categorical variables (calculated within site). The necessity for up-sampling and missing variable creation was evaluated and applied as needed for each training session and for each target, considering that each session's split could result in a training set lacking instances of low-frequency classes.
+However, in the context of training classification models, it is crucial that all classes of the target variable are known at the time of training and are represented in each split of the cross-validation process. To address this, we employed \ac{smote} \cite{smote} to up-sampled low-frequency target classes. We established a threshold of n$<$25 for low-frequency variables to ensure that each cross-validation split contained at least two instances of the class—although a minimum of 10 instances (10 splits) might suffice, we opted for 25 to mitigate potential distribution issues and have at least two examples of the class in each split. Additionally, we created dummy rows for missing target classes by imputing the mean for continuous variables and the mode for categorical variables (calculated within site). The necessity for up-sampling and missing variable creation was evaluated and applied as needed for each training session and for each target, considering that each session's split could result in a training set lacking instances of low-frequency classes.
 
 All procedures were coded in python 3.9.7 with the usage of the scikit-learn library \cite{scikit-learn} and mlxtend library \cite{mlxtend}.
 
@@ -20,7 +20,7 @@ Local models were built with each silo's data. The centralised model was trained
 %TC:ignore
 \subsubsection{Model Performance Evaluation}
 
-All models were built for a certain outcome variable with a repeated cross-validation (2 times and 10 splits each) and then compared, over 10 stochastic runs, with evaluation being performed on a test set held out from each silo. By performing cross-validation twice, we aimed to generate a more robust estimation of the model’s performance metrics by averaging the results over two separate runs, each partitioning the data differently. This approach is particularly useful in scenarios where data is limited or highly variable, as it provides a clearer insight into the model's expected performance in unseen data scenarios. The metrics used for classification models were Weighted Area Under the Receiver Operating Characteristic Curve (AUROC) computed as One-versus-Rest, Weighted Area Under the Precision-Recall Curve (AUPRC). The metrics for regression models were Root Mean Squared Error (RMSE) and Mean Absolute Error (MAE). The algorithm is shown in the algorithm \ref{alg:1}. This rendered over 1000 different combinations. When a variable was used as outcome to predict, all others were used as predictors.
+All models were built for a certain outcome variable with a repeated cross-validation (2 times and 10 splits each) and then compared, over 10 stochastic runs, with evaluation being performed on a test set held out from each silo. By performing cross-validation twice, we aimed to generate a more robust estimation of the model’s performance metrics by averaging the results over two separate runs, each partitioning the data differently. This approach is particularly useful in scenarios where data is limited or highly variable, as it provides a clearer insight into the model's expected performance in unseen data scenarios. The metrics used for classification models were Weighted \ac{auroc} computed as One-versus-Rest, Weighted \ac{auprc}. The metrics for regression models were \ac{rmse} and \ac{mae}. The algorithm is shown in the algorithm \ref{alg:1}. This rendered over 1000 different combinations. When a variable was used as outcome to predict, all others were used as predictors.
 
 
 
@@ -35,7 +35,7 @@ Pre-process all silos (null standardization, imputation, encoding)\;
 \For {silo in imputed silos}{
 Train-Test Split (80:20)\;
  check for low frequency or nonexistent labels in train set \;
- train local model with hyper-parameter tuning with 2x10 repeated CV \;
+ train local model with hyper-parameter tuning with 2x10 repeated \ac{cv} \;
  define weights based on scores in the train set (weighted average for predicting the value) for the distributed model\;
 
   }
@@ -46,7 +46,7 @@ Train-Test Split (80:20)\;
 \vspace{3mm}
 
 
-Create a centralised model with all the data with a 2x10 repeated CV \;
+Create a centralised model with all the data with a 2x10 repeated \ac{cv} \;
 Test the centralised model on the test set\;
 }}
 

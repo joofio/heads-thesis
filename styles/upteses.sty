@@ -5,7 +5,7 @@
 \def \filename {upteses.sty}
 \def \filedate {2017/10/02}
 \def \fileversion {1.1.2}
-\ProvidesPackage {upteses}[\filedate\space\fileversion\space]
+\ProvidesPackage {styles/upteses}[\filedate\space\fileversion\space]
 \typeout {Document Style `UP Teses' \fileversion\space <\filedate>}
 
 %% Option for Portuguese
@@ -96,7 +96,6 @@
   \@numericrefstrue
   \@alpharefsfalse
 \fi
-
 %% Make sure that report has been loaded
 \@ifundefined{chapter}{\@latexerr{The `upteses' option should be used
 with the `report' document style}{}}{}
@@ -312,6 +311,10 @@ with the `report' document style}{}}{}
  {\Large\bf \@author}\\[16mm]
  {\Large \@degree}%
  \end{center}
+ \vspace*{10mm}   % Adjust the spacing as needed
+
+ \unvbox\@vivatext   % Unbox and print the committee details
+
  \vspace*{\fill}
 }
 
@@ -423,7 +426,11 @@ with the `report' document style}{}}{}
     breaklinks=true,
     linktocpage,
     colorlinks=false,
-    pdfborder=0 0 0
+    pdfborder=0 0 0,
+    citecolor=black, % Set citation color to black
+    linkcolor=black, % Set link color to black
+    urlcolor=black,  % Set URL color to black
+    anchorcolor=black % Set anchor color to black
   }
 \else
   \hypersetup{%
@@ -434,12 +441,14 @@ with the `report' document style}{}}{}
     breaklinks=true,
     linktocpage,
     colorlinks=true,
-    linkcolor=blue,
+    linkcolor=chaptergrey,
     urlcolor=blue,
-    citecolor=blue,
+    citecolor=chaptergrey,
     anchorcolor=green
   }
 \fi
+
+
 
 %% Some more internal commands
 \newcommand{\Activate@lineno}{\if@uselineno\linenumbers\switchlinenumbers*\fi}
