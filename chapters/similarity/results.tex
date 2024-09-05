@@ -1,8 +1,7 @@
 % !TeX root = ../../thesis.tex
 
-With the method described in the algorithm \ref{alg:simil_1}, we created a figure where the metrics are presented with increasingly different datasets: figure \ref{fig:lineplot}.
+With the method described in the algorithm \ref{alg:simil_1}, we created a figure where the metrics are presented with increasingly different datasets: Figure \ref{fig:lineplot}.
 %Then we compared the difference in the metric across iterations, rendering figure \ref{fig:boxplot}.
-
 
 %TC:ignore
 \begin{figure}[htbp]
@@ -12,36 +11,28 @@ With the method described in the algorithm \ref{alg:simil_1}, we created a figur
 \end{figure}
 %TC:endignore
 
-
-%TC:ignore
-\begin{figure}[htbp]
-\centering
-\caption{Plot showing the values at 50\% columns mutated across all datasets and algorithms per metric type}\label{fig:boxplot} 
-\includegraphics[scale=0.55]{figures/50_percent_data.png}
-\end{figure}
-%TC:endignore
-
-
-The number of repetitions and how that impacts the variance of the scores is shown in figure \ref{fig:facet_plot}.
-
-
-
-
+The number of repetitions and how that impacts the variance of the scores is shown in Figure~\ref{fig:facet_plot}.
 
 
 %TC:ignore
 \begin{figure}[htbp]
-\centering
-\caption[Plot the variance of different repetitions for every metric and the number of different columns changed]{Plot the variance of different repetitions for every metric and the number of different columns changed. X is the number of columns mutated. Colour is the number of repetitions for each mutation and Y is the variance of the data. }\label{fig:facet_plot} 
-\includegraphics[scale=0.55]{figures/facet_plot.png}
-\end{figure}
-%TC:endignore
+    \centering
+    \caption{Heatmap showing the variance of different repetitions for every metric and the number of different columns changed. X is the metric. Y is the number of repetitions and the number of columns. This was obtained by getting the variance of all values from all datasets.  }\label{fig:facet_plot} 
+    \includegraphics[scale=0.60]{figures/heatmap-runs.png}
+    \end{figure}
+    %TC:endignore
 
-As for the test for the synthetic and real datasets, the results are displayed in figure \ref{fig:synth_result}.
-%TC:ignore
+As for the test for the synthetic and real dataset, the results are displayed in figure~\ref{fig:synth_result} and ~\ref{fig:synth_heat}. This is the metrics distribution for the comparison of the 5 mentioned datasets and the synthetic counterpart generated as stated in the methods section.
+    %TC:ignore
 \begin{figure}[htbp]
-\centering
-\caption{Result on a synthetic and real data }\label{fig:synth_result} 
-\includegraphics[scale=0.65]{figures/synthetic.png}
-\end{figure}
-%TC:endignore
+    \centering
+    \caption{Distributions of the metrics results comparing 5 synthetic and real datasets across 3 different generation methods}\label{fig:synth_result} 
+    \includegraphics[scale=0.60]{figures/synthetic_violin_swarm_colored_by_group_custom.png}
+    \end{figure}
+    
+    \begin{figure}[htbp]
+        \centering
+        \caption{Values and comparison of the metrics results comparing 5 synthetic and real datasets across 3 different generation methods}\label{fig:synth_heat} 
+        \includegraphics[scale=0.60]{figures/heatmap-synth.png}
+        \end{figure}
+    %TC:endignore

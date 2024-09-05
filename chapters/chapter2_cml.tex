@@ -6,9 +6,7 @@ This is now known as a textbook definition of confounding correlation with causa
 
 So, this example shows that evidence without proper causality can lead to misguided results and mistrust.
 
-That is why, nowadays, \ac{ebm} and \ac{xai} can be brought together and expanded through \ac{cml}.
-
-But what is causality? We could argue that it is related to something \textbf{causing} something else. This causal effect, especially in medicine, can be related to a comparison of the outcome a particular person would exhibit given a particular intervention and the outcome in the same person of the control intervention. This is particularly hard since we cannot do both things at the same time. This is the basis of why \acp{rct} are the gold standard of experimentation, since they are the current best tool to achieve something similar to this \cite{10.7551/mitpress/14244.001.0001}.
+That is why, nowadays, \ac{ebm} and \ac{xai} can be brought together and expanded through \ac{cml}. But what is causality? We could argue that it is related to something \textbf{causing} something else. This causal effect, especially in medicine, can be related to a comparison of the outcome a particular person would exhibit given a particular intervention and the outcome in the same person of the control intervention. This is particularly hard since we cannot do both things at the same time. This is the basis of why \acp{rct} are the gold standard of experimentation, since they are the current best tool to achieve something similar to this \cite{10.7551/mitpress/14244.001.0001}.
 
 %- causality vs observation
 
@@ -18,7 +16,8 @@ There are currently two main frameworks for trying to unveil causality in data: 
 
 \begin{enumerate}
     \item Causal Graphs are based on \acp{dag}: These are graphical models used to represent causal relationships between different variables. The nodes in the graph represent variables, and the edges (arrows) between nodes represent causal relationships. For instance, an edge from Node A to Node B signifies that A has a causal effect on B. We should not confuse causal graphs with \ac{bn}. Even though both rely on \acp{dag}, Causal Graphs represent causal relationships, and \ac{bn} represent conditional dependencies.
-\item Structural Equations refer to a set of mathematical expressions that represent causal relationships between variables. These equations model the way changes in one variable, often termed the "cause," lead to changes in another, termed the "effect." Within a \ac{sem}, both observed and latent (unobserved) variables can be incorporated, and the causal pathways between them are explicitly defined. By employing \ac{sem} in \ac{cml}, researchers can elucidate intricate relationships among variables, disentangle direct from indirect effects, and infer causal mechanisms. This approach provides a more profound understanding of the underlying data-generating process, enabling better predictions and interventions in complex systems.
+
+    \item Structural Equations refer to a set of mathematical expressions that represent causal relationships between variables. These equations model the way changes in one variable, often termed the "cause," lead to changes in another, termed the "effect." Within a \ac{sem}, both observed and latent (unobserved) variables can be incorporated, and the causal pathways between them are explicitly defined. By employing \ac{sem} in \ac{cml}, researchers can elucidate intricate relationships among variables, disentangle direct from indirect effects, and infer causal mechanisms. This approach provides a more profound understanding of the underlying data-generating process, enabling better predictions and interventions in complex systems.
 
 \end{enumerate}
 

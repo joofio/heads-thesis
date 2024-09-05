@@ -1,82 +1,91 @@
 % !TeX root = ../../thesis.tex
-
-For this work, our goal is to test several metrics based on the ranking of feature importance of a trained model. \ac{ndgc} \cite{wangTheoreticalAnalysisNDCG} which is the sum of the true scores ranked in the order induced by the predicted scores, after applying a logarithmic discount. Then divide by the best possible score to obtain a score between 0 and 1. It is calculated by
-\begin{equation}
+For this work, our goal is to test several metrics based on the ranking of feature importance of a trained model. Normalized Discounted Cumulative Gain (NDCG) \cite{wangTheoreticalAnalysisNDCG} which is the sum of the true scores ranked in the order induced by the predicted scores, after applying a logarithmic discount. Then divide by the best possible score to obtain a score between 0 and 1. It is calculated by
+\[
 \text{{NDGC}} = \frac{{\text{{DCG}}(P)}}{{\text{{IDCG}}(P)}}
-\end{equation}
+\]
 where $\text{{DCG}}(P)$ is the Discounted Cumulative Gain and $\text{{IDCG}}(P)$ is the Ideal Discounted Cumulative Gain. 
 
-Cohen's kappa coefficient \cite{doi:10.1177/001316446002000104} is a statistic that is commonly used to assess the level of agreement between two or more raters or evaluators who are providing categorical ratings or rankings of a set of items. So, we want to use to assess if it could be of use to check how similar the ranking of the features is, using the numbers as categorical.
-\begin{equation}
+Cohen's kappa coefficient \cite{doi:10.1177/001316446002000104}  is a statistic that is commonly used to assess the level of agreement between two or more raters or evaluators who are providing categorical ratings or rankings of a set of items. So, we want to use to assess if it could be of use to check how similar the ranking of the features is, using the numbers as categorical.
+\[
 \kappa = \frac{{P_o - P_e}}{{1 - P_e}}
-\end{equation}
+\]
 
 where \(P_o\) is the observed agreement between the two raters and \(P_e\) is the expected agreement between the two raters by chance.
 
 We also intend to use the $R^2$ to check if the explainability changes across datasets.
-\begin{equation}
+\[
 R^2 = 1 - \frac{{\sum_{i=1}^n (y_i - \hat{y}_i)^2}}{{\sum_{i=1}^n (y_i - \bar{y})^2}}
-\end{equation}
-
+\]
 
 where \(y_i\) are the observed values of the dependent variable, \(\hat{y}_i\) are the predicted values of the dependent variable, \(\bar{y}\) is the mean of the observed values of the dependent variable and \(n\) is the number of data points.
 
-Then we intend to use ranking metrics, namely Kendall tau, Weighted Kendall tau and RBO.
+Then we intend to use ranking metrics, namely Kendall tau, weighted Kendall tau and RBO.
 Kendall tau is a measure of correlation that measures the similarity between two rankings. It is commonly used in statistics and data analysis to evaluate the agreement or disagreement between two sets of rankings.
 
 The Kendall tau coefficient \cite{kendallTreatmentTiesRanking1945} is defined as the difference between the number of concordant and discordant pairs of observations, divided by the total number of pairs. A concordant pair is a pair of observations that have the same ranking order in both sets, while a discordant pair is a pair of observations that have opposite ranking orders. The Kendall tau coefficient ranges from -1 to 1, where -1 represents perfect negative correlation, 0 represents no correlation, and 1 represents perfect positive correlation. 
-\begin{equation}
+\[
 \tau = \frac{{\text{{number of concordant pairs}} - \text{{number of discordant pairs}}}}{{\text{{total number of pairs}}}}
-\end{equation}
-
+\]
 Weighted Kendall tau  \cite{vignaWeightedCorrelationIndex2015} is an extension of Kendall tau that takes into account the importance or weight of each observation in the rankings. In some cases, some observations may be more important than others, and their positions in the ranking may have a greater impact on the overall correlation. Weighted Kendall tau assigns a weight to each observation, and the correlation is calculated based on the weighted concordant and discordant pairs.
-\begin{equation}
+\[
 \tau_w = \frac{{\sum_{i<j} w_{ij} \cdot sgn(x_i - x_j)}}{{\sum_{i<j} w_{ij}}}
-\end{equation}
-
+\]
 where $w_{ij}$ is the weight associated with the pair $(x_i, x_j)$ and $sgn(\cdot)$ is the sign function.
-\ac{rbo} \cite{webberSimilarityMeasureIndefinite2010} is a measure of similarity between two ranked lists or rankings. It takes into account the order of items in the two lists, and it can be used to evaluate the quality of search results, recommendations, or any other kind of ranked list it has been shown to be more robust and accurate than other similarities measures such as Kendall tau or Spearman's rank correlation coefficient. 
-\begin{equation}
-\text{{RBO}} = (1 - \rho) \cdot \sum_{d=1}^{\infty} \left( \frac{{g_d}}{{d}} \right) \cdot \rho^d
-\end{equation}
 
-where $\rho$ is the weight, $g_d$ is the gain at depth $d$, and $\sum_{d=1}^{\infty}$ indicates the summation over all depths.
+The Rank-Biased Overlap (RBO) \cite{webberSimilarityMeasureIndefinite2010} is a measure used to compare the similarity of two ranked lists, especially when these lists are of different lengths or have only partial overlap. The RBO value ranges from 0 (no overlap) to 1 (complete agreement). One of the key features of RBO is that it gives more weight to the top-ranked items. The formula for RBO at a given depth \( d \) is as follows:
 
+\[
+RBO_d = (1 - p) \sum_{k=1}^{d} \left[ p^{k-1} \cdot \frac{|S_{k} \cap T_{k}|}{k} \right]
+\]
 
-Finally, we intend to use text-distance metrics. The theory behind this experiment is to treat the ordered columns in a ranking manner and apply text-distance metrics to check the distance between the two. Levenshtein distance \cite{navarroGuidedTourApproximate2001} is the minimum number of single-character insertions, deletions, or substitutions required to transform one string into another. Damerau-Levenshtein distance \cite{navarroGuidedTourApproximate2001} is similar to Levenshtein distance but also includes the transposition of two adjacent characters as an allowable operation. The hamming distance \cite{6772729} is a measure of the difference between two strings of equal length, defined as the number of positions at which the corresponding symbols are different. Jaro-Winkler distance \cite{navarroGuidedTourApproximate2001} is a string similarity measure that takes into account the number of matching characters, the number of transpositions, and the length of common prefixes, with a higher weight given to the common prefix.
+Where  \( S_{k} \) and \( T_{k} \) are the sets of elements in the top \( k \) positions of the two ranked lists \( S \) and \( T \) respectively, \( |S_{k} \cap T_{k}| \) is the size of the intersection of these top \( k \) elements, \( p \) is a persistence parameter (usually between 0 and 1) that determines the weight given to the rankings at different depths. A lower value of \( p \) gives more weight to the top-ranked items and \( d \) is the depth to which you are calculating the RBO, which can be up to the length of the longest list. This formula calculates the RBO up to a finite depth \( d \). The parameter \( p \) is crucial as it models the user's persistence in considering the rankings down the list. The higher the value of \( p \), the more the metric considers items further down the list. 
+
+Finally, we intend to use text-distance metrics. The theory behind this experiment is to treat the ordered columns in a ranking manner and apply text-distance metrics to check the distance between the two. Levenshtein distance \cite{navarroGuidedTourApproximate2001} is the minimum number of single-character insertions, deletions, or substitutions required to transform one string into another.
+
+Damerau-Levenshtein distance \cite{navarroGuidedTourApproximate2001} is similar to Levenshtein distance but also includes the transposition of two adjacent characters as an allowable operation.
+
+The hamming distance \cite{6772729} is a measure of the difference between two strings of equal length, defined as the number of positions at which the corresponding symbols are different.
+
+Jaro-Winkler distance \cite{navarroGuidedTourApproximate2001} is a string similarity measure that takes into account the number of matching characters, the number of transpositions, and the length of common prefixes, with a higher weight given to the common prefix.
 
 
 
 
 \begin{algorithm}[hbtp]
+\label{alg:simil_1}
 \SetAlgoLined
 
+\For {dataset in datasets list}{
+    create two copies of dataset, one that remains the same and a second to be disturbed with permutation \\
+\For {ML algorithms in ML algorithms}{
 \For {i in number of columns to test}{
 \For {rep in  10 repetitions}{ 
-permutate values in i columns
+permutate values in i columns in the second dataset\\
 
-\For {dataset in dataset pair}{
 
 \For {target in dataset columns}{
+\begin{itemize}
+    \item Train-Test Split (95:5) \\
+    \item model fit to train \\
+    \item get feature importance per column \\
+    \item Create an ordered rank of features \\
+    \item Apply new metrics for comparison \\
+    \item make cross-classification to compare  with feature importance metrics \\
+    \item aggregate results per metric \\
+\end{itemize}
 
-Train-Test Split (95:5)
- model fit to train
-     get feature importance per column
-     Create an ordered rank of features 
+ }
  }}}}
 
 
- \caption{Testing similarity scores in tabular datasets}
- \label{alg:simil_1}
-
+ \caption{Testing similarity scores in tabular datasets. Dataset list is the 5 datasets used in this work. ML algorithms are the 6 ML algorithms used in this work. Number of columns to test is the number of columns in the dataset. 10 repetitions is the number of times the columns are permutated.}
 \end{algorithm}
 
 
 
-The algorithms chosen were decision trees, random forests, \ac{svm},  \ac{knn}, and linear regression/logistic regression as implemented in the \textit{scikit-learn} package \cite{scikit-learn}. The text distance metrics were implemented by the text-distance package \cite{orsiniumTextdistanceComputeDistance}. Kendall tau, weighted Kendall tau were used as implemented by scipy \cite{virtanenSciPyFundamentalAlgorithms2020a} and \ac{rbo}, as implemented in \cite{chenRankbiasedOverlapRBO2023}.
-
-
-
+The algorithms chosen were decision trees with gini entropy function for decision making on splits on classification and squared error for regression; random forests with 100 trees and gini criterion for classification and squared error for regression; support vector machines with C-support Vector classification and Epsilon-Support Vector Regression, K-nearest neighbours with 5 neighbours and uninform weights, linear regression/logistic regression and gausssian naive bayes for classification and bayesian ridge with 300 maximum iterations and $\alpha$ and $\lambda$ of $1e-6$ . All of these were used as implemented in the scikit-learn package \cite{scikit-learn}. The hyperparameters chosen were the default ones. We felt that tuning was not necessary here to test our hypothesis, since it is based on the ratio of results.
+The text distance metrics were implemented by the text-distance package \cite{orsiniumTextdistanceComputeDistance}. Kendall tau, weighted Kendall tau were used as implemented by scipy \cite{virtanenSciPyFundamentalAlgorithms2020a} and RBO, as implemented in \cite{chenRankbiasedOverlapRBO2023}.
+The methods chosen for creating several synthetic datasets were the synthpop package \cite{synthpop} with "cart" method, which is rpart implementation of a CART model. We also used  the SDV package \cite{SDV} to leverage their implementation of the CTGAN and Gaussian Copula to create 2 more synthetic datasets to test different methodologies of synthetic data creation.
 
 
 
