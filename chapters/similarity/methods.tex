@@ -1,4 +1,5 @@
 % !TeX root = ../../thesis.tex
+
 For this work, our goal is to test several metrics based on the ranking of feature importance of a trained model. Normalized Discounted Cumulative Gain (NDCG) \cite{wangTheoreticalAnalysisNDCG} which is the sum of the true scores ranked in the order induced by the predicted scores, after applying a logarithmic discount. Then divide by the best possible score to obtain a score between 0 and 1. It is calculated by
 \[
 \text{{NDGC}} = \frac{{\text{{DCG}}(P)}}{{\text{{IDCG}}(P)}}
@@ -52,7 +53,7 @@ Jaro-Winkler distance \cite{navarroGuidedTourApproximate2001} is a string simila
 
 
 \begin{algorithm}[hbtp]
-\label{alg:simil_1}
+
 \SetAlgoLined
 
 \For {dataset in datasets list}{
@@ -60,32 +61,33 @@ Jaro-Winkler distance \cite{navarroGuidedTourApproximate2001} is a string simila
 \For {ML algorithms in ML algorithms}{
 \For {i in number of columns to test}{
 \For {rep in  10 repetitions}{ 
-permutate values in i columns in the second dataset\\
-
-
+create second dataset by permutating values in i columns in the first dataset
 \For {target in dataset columns}{
 \begin{itemize}
-    \item Train-Test Split (95:5) \\
-    \item model fit to train \\
-    \item get feature importance per column \\
-    \item Create an ordered rank of features \\
-    \item Apply new metrics for comparison \\
-    \item make cross-classification to compare  with feature importance metrics \\
-    \item aggregate results per metric \\
+    \item Train-Test Split (95:5) for both
+    \item model fit to train for both
+    \item get feature importance per column for both
+    \item Create an ordered rank of features for both
+    \item Create new metrics values by comparing the results from both
+    \item make cross-classification to compare with feature importance metrics
+    \item aggregate results per metric 
 \end{itemize}
 
  }
  }}}}
 
-
- \caption{Testing similarity scores in tabular datasets. Dataset list is the 5 datasets used in this work. ML algorithms are the 6 ML algorithms used in this work. Number of columns to test is the number of columns in the dataset. 10 repetitions is the number of times the columns are permutated.}
+ \caption{Testing similarity scores in tabular datasets. Dataset list is the 5 datasets used in this work. ML algorithms are the 6 ML algorithms used in this work. Number of columns to test is the number of columns in the dataset. 10 repetitions is the number of times the columns are permutated.}\label{alg:simil_1}
 \end{algorithm}
 
 
+Like seen in algorithm~\ref{alg:simil_1}, the cross-classification was performed several times and according to the image~\ref{fig:cross_classi1}, we trained the model on dataset1 and tested on dataset1 and 2 and compared the results. However, we applied this twice; 1) where dataset1 is the original dataset and the dataset2 is the permutated/synthetic (RS) and 2) where dataset1 is the permutated/synthetic and dataset2 is the real one or original (SR). Both are examples of cross-classification.
 
-The algorithms chosen were decision trees with gini entropy function for decision making on splits on classification and squared error for regression; random forests with 100 trees and gini criterion for classification and squared error for regression; support vector machines with C-support Vector classification and Epsilon-Support Vector Regression, K-nearest neighbours with 5 neighbours and uninform weights, linear regression/logistic regression and gausssian naive bayes for classification and bayesian ridge with 300 maximum iterations and $\alpha$ and $\lambda$ of $1e-6$ . All of these were used as implemented in the scikit-learn package \cite{scikit-learn}. The hyperparameters chosen were the default ones. We felt that tuning was not necessary here to test our hypothesis, since it is based on the ratio of results.
+The algorithms chosen were decision trees with gini entropy function for decision making on splits on classification and squared error for regression; random forests with 100 trees and gini criterion for classification and squared error for regression; support vector machines with C-support Vector classification and Epsilon-Support Vector Regression, K-nearest neighbours with 5 neighbours and uninform weights, linear regression/logistic regression and gaussian naive bayes for classification and Bayesian ridge with 300 maximum iterations and $\alpha$ and $\lambda$ of $1e^-6$ . All of these were used as implemented in the scikit-learn package \cite{scikit-learn}. The hyperparameters chosen were the default ones. We felt that tuning was not necessary here to test our hypothesis, since it is based on the ratio of results.
 The text distance metrics were implemented by the text-distance package \cite{orsiniumTextdistanceComputeDistance}. Kendall tau, weighted Kendall tau were used as implemented by scipy \cite{virtanenSciPyFundamentalAlgorithms2020a} and RBO, as implemented in \cite{chenRankbiasedOverlapRBO2023}.
 The methods chosen for creating several synthetic datasets were the synthpop package \cite{synthpop} with "cart" method, which is rpart implementation of a CART model. We also used  the SDV package \cite{SDV} to leverage their implementation of the CTGAN and Gaussian Copula to create 2 more synthetic datasets to test different methodologies of synthetic data creation.
+
+
+
 
 
 

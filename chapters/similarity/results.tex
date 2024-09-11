@@ -1,38 +1,63 @@
 % !TeX root = ../../thesis.tex
 
+
+
 With the method described in the algorithm \ref{alg:simil_1}, we created a figure where the metrics are presented with increasingly different datasets: Figure \ref{fig:lineplot}.
 %Then we compared the difference in the metric across iterations, rendering figure \ref{fig:boxplot}.
+
+\begin{landscape}
 
 %TC:ignore
 \begin{figure}[htbp]
 \centering
-\caption[Plot showing the variation of different metrics over increasingly changed datasets.]{Plot showing the decrease of the metric over increasingly changed datasets. The X axis represents the number of columns mutated. The Y axis represents the value of the metric and the hue represents the algorithm used to calculate the metric.}\label{fig:lineplot} 
-\includegraphics[scale=0.37]{figures/multiple_datasets.png}
+\caption{Plot showing the decrease of the metric over increasingly changed datasets. The X axis represents the number of columns mutated. The Y axis represents the value of the metric and the hue represents the algorithm used to calculate the metric.}\label{fig:lineplot} 
+\includegraphics[scale=0.40]{figures/multiple_datasets_2.png}
 \end{figure}
 %TC:endignore
+\end{landscape}
 
-The number of repetitions and how that impacts the variance of the scores is shown in Figure~\ref{fig:facet_plot}.
+We also checked to see if the number of repetitions and how that impacts the variance of the scores. We found out that variance was low across most metrics, being the ones with higher variance was CC and $R^2$ with values around 0.1 and Wktau and Ktau with values around 0.04 and 0.08. The others were less than 0.02. The data can be seen in figure~\ref{fig:nrruns}. As for the test for the synthetic and real dataset, the results are displayed in figure~\ref{fig:synth_result}. Values available in figure~\ref{fig:synth_heat}. This is the metrics distribution for the comparison of the 5 mentioned datasets and the synthetic counterpart generated as stated in the methods section.
+
+
+
 
 
 %TC:ignore
 \begin{figure}[htbp]
     \centering
-    \caption{Heatmap showing the variance of different repetitions for every metric and the number of different columns changed. X is the metric. Y is the number of repetitions and the number of columns. This was obtained by getting the variance of all values from all datasets.  }\label{fig:facet_plot} 
+    \caption{Heatmap showing the variance of different repetitions for every metric and the number of different columns changed. X is the metric. Y is the number of repetitions and the number of columns. This was obtained by getting the variance of all values from all datasets.  }\label{fig:nrruns} 
     \includegraphics[scale=0.60]{figures/heatmap-runs.png}
     \end{figure}
     %TC:endignore
 
-As for the test for the synthetic and real dataset, the results are displayed in figure~\ref{fig:synth_result} and ~\ref{fig:synth_heat}. This is the metrics distribution for the comparison of the 5 mentioned datasets and the synthetic counterpart generated as stated in the methods section.
-    %TC:ignore
-\begin{figure}[htbp]
-    \centering
-    \caption{Distributions of the metrics results comparing 5 synthetic and real datasets across 3 different generation methods}\label{fig:synth_result} 
-    \includegraphics[scale=0.60]{figures/synthetic_violin_swarm_colored_by_group_custom.png}
-    \end{figure}
-    
+
     \begin{figure}[htbp]
         \centering
         \caption{Values and comparison of the metrics results comparing 5 synthetic and real datasets across 3 different generation methods}\label{fig:synth_heat} 
-        \includegraphics[scale=0.60]{figures/heatmap-synth.png}
+       \includegraphics[scale=0.60]{figures/heatmap-synth.png}
         \end{figure}
     %TC:endignore
+
+    
+%TC:ignore
+\begin{figure}[htbp]
+\centering
+\caption{Distributions of the metrics results comparing 5 synthetic and real datasets across 3 different generation methods}\label{fig:synth_result} 
+\includegraphics[scale=0.55]{figures/synthetic_violin_swarm_colored_by_group_custom.png}
+\end{figure}
+
+CC metrics per different models and column type was also assessed in order to help understand its advantages and disadvantages. The results can be in table~\ref{tab:method_column_type}. Finally, the imbalance of data was also assessed. We used a column with 21 different categories which was ideal to assess that impact. We mapped the percentage of each category per synthetic datasets and how they compare with the real dataset. This can be seen in figure~\ref{fig:imbalance}.
+\begin{table}[h!]
+    \caption{Metrics per model and variable type.}\label{tab:method_column_type}
+\input{chapters/similarity/table1.tex}
+\end{table}
+
+
+%TC:ignore
+\begin{figure}[htbp]
+    \centering
+    \caption{Class distributions for an highly imbalanced category across different synthetic datasets.}\label{fig:imbalance} 
+    \includegraphics[scale=0.55]{figures/imbalance.png}
+    \end{figure}
+
+
