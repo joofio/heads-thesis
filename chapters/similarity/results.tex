@@ -16,7 +16,7 @@ With the method described in the algorithm \ref{alg:simil_1}, we created a figur
 %TC:endignore
 \end{landscape}
 
-We also checked to see if the number of repetitions and how that impacts the variance of the scores. We found out that variance was low across most metrics, being the ones with higher variance was CC and $R^2$ with values around 0.1 and Wktau and Ktau with values around 0.04 and 0.08. The others were less than 0.02. The data can be seen in figure~\ref{fig:nrruns}. As for the test for the synthetic and real dataset, the results are displayed in figure~\ref{fig:synth_result}. Values available in figure~\ref{fig:synth_heat}. This is the metrics distribution for the comparison of the 5 mentioned datasets and the synthetic counterpart generated as stated in the methods section.
+We also checked to see if the number of repetitions and how that impacts the variance of the scores. We found out that variance was low across most metrics, being the ones with higher variance was \ac{cc} and $R^2$ with values around 0.1 and Wktau and Ktau with values around 0.04 and 0.08. The others were less than 0.02. The data can be seen in figure~\ref{fig:nrruns}. As for the test for the synthetic and real dataset, the results are displayed in figure~\ref{fig:synth_result}. Values available in figure~\ref{fig:synth_heat}. This is the metrics distribution for the comparison of the 5 mentioned datasets and the synthetic counterpart generated as stated in the methods section.
 
 
 
@@ -46,7 +46,7 @@ We also checked to see if the number of repetitions and how that impacts the var
 \includegraphics[scale=0.55]{figures/synthetic_violin_swarm_colored_by_group_custom.png}
 \end{figure}
 
-CC metrics per different models and column type was also assessed in order to help understand its advantages and disadvantages. The results can be in table~\ref{tab:method_column_type}. Finally, the imbalance of data was also assessed. We used a column with 21 different categories which was ideal to assess that impact. We mapped the percentage of each category per synthetic datasets and how they compare with the real dataset. This can be seen in figure~\ref{fig:imbalance}.
+\Ac{cc} metrics per different models and column type was also assessed in order to help understand its advantages and disadvantages. The results can be in table~\ref{tab:method_column_type}. Finally, the imbalance of data was also assessed. We used a column with 21 different categories which was ideal to assess that impact. We mapped the percentage of each category per synthetic datasets and how they compare with the real dataset. This can be seen in figure~\ref{fig:imbalance}.
 \begin{table}[h!]
     \caption{Metrics per model and variable type.}\label{tab:method_column_type}
 \input{chapters/similarity/table1.tex}

@@ -98,19 +98,19 @@ The \ac{auroc} is presented in table \ref{tab:performancemetricsauc} for the bes
   \setlength{\tabcolsep}{12pt} % Adjust the horizontal spacing
   \begin{tabular}{lccc}
     \hline
-    \textbf{Metric} & \textbf{AUROC} & \textbf{CI 95\%} \textit{\textbf{P value}} \\
+    \textbf{Metric} & \textbf{AUROC} & \textbf{CI 95\%} \textit{\textbf{P}} \\
     \hline
     XGBoost & 0.8809 & 0.8799, 0.882 & - \\  
     Decision Tree & 0.8337 & 0.8324, 0.8349 & $\leq$ 0.001\\
     Logistic Regression & 0.8716 & 0.8706, 0.8726 & $\leq$ 0.001\\
     AdaBoost & 0.8753 & 0.874, 0.8766 & $\leq$ 0.001\\ 
-    lightgbm & 0.8805 & 0.8793, 0.8817 &  0.003\\ 
+    LightGBM & 0.8805 & 0.8793, 0.8817 &  0.003\\ 
     Stochastic Gradient Descent & 0.8704 & 0.8694, 0.8713& $\leq$ 0.001\\ 
     Random Forest & 0.8752 & 0.8743, 0.8762& $\leq$ 0.001 \\  
     \hline
   \end{tabular}
 \end{table}
-While XGBoost was the best-performing algorithm, we selected LightGBM  \cite{lightgbm} because of its speed and lower memory requirements, which we believe are better suited for deployment in a low-hardware environment. The threshold selected for deploying the model was 0.7457 which rendered the metrics in the test set, as shown in table \ref{tab:performancemetricsthreshold}.
+While \ac{xgboost} was the best-performing algorithm, we selected \ac{lightgbm}  \cite{lightgbm} because of its speed and lower memory requirements, which we believe are better suited for deployment in a low-hardware environment. The threshold selected for deploying the model was 0.7457 which rendered the metrics in the test set, as shown in table \ref{tab:performancemetricsthreshold}.
 
 \begin{table}[htbp]
   \centering
