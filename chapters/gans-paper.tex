@@ -105,10 +105,11 @@ The selected papers ranged from 2017 to 2020. Being that 2 are from 2017, 4 from
 \ac{gan} architecture that was originally published with usage on image datasets \cite{odena_conditional_2017}. Additionally, Vega-Marquez et al.  \cite{ISI:000490706700022} used an already known implementation of conditional \acp{gan} \cite{mirza_conditional_2014}. We classified papers regarding 3 metrics: utility, privacy and clinical. For utility, we looked for  methods for measuring the generated data's quality. As for privacy, we aimed for some mechanism for measuring the privacy loss of the new data. Concerning clinical metrics, any kind of evaluation from healthcare professionals was considered. This can be seen in table \ref{tab:review_gans}.
 
 
-\begin{table}[btph]
-\caption{Summary of the articles selected.}\label{tab:review_gans}
+\begin{table}[tphb]
+\caption{Summary of the articles selected. The year, acronym, reference and  type of metrics mentioned are indicated. Code repository is mentioned when such information was provided. }\label{tab:review_gans}
 \centering
-\begin{tabular}{l|llclc}
+\small
+\begin{tabular}{lllclc}
 %\begin{tabular}{l|llclc}
 
 \toprule
@@ -158,19 +159,23 @@ The selected papers ranged from 2017 to 2020. Being that 2 are from 2017, 4 from
 
 21 & 2020 & WCGAN-GP&  \cite{WCGAN-GP}& Utility, Privacy & --\\
 22 & 2020 & SMOOTH-GAN &  \cite{smooth-gan} & Utility & \cite{smooth-gan-url}\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
 
-The metrics the authors used are exhibited in table \ref{tab:results_review}. 
+The metrics the authors used are exhibited in table \ref{tab:results_review}. Regarding privacy, 15 papers assessed it or included some kind of mechanism to improve data protection. The most common was including Differential Privacy (DP) in the generation process. Other mechanisms for measuring privacy loss were Membership Inference (Member. Inf.), Attributes Disclosure (Attrib. Disc.), Euclidean distance (Eucl.), record-linkage (R. Linkage) and \acf{knn}.
+As for utility, all papers assessed it. There were 3 major areas of utility assessment: Dimension-wise (DW) probability, cross-testing, and distance metrics. The most basic one was dimension-wise probability, which is important for making sanity checks for the generated data, comparing the distributions of each column between real and synthetic. In this category, we can find \textit{Bernoulli} (Bern.), cumulative distributions (Cumul. Dist.), \textit{Pearson} correlation (Pearson) and \textit{Spearman} correlation (Spearman), correlation coefficients (CCS), chi-squared test ($\chi^{2}$),  \acf{ks} or Correlation Matrices (Corre. Mat.).
+Cross-testing was about training machine-learning algorithms with both datasets in order to compare the results. The key factor is generating a synthetic dataset based on the training set and then training models on the original training set and the generated dataset. Then the models are compared regarding their predictive capability on the (real) test set. This was a way of assessing if the generator models were capturing inter-variable relationships. The authors applied different metrics from \acf{auroc}, F1, \ac{auprc}, Accuracy (Acc.) to \acf{mre}. Finally, there was also the application of distance metrics, for measuring the difference between column distribution in both datasets. \acf{jsd}, \textit{Wasserstein} Distance (WD), \textit{Bhattacharyya} Distance (BD) or Generate Scores (GS) that was a metric implemented by the authors of \cite{liu_ppgan_2019} that creates a metric based on the sum of the mean of \textit{kullblack-leibler}  distance of all columns. Other less used methods were \acf{pca}, propensity score mean squared error ratio (pMSE). Normalised Mutual Information (NMI), which is the ability to capture correlations between columns by computing the pairwise mutual information and MMD (Maximum Mean Discrepancy), which is similar to distance metrics were also used. Regarding datasets utilized, the most used was MIMIC-III \cite{mimiciii} (9 times). The papers used 27 different datasets, being 16 healthcare-related and 11 non-healthcare related. 
+Finally, regarding clinical evaluation, only two papers assessed it, as it is possible to see in table \ref{tab:review_gans}. Both had a group of clinicians assessing a sample of both real and synthetic information and evaluating from 0 to 10, where 10 is the most realistic.
+One major point preventing a larger comparison is that despite some papers using the same dataset and same methodologies, the presented values are different, making it difficult for a clear comparison of results. One example is a dimension-wise prediction with F1 score for MIMIC-III. CorGAN presents the mean difference between the two classifications (real on real and synthetic on synthetic), while medBGAN presents the correlation coefficients of the two, and medGAN only presents the visual comparisons. Regarding code availability, 16 papers had the code publicly available in some form. As of January 2021, papers pointed in table \ref{tab:review_gans} have public code.
 
 
 
 \begin{landscape}
 \renewcommand{\arraystretch}{1.02} %add more space between cells (1.2 is a factor)
 \begin{table}[htbp]
-\caption{Metrics utilised for evaluation} \label{tab:results_review} 
+\caption{Summary of different metrics utilised for evaluating synthetic data. Grouped by utility and privacy metrics. Acronyms indicate the source paper} \label{tab:results_review} 
 
 \begin{tabular}{p{26mm} p{84mm} p{60mm}}
 \hline
@@ -247,11 +252,6 @@ SMOOTH-GAN & \begin{enumerate*} \item DW MAE \item Pearson  \item Pred AUROC$\ve
 \end{landscape}
 
 
-Regarding privacy, 15 papers assessed it or included some kind of mechanism to improve data protection. The most common was including Differential Privacy (DP) in the generation process. Other mechanisms for measuring privacy loss were Membership Inference (Member. Inf.), Attributes Disclosure (Attrib. Disc.), Euclidean distance (Eucl.), record-linkage (R. Linkage) and \acf{knn}.
-As for utility, all papers assessed it. There were 3 major areas of utility assessment: Dimension-wise (DW) probability, cross-testing, and distance metrics. The most basic one was dimension-wise probability, which is important for making sanity checks for the generated data, comparing the distributions of each column between real and synthetic. In this category, we can find \textit{Bernoulli} (Bern.), cumulative distributions (Cumul. Dist.), \textit{Pearson} correlation (Pearson) and \textit{Spearman} correlation (Spearman), correlation coefficients (CCS), chi-squared test ($\chi^{2}$),  \acf{ks} or Correlation Matrices (Corre. Mat.).
-Cross-testing was about training machine-learning algorithms with both datasets in order to compare the results. The key factor is generating a synthetic dataset based on the training set and then training models on the original training set and the generated dataset. Then the models are compared regarding their predictive capability on the (real) test set. This was a way of assessing if the generator models were capturing inter-variable relationships. The authors applied different metrics from \acf{auroc}, F1, \ac{auprc}, Accuracy (Acc.) to \acf{mre}. Finally, there was also the application of distance metrics, for measuring the difference between column distribution in both datasets. \acf{jsd}, \textit{Wasserstein} Distance (WD), \textit{Bhattacharyya} Distance (BD) or Generate Scores (GS) that was a metric implemented by the authors of \cite{liu_ppgan_2019} that creates a metric based on the sum of the mean of \textit{kullblack-leibler}  distance of all columns. Other less used methods were \acf{pca}, propensity score mean squared error ratio (pMSE). Normalised Mutual Information (NMI), which is the ability to capture correlations between columns by computing the pairwise mutual information and MMD (Maximum Mean Discrepancy), which is similar to distance metrics were also used. Regarding datasets utilized, the most used was MIMIC-III \cite{mimiciii} (9 times). The papers used 27 different datasets, being 16 healthcare-related and 11 non-healthcare related. 
-Finally, regarding clinical evaluation, only two papers assessed it, as it is possible to see in table \ref{tab:review_gans}. Both had a group of clinicians assessing a sample of both real and synthetic information and evaluating from 0 to 10, where 10 is the most realistic.
-One major point preventing a larger comparison is that despite some papers using the same dataset and same methodologies, the presented values are different, making it difficult for a clear comparison of results. One example is a dimension-wise prediction with F1 score for MIMIC-III. CorGAN presents the mean difference between the two classifications (real on real and synthetic on synthetic), while medBGAN presents the correlation coefficients of the two, and medGAN only presents the visual comparisons. Regarding code availability, 16 papers had the code publicly available in some form. As of January 2021, papers pointed in table \ref{tab:review_gans} have public code.
 
 %\begin{figure}[h]
 %\centering

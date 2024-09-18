@@ -15,11 +15,6 @@ So in this paper, we developed a data pipeline for data analysis in order to cre
 \subsection{Methods}
 
 
-The pipeline relies on Python and latex for creating the document. It relies also on several packages that implemented methods for evaluating data, namely scipy \cite{scipy}, sdmetrics \cite{sdv} and \textit{scikit-learn} \cite{scikit-learn} and \textit{mlxtend} \cite{mlxtend}. Its basis is related to uploading 2 datasets, and a report in PDF is produced. Being that is based on programmatic code, it can be easily converted into \ac{api}.
-The report has a section for dataset description, columns removed due to high-null, and a brief variable overview. Then a null comparison is done by column and dataset. Following this is the utility subsection. Firstly, by visual methodologies: heat maps for the correlation, bar plots for categorical, density plots for continuous, and a pair plot for an overview. As for the quantitative utility evaluation, we divided it column-wise, pair-wise, and table-wise. The first comprehends the \ac{ks} test for continuous and $\chi^2$ test for categorical variables.  Distance metrics were also applied to categorical columns. First, they are transformed into distributions and then distance metrics are applied. The results are a descriptive overview of the distance metrics, having minimum value, average, max value, and standard deviation. The distance metrics selected were \ac{jsd}, \textit{Wasserstein distance}, \textit{Kullback–Leibler divergence}, and entropy.
-As for pair-wise metrics, we used a discrete and continuous \textit{Kullblack-Leibler divergence}. In this, two pairs of continuous columns are compared using \textit{Kullback–Leibler divergence}. For this, they are put into bins for further application. The same is applied to categorical columns without binning.
-As for table-wise metrics, first, we used likelihood metrics. We fitted several Gaussian Mixture models or \ac{bn} models to the real data and then calculated the likelihood of the synthetic data belonging to the same distribution. The metrics are likelihood for the Gaussian mixture and Bayesian models and log-likelihood for the Bayesian model as well.
-
 \begin{table}[htpb]
     \caption{Metrics Assessed}
     \label{tab:variables}
@@ -53,6 +48,11 @@ Euclidean distance           & quantitative & privacy/utility \\ \bottomrule
 
 \end{tabular}
 \end{table}
+The pipeline relies on Python and latex for creating the document. It relies also on several packages that implemented methods for evaluating data, namely \textit{scipy} \cite{scipy}, \textit{sdmetrics} \cite{sdv} and \textit{scikit-learn} \cite{scikit-learn} and \textit{mlxtend} \cite{mlxtend}. Its basis is related to uploading 2 datasets, and a report in PDF is produced. Being that is based on programmatic code, it can be easily converted into \ac{api}.
+The report has a section for dataset description, columns removed due to high-null, and a brief variable overview. Then a null comparison is done by column and dataset. Following this is the utility subsection. Firstly, by visual methodologies: heat maps for the correlation, bar plots for categorical, density plots for continuous, and a pair plot for an overview. As for the quantitative utility evaluation, we divided it column-wise, pair-wise, and table-wise. The first comprehends the \ac{ks} test for continuous and $\chi^2$ test for categorical variables.  Distance metrics were also applied to categorical columns. First, they are transformed into distributions and then distance metrics are applied. The results are a descriptive overview of the distance metrics, having minimum value, average, max value, and standard deviation. The distance metrics selected were \ac{jsd}, \textit{Wasserstein distance}, \textit{Kullback–Leibler divergence}, and entropy.
+As for pair-wise metrics, we used a discrete and continuous \textit{Kullblack-Leibler divergence}. In this, two pairs of continuous columns are compared using \textit{Kullback–Leibler divergence}. For this, they are put into bins for further application. The same is applied to categorical columns without binning.
+As for table-wise metrics, first, we used likelihood metrics. We fitted several Gaussian Mixture models or \ac{bn} models to the real data and then calculated the likelihood of the synthetic data belonging to the same distribution. The metrics are likelihood for the Gaussian mixture and Bayesian models and log-likelihood for the Bayesian model as well.
+
 
 
 Then we used machine-learning models (linear regression and decision trees) to assess how similar models behave on both datasets. First, we tested on the same dataset in order to compare evaluation metrics. Then we cross-tested, meaning that the training set was drawn from one dataset and the test set was drawn from the second dataset. Finally, data privacy constraints duplicate evaluation, duplicate existence by removal of a single column and a record linkage approach. With the record linkage, we define a record linkage blocking ("age" in the example) and then try to match rows from the synthetic dataset to the real, with varying known attributes. Then matrix, Euclidean and cosine distance was also calculated. Even though it is used for privacy evaluation, by definition, we could also use it for utility assessment. For proper assessment, the continuous and categorical variables should be indicated at the start of the code. The metrics are listed in the table \ref{tab:variables}.
@@ -96,10 +96,10 @@ Then we used machine-learning models (linear regression and decision trees) to a
 
 
 \subsection{Results}
-A trial example of comparing data is available for data in the \ac{uci} repository, namely the heart disease dataset \cite{misc_heart_disease_45}. The synthetic data was created by using the synthpop package \cite{synthpop}. The variables evaluated are listed in table below. The code can be seen in \url{https://github.com/joofio/dataset-comparasion-report}. As an example, the image for visual analysis for categorical (figure \ref{fig:catgorical}) and continuous variables (figure \ref{fig:continuous}).
+A trial example of comparing data is available for data in the \ac{uci} repository, namely the heart disease dataset \cite{misc_heart_disease_45}. The synthetic data was created by using the \textit{synthpop} package \cite{synthpop}. The variables evaluated are listed in table below. The code can be seen in \url{https://github.com/joofio/dataset-comparasion-report}. As an example, the image for visual analysis for categorical (figure \ref{fig:catgorical}) and continuous variables (figure \ref{fig:continuous}).
 
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.23]{figures/cat.png}
     \caption{Categorical Variables plotted}
