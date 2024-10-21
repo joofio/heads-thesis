@@ -89,7 +89,7 @@ This thesis has three main goals:
     \begin{itemize}
         \item RQ1.1: Can GANs help create realistic datasets?
         \item RQ1.2: How Can we compare two tabular datasets?
-        \item RQ1.3: Can we use machine learning feature to compare datasets?
+        \item RQ1.3: Can we use machine learning feature's importance to compare datasets?
         \item RQ1.4: Can we use machine learning to create automatic data quality assessments?
     \end{itemize}
 \end{itemize}
@@ -125,3 +125,14 @@ Subsequently, we attempted to develop an alternative method for comparing health
 \end{itemize}
 
 For the last goal, we tried to actually go from end-to-end. This means that we tried to leverage real world data in its raw form and transform it into actionable insights. Our major objective was to check the challenges that block the development of such tools. We tried to assess the real-world effect of two drugs for breast cancer and compare them among themselves and with the previous gold standard: endocrine therapy (section \ref{subsec:ipop}). Then we tried to create a \ac{cdss} that could be used in real-time clinical environments and be able to provide support for the need of C-sections (section \ref{subsec:obs}). 
+
+\section{Thesis Contributions}
+
+\begin{itemize}
+    \item \textbf{Data Quality Improvement:} The thesis investigates methods to enhance data quality, either through the generation of synthetic data to increase data volume and protect privacy or by creating automatic data quality assessment methods. \acl{gan} are analysed for the creation of realistic and non-sensitive datasets. The thesis provides a list of application \acl{gan} in healthcare and the metrics used. It also provides access to a method for creating a report that compiles all available metrics for easy evaluation of two datasets. Following this, the thesis adds a new alternative for comparing tabular datasets around the usage of ranking metrics, especially \acl{rbo}. Finally, adds a method that tries to compile several methods of assessing data quality in obstetrics, turning it into a single metric interoperable model.  
+    \item \textbf{Distributed Data Analysis:} The thesis evaluates the application of distributed data analysis to enable secure, localized analyses, improving the speed and security of the process. The thesis compares distributed, centralised, and local learning models, finding that distributed analysis is a potential alternative to standard data analysis, having distributed methods having similar or better performance than local and centralised models. It also adds a potential alternative for institutions to share performance metrics with privacy by using clustering.
+    \item \textbf{Clinical Decision Support:} The thesis investigates how the integration of real-world data into clinical practice can drive innovation and improve clinical outcomes. Examples are presented of the application of causality principles and Machine Learning models to assess the efficacy of Palbociclib and Ribocilib for breast cancer treatments and the development of a  \acl{cdss} for obstetrics using \acl{ml}.
+    \item \textbf{Interdisciplinary Collaboration:} The thesis highlights the need for a collaborative approach with clinicians, who are the end users of the developed tools. Understanding their needs and workflows is essential to develop user-friendly tools that clinicians can integrate into their practice. It also highlights the clear important of explainable \ac{ai} and diving deeper into causality models in order to fast-track the adoption of these tools by clinicians and health institutions.
+\end{itemize}
+
+The thesis advocates for the creation of robust data infrastructures, interdisciplinary collaboration, and a balanced legal and technical framework to drive digital health innovation.

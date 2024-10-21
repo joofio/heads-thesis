@@ -17,19 +17,19 @@ An expert is a person who has made all the mistakes that can be made in a very n
 
 
 \section{Can GANs Help Create Realistic Datasets?}\label{subsec:gans}
-This section is based on the paper entitled "GANs for Tabular Healthcare Data Generation: A Review on Utility and Privacy". It focuses on a review of the \ac{gan} framework for creating synthetic data for healthcare. Tries to compile the metrics used for comparing and assessing synthetic data in terms of utility - or how similar they are to the original data and privacy - how protective of the patient's data it is. 
+This section is based on the paper entitled "GANs for Tabular Healthcare Data Generation: A Review on Utility and Privacy" \cite{coutinho-almeidaGANsTabularHealthcare2021a}. It focuses on a review of the \ac{gan} framework for creating synthetic data for healthcare. Tries to compile the metrics used for comparing and assessing synthetic data in terms of utility - or how similar they are to the original data and privacy - how protective of the patient's data it is. 
 
 \input{chapters/gans-paper}
 
 \section{How Can We Compare Two Tabular Datasets?}\label{subsec:tabular}
-This section is based on the paper entitled "Dataset Comparison Tool: Utility and Privacy". This work followed the work on section \ref{subsec:gans}, where we compiled ways of assessing the utility of synthetic data. We understood that the mechanisms were far from consensual and a tool could be of use to merge all of this into a single file and report about data. Our purpose was to facilitate health data owners and legal responsible to understand how similar and protective a dataset was regarding the original one.
+This section is based on the paper entitled "Dataset Comparison Tool: Utility and Privacy" \cite{coutinho-almeidaDatasetComparisonTool2022}. This work followed the work on section \ref{subsec:gans}, where we compiled ways of assessing the utility of synthetic data. We understood that the mechanisms were far from consensual and a tool could be of use to merge all of this into a single file and report about data. Our purpose was to facilitate health data owners and legal responsible to understand how similar and protective a dataset was regarding the original one.
 
 \input{chapters/tabular-paper}
 
 
 
-\section{Can We Use Machine Learning Feature to Compare Datasets?}\label{subsec:similarity}
-This section is based on the paper entitled "Using Machine Learning Models' feature importance to assess dataset similarity". The reasoning behind this paper was the results of section \ref{subsec:gans}, where we felt that evaluation metrics for synthetic data could be improved. Better yet, we felt that the comparison of two datasets (that shared the same columns) could be done in a more robust way. Being that the current gold-standard was cross-validation which was not bound to any number range and the significance of the result could not be easily interpretable. We used the feature importance of several \ac{ml} models to compare datasets and concluded that it was a valid alternative to the traditional metrics.
+\section{Can We Use Machine Learning Feature's importance to Compare Datasets?}\label{subsec:similarity}
+This section is based on the paper entitled "Using Machine Learning Models' feature importance to assess dataset similarity" (in review). The reasoning behind this paper was the results of section \ref{subsec:gans}, where we felt that evaluation metrics for synthetic data could be improved. Better yet, we felt that the comparison of two datasets (that shared the same columns) could be done in a more robust way. Being that the current gold-standard was cross-validation which was not bound to any number range and the significance of the result could not be easily interpretable. We used the feature importance of several \ac{ml} models to compare datasets and concluded that it was a valid alternative to the traditional metrics.
 
 \subsection{Introduction}
 \input{chapters/similarity/intro}
@@ -50,7 +50,7 @@ This section is based on the paper entitled "Using Machine Learning Models' feat
 
 
 \section{Can We Use Machine Learning to Create Automatic Data Quality Assessments?}\label{subsec:dq}
-This section is based on the paper entitled "Development and Validation of a Data Quality Evaluation Tool in Obstetrics Real-World Data through \ac{hl7} \ac{fhir} interoperable Bayesian Networks and Expert Rules" This paper focuses on the fact that data quality is a major concern in healthcare. We developed a tool that could be used to assess the quality of data in a \ac{ehr} and provide a report on the quality of the data. We used a combination of \ac{bn} and expert rules to assess the quality of the data. Furthermore, we tested the tool on 9 real-world datasets of obstetrics \acp{ehr} and concluded that the tool was a valid alternative to the traditional methods of assessing data quality.
+This section is based on the paper entitled "Development and Validation of a Data Quality Evaluation Tool in Obstetrics Real-World Data through \ac{hl7} \ac{fhir} interoperable Bayesian Networks and Expert Rules" \cite{coutinho-almeidaDevelopmentInitialValidation2024}. This paper focuses on the fact that data quality is a major concern in healthcare. We developed a tool that could be used to assess the quality of data in a \ac{ehr} and provide a report on the quality of the data. We used a combination of \ac{bn} and expert rules to assess the quality of the data. Furthermore, we tested the tool on 9 real-world datasets of obstetrics \acp{ehr} and concluded that the tool was a valid alternative to the traditional methods of assessing data quality.
 %\input{chapters/data-quality-paper}
 \subsection{Introduction}
 \input{chapters/data-quality/intro}
